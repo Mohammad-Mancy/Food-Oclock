@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Collection;
 use App\Models\Location;
+use App\Models\Review;
 
 class AdminController extends Controller
 {
@@ -61,6 +62,22 @@ class AdminController extends Controller
         else
         {
             return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function getOnProgressReviews(Request $request)
+    {
+        if(auth()->user()){
+
+            $reviews = Review::Where('status', '=', 0)->get();
+            return response()->json([
+                "status" => "Success",
+                "reviews" => $reviews
+            ], 200);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'],401);
         }
     }
 }

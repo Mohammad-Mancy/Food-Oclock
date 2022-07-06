@@ -33,7 +33,8 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['prefix' => 'admin'], function(){
 
             Route::post('/add-restaurant',[AdminController::class,'addRestaurant']); 
-            Route::post('/add-collection',[AdminController::class,'addCollection']); 
+            Route::post('/add-collection',[AdminController::class,'addCollection']);
+            Route::post('/all-on-progress-reviews',[AdminController::class,'getOnProgressReviews']);//sending the admin type using body
 
         });
     });

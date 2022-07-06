@@ -29,6 +29,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['prefix' => 'admin'], function(){
 
             Route::post('/add-restaurant',[AdminController::class,'addRestaurant']); 
+            Route::post('/add-collection',[AdminController::class,'addCollection']); 
 
         });
     });

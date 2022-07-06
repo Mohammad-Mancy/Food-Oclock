@@ -23,4 +23,9 @@ class Restaurant extends Model
     {
         return $this->hasOne(Location::class);
     }
+
+    public function collection()
+    {
+        return $this->belongsTo(Collection::class);
+    }
 }

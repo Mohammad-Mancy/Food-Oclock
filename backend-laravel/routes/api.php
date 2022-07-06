@@ -16,11 +16,14 @@ Route::group(['prefix' => 'v1'], function(){
             Route::post('/register', [AuthController::class, 'register']);
             Route::post('/logout', [AuthController::class, 'logout']);
             Route::post('/refresh', [AuthController::class, 'refresh']);
+
             Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
         });
 
         Route::group(['prefix' => 'restaurant'], function(){
+
+            Route::post('/add-review', [RestaurantController::class, 'addReview']);
 
             Route::get('/get-all-restaurants',[RestaurantController::class,'getRestaurants']); 
 

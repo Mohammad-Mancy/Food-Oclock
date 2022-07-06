@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Review;
 
 class RestaurantController extends Controller
 {
@@ -26,6 +27,28 @@ class RestaurantController extends Controller
         else
         {
             return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function addReview(Request $request)
+    {
+        if(auth()->user()){
+
+            $review = new Review;
+            $review->rate = $request->rate;
+            $review->description = $request->description;
+            $review->status = 0;
+            $review->user_id = $request->user_id;
+            $review->restaurant_id = $request->restaurant_id;
+            $review->save();
+                
+            return response()->json([
+                "status" => "Success"
+            ], 200);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'],401);
         }
     }
 }

@@ -80,4 +80,21 @@ class AdminController extends Controller
             return response()->json(['error' => 'Unauthorized'],401);
         }
     }
+    public function approveReview(Request $request)
+    {
+        if(auth()->user()){
+
+            $review = Review::find($request->id);
+            $review->status = 1;
+            $review->save();
+
+            return response()->json([
+                "status" => "Success",
+            ], 200);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'],401);
+        }
+    }
 }

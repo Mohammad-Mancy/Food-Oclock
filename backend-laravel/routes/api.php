@@ -3,6 +3,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\AdminController;
 
 Route::group(['prefix' => 'v1'], function(){
     
@@ -18,9 +19,16 @@ Route::group(['prefix' => 'v1'], function(){
             Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
         });
+
         Route::group(['prefix' => 'restaurant'], function(){
 
             Route::get('/get-all-restaurants',[RestaurantController::class,'getRestaurants']); 
+
+        });
+
+        Route::group(['prefix' => 'admin'], function(){
+
+            Route::post('/add-restaurant',[AdminController::class,'addRestaurant']); 
 
         });
     });

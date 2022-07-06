@@ -26,6 +26,7 @@ Route::group(['prefix' => 'v1'], function(){
             Route::post('/add-review', [RestaurantController::class, 'addReview']);
 
             Route::get('/get-all-restaurants',[RestaurantController::class,'getRestaurants']); 
+            Route::get('/all-approved-reviews/{id}',[RestaurantController::class,'getApprovedReviews']);
 
         });
 

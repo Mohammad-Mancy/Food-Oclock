@@ -51,4 +51,20 @@ class RestaurantController extends Controller
             return response()->json(['error' => 'Unauthorized'],401);
         }
     }
+
+    public function getApprovedReviews($id = null)
+    {
+        if(auth()->user()){
+
+            $reviews = Review::where('restaurant_id', '=', $id)->Where('status', '=', 1)->get();
+            return response()->json([
+                "status" => "Success",
+                "reviews" => $reviews
+            ], 200);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'],401);
+        }
+    }
 }

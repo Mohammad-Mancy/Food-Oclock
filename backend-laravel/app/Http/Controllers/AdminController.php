@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Collection;
+use App\Models\Location;
 
 class AdminController extends Controller
 {
@@ -17,11 +18,18 @@ class AdminController extends Controller
     public function addRestaurant(Request $request)
     {
         if(auth()->user()){
-
+            
+            $location = new Location;
+            $location->latitude = $request->latitude;
+            $location->longitude = $request->longitude;
+            $location->city = $request->city;
+            $location->save();
+            $location_id = $location->id; // Get back the id after genarating it
+            
             $restaurant = new Restaurant;
             $restaurant->name = $request->name;
             $restaurant->description = $request->description;
-            $restaurant->location_id = $request->location_id;
+            $restaurant->location_id = $location_id;
             $restaurant->capacity = $request->capacity;
             $restaurant->rate = 0; // if 0 then in frontend make it "new"
             $restaurant->image = $request->image;

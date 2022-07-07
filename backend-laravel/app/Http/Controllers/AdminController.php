@@ -80,6 +80,7 @@ class AdminController extends Controller
             return response()->json(['error' => 'Unauthorized'],401);
         }
     }
+
     public function approveReview(Request $request)
     {
         if(auth()->user()){
@@ -95,6 +96,21 @@ class AdminController extends Controller
         else
         {
             return response()->json(['error' => 'Unauthorized'],401);
+        }
+    }
+
+    public function rejectReview(Request $request)
+    {
+        if(auth()->user()){
+            
+            $review = Review::find($request->id);
+            $review->delete();
+
+            return response()->json([],204);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
     }
 }

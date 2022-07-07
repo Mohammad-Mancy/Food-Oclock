@@ -9,13 +9,18 @@ use App\Models\Review;
 class RestaurantController extends Controller
 {
 
-    public function getRestaurants()
+    public function getRestaurants($id = null)
     {
         if(auth()->user()){
 
-            $restaurants = Restaurant::all();
+            if($id != null){
+                $restaurants = Restaurant::find($id);
+            }
+            else{
+                $restaurants = Restaurant::all();
+            }
 
-            if($restaurants->isEmpty()){
+            if(!isset($restaurants)){
                 return response()->json(['data' => 'Not Found!'], 404);
             }
 

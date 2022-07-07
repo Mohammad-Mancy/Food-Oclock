@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use App\Models\Collection;
 use App\Models\Location;
 use App\Models\Review;
+use app\Models\User;
 
 class AdminController extends Controller
 {
@@ -143,5 +144,22 @@ class AdminController extends Controller
         {
             return response()->json(['error' => 'Unauthorized'], 401);
         }        
+    }
+
+    public function getUsers(Request $request)
+    {
+        if(auth()->user()){
+
+            $users = User::all();
+
+            return response()->json([
+            "status" => "Success",
+            "users" => $users
+            ], 200);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
     }
 }

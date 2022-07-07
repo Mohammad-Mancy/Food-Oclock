@@ -35,7 +35,8 @@ Route::group(['prefix' => 'v1'], function(){
             Route::post('/add-restaurant',[AdminController::class,'addRestaurant']); 
             Route::post('/add-collection',[AdminController::class,'addCollection']);
             Route::post('/all-on-progress-reviews',[AdminController::class,'getOnProgressReviews']);//sending the admin type using body
-            
+            Route::post('/get-users', [AdminController::class, 'getUsers']);
+
             Route::put('/approve-review', [AdminController::class, 'approveReview']);
             Route::put('/update-restaurant', [AdminController::class, 'updateRestaurant']);
 

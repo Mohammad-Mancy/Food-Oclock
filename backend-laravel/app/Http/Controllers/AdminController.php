@@ -113,4 +113,19 @@ class AdminController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
     }
+
+    public function deleteRestaurant(Request $request)
+    {
+        if(auth()->user()){
+
+            $restaurant = Restaurant::find($request->id);
+            $restaurant->delete();
+            
+            return response()->json([],204);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
 }

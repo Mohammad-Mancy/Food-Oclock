@@ -9,6 +9,19 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'capacity',
+        'image',
+        'location_id'
+    ];
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
@@ -21,7 +34,7 @@ class Restaurant extends Model
 
     public function location()
     {
-        return $this->hasOne(Location::class);
+        return $this->belongsTo(Location::class);
     }
 
     public function collection()

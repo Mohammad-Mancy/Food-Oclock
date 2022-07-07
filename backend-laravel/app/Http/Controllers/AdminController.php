@@ -120,12 +120,28 @@ class AdminController extends Controller
 
             $restaurant = Restaurant::find($request->id);
             $restaurant->delete();
-            
+
             return response()->json([],204);
         }
         else
         {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+    }
+
+    public function updateRestaurant(Request $request)
+    {
+        if(auth()->user()){
+
+            $restaurant = Restaurant::find($request->id);
+            $restaurant->update($request->except('id', 'type','logitude','latitude','city'));    
+            $restaurant->location()->update($request->only('logitude','latitude','city'));
+
+            return response()->json([],204);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }        
     }
 }

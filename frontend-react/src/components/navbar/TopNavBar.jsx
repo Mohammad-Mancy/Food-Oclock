@@ -12,7 +12,7 @@ const TopNavBar = () => {
         </div>
 
             <div className="account-login">
-                <Link to="login" className='account-link'>
+                <Link to="/login" className='account-link'>
                     <FaUserAlt/>
                     <span> Login</span>
                 </Link>

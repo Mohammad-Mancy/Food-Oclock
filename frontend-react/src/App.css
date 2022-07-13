@@ -206,6 +206,33 @@ hr.signup-divider{
   color: white;
 }
 
+/* Middle NavBar */
+.middle-navbar{  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.navbar__link {
+  margin: 1em;
+  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: .3em;
+  text-indent: .3em;
+  color: #227093;
+}
+
+.navbar__link:hover {
+  transform: translateY(-2px);
+}
+.middle-navbar>a.active{
+  color: #fff ;
+  background-color: #227093;
+}
+
 /* Place Holder */
 ::placeholder {
   color: #8ABCD7;

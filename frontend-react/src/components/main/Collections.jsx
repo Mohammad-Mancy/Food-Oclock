@@ -2,14 +2,14 @@ import React from 'react'
 import MiddleNavBar from '../navbar/MiddleNavBar'
 import TopNavBar from '../navbar/TopNavBar'
 
-const Main = () => {
+const Collections = () => {
   return (
-    <div className="main-wrapper">
+    <div className="collection-wrapper">
         <TopNavBar/>
         <MiddleNavBar/>
-        Restaurants
+        Collections
     </div>
   )
 }
 
-export default Main
+export default Collections

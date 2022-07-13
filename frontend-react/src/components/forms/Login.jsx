@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import logo from '../../assets/logo/logofoodoclock.png'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email,setEmail] = useState();
@@ -22,7 +23,7 @@ const Login = () => {
                 </div>
                 <hr className='login-divider'/>
                 <div className='login-new-account'>
-                <a href="#">Create New Account!</a>
+                <Link to="/signup" >Create new account!</Link>
                 </div>
             </form>
         </div>

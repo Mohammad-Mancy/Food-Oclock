@@ -36,3 +36,68 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Login Component */
+
+.login-wrapper{
+  background-color: #8ABCD7;
+  color: white;
+  text-align: -webkit-center;
+}
+.login-wrapper>h1{
+  font-size: 48px;
+}
+.logo-foodoclock{
+  width: 500px;
+}
+.login-wrapper>form{
+  width:420px;
+  padding-bottom: 100px;
+  font-size: 36px;
+}
+.login-form>label>p{
+  text-align: start;
+  font-size: 36px;
+  margin: 15px 0px;
+}
+.login-form>label>input{
+  width: 100%;
+  border: none;
+  font-size: 36px;
+  border-radius: 15px;
+  padding: 18px;
+}
+.login-btn-div{
+  width: 420px;
+  padding: 18px;
+}
+.login-form>div>button{
+  width: 100%;
+  padding: 20px;
+  font-size: 36px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #227093;
+  margin-top: 50px;
+}
+.login-form>div>button:hover{
+  cursor: pointer;
+  background-color: #34ace0;
+}
+hr.login-divider{
+  border-top: 1px solid ;
+  width: 456px;
+}
+.login-new-account{
+  width: 420px;
+  padding: 18px;
+}
+.login-new-account>a{
+  text-decoration: none;
+  color: #227093;
+}
+.login-new-account>a:hover{
+  color: #34ace0;
+}

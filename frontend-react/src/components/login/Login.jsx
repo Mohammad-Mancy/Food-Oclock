@@ -1,0 +1,32 @@
+import React,{useState} from 'react'
+import logo from '../../assets/logo/logofoodoclock.png'
+
+const Login = () => {
+    const [email,setEmail] = useState();
+    const [password,setPassword] = useState();
+    return (
+        <div className='login-wrapper'>
+            <img src={logo} className="logo-foodoclock" />
+            <h1>Login</h1>
+            <form className='login-form'>
+                <label>
+                    <p>Email</p>
+                    <input type="text" onChange={e => setEmail(e.target.value)}/>
+                </label>
+                <label>
+                    <p>Password</p>
+                    <input type="password" onChange={e => setPassword(e.target.value)}/>
+                </label>
+                <div className='login-btn-div'>
+                    <button type="submit">Login</button>
+                </div>
+                <hr className='login-divider'/>
+                <div className='login-new-account'>
+                <a href="#">Create New Account!</a>
+                </div>
+            </form>
+        </div>
+    )
+}
+
+export default Login

@@ -157,3 +157,51 @@ hr.signup-divider{
 .signup-have-account>a:hover{
   color: #34ace0;
 }
+
+/* Top Nav Bar */
+
+.top-navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+
+}
+.top-navbar>a>img{
+  width: 300px;
+}
+.account-login{
+  color: white;
+  font-size: 36px;
+  width: 300px;
+}
+.search-input{
+  border: none;
+  font-size: 36px;
+  border-radius: 15px;
+  padding: 10px;
+  width: 540px
+}
+.top-navbar>a{
+  text-decoration: none;
+}
+.account-link{
+  color: white;
+  text-decoration: none;
+}
+
+/* Place Holder */
+::placeholder {
+  color: #8ABCD7;
+  opacity: 0.5; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #8ABCD7;
+ opacity: 0.5;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #8ABCD7;
+ opacity: 0.5;
+}

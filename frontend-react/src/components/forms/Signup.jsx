@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/logofoodoclock.png'
+import FormTopNavBar from '../navbar/FormTopNavBar';
 
 const Signup = () => {
     const [name,setName] = useState();
@@ -10,7 +11,7 @@ const Signup = () => {
     const [phone_number,setPhone_number] = useState();
   return (
     <div className="signup-wrapper">
-        <img src={logo} className="logo-foodoclock" />
+        <FormTopNavBar status={false}/>
         <h1>Create New Account</h1>
         <form className='signup-form'>
             <label>

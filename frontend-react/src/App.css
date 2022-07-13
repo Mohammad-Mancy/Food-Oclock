@@ -190,6 +190,22 @@ hr.signup-divider{
   text-decoration: none;
 }
 
+/* Froms Top Navbar */
+.form-top-navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+.form-top-navbar>img{
+  width: 350px;
+}
+.signup-form-navbar,.login-form-navbar,.back-form-link{
+  font-size: 36px;
+  text-decoration: none;
+  color: white;
+}
+
 /* Place Holder */
 ::placeholder {
   color: #8ABCD7;

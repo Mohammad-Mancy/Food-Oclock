@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
-import logo from '../../assets/logo/logofoodoclock.png'
 import { Link } from 'react-router-dom';
+import FormTopNavBar from '../navbar/FormTopNavBar';
 
 const Login = () => {
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
     return (
         <div className='login-wrapper'>
-            <img src={logo} className="logo-foodoclock" />
+            <FormTopNavBar status={true}/>
             <h1>Login</h1>
             <form className='login-form'>
                 <label>

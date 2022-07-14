@@ -4,6 +4,7 @@ import Login from './components/forms/Login'
 import Signup from './components/forms/Signup';
 import Main from './components/main/Main'
 import Collections from './components/main/Collections';
+import RestaurantPage from './components/main/restaurants/RestaurantPage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />

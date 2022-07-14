@@ -6,7 +6,7 @@ import CollectionCard from './restaurants/CollectionCard'
 const Collections = () => {
   return (
     <div className="collection-wrapper">
-        <TopNavBar/>
+        <TopNavBar status={true}/>
         <MiddleNavBar/>
         <div className="collection-content-wrapper">
           <CollectionCard />

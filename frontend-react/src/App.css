@@ -189,6 +189,11 @@ hr.signup-divider{
   color: white;
   text-decoration: none;
 }
+.restaurant-welcome{
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+}
 
 /* Froms Top Navbar */
 .form-top-navbar{

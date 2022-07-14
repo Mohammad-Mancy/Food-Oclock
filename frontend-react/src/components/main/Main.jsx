@@ -6,7 +6,7 @@ import RestaurantCard from './restaurants/RestaurantCard'
 const Main = () => {
   return (
     <div className="main-wrapper">
-        <TopNavBar/>
+        <TopNavBar status={true}/>
         <MiddleNavBar/>
         <div className="content-wrapper">
             <RestaurantCard />

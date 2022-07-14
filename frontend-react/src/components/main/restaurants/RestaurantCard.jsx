@@ -1,6 +1,6 @@
 import React from 'react'
 import restaurantImage from '../../../assets/baverage.jpg'
-const Restaurant = () => {
+const RestaurantCard = () => {
   return (
     <div className="restaurant-card">
         <img src={restaurantImage} className='restaurant-card-image'/>
@@ -15,4 +15,4 @@ const Restaurant = () => {
   )
 }
 
-export default Restaurant
+export default RestaurantCard

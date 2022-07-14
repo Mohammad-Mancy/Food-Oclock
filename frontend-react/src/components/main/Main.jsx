@@ -1,7 +1,7 @@
 import React from 'react'
 import MiddleNavBar from '../navbar/MiddleNavBar'
 import TopNavBar from '../navbar/TopNavBar'
-import Restaurant from './restaurants/Restaurant'
+import RestaurantCard from './restaurants/RestaurantCard'
 
 const Main = () => {
   return (
@@ -9,14 +9,14 @@ const Main = () => {
         <TopNavBar/>
         <MiddleNavBar/>
         <div className="content-wrapper">
-            <Restaurant />
-            <Restaurant />
-            <Restaurant />
-            <Restaurant />
-            <Restaurant />
-            <Restaurant />
-            <Restaurant />
-            <Restaurant />
+            <RestaurantCard />
+            <RestaurantCard />
+            <RestaurantCard />
+            <RestaurantCard />
+            <RestaurantCard />
+            <RestaurantCard />
+            <RestaurantCard />
+            <RestaurantCard />
         </div>
     </div>
   )

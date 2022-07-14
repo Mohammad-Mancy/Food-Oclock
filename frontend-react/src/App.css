@@ -233,15 +233,15 @@ hr.signup-divider{
   background-color: #227093;
 }
 
-/* Restaurant Card */
-.restaurant-card-image{
+/* Restaurant Card and Collections Card*/
+.restaurant-card-image, .collection-card-image{
   width: 400px ;
   height: 300px;
   border-radius: 20px;
   border: 2px solid #227093;
   cursor: pointer;
 }
-.restaurant-details{
+.restaurant-details,.collection-title{
   background-color: #227093;
   color: #fff;
   border-radius: 15px;
@@ -259,9 +259,17 @@ hr.signup-divider{
   font-size: 20px ;
   font-weight: bold;
 }
+.collection-title{
+  align-items: center;
+  padding: 24px;
+}
+.collection-name{
+  font-size : 24px;
+  font-weight: bold;
+}
 
 /* Main Content */
-.content-wrapper{
+.content-wrapper,.collection-content-wrapper{
   display: flex;
   flex-wrap: wrap;
   gap: 100px;

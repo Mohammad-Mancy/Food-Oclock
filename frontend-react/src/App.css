@@ -233,6 +233,43 @@ hr.signup-divider{
   background-color: #227093;
 }
 
+/* Restaurant Card */
+.restaurant-card-image{
+  width: 400px ;
+  height: 300px;
+  border-radius: 20px;
+  border: 2px solid #227093;
+  cursor: pointer;
+}
+.restaurant-details{
+  background-color: #227093;
+  color: #fff;
+  border-radius: 15px;
+  border: 2px solid #fff;
+  padding-bottom: 20px;
+}
+.restaurant-topbar{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 25px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.restaurant-title{
+  font-size: 20px ;
+  font-weight: bold;
+}
+
+/* Main Content */
+.content-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 /* Place Holder */
 ::placeholder {
   color: #8ABCD7;

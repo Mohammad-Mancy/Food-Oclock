@@ -283,6 +283,67 @@ hr.signup-divider{
   padding-bottom: 50px;
 }
 
+/* Restaurant Page */
+
+/* Section One */
+.section-one{
+  display: flex;
+  padding: 50px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.section-one-img{
+  width: 700px;
+  height: 500px;
+}
+.section-one-details{
+  width: 700px;
+  justify-content: center;
+  align-items: center;
+}
+.section-one-details>h2{
+  text-align: start;
+  color: #fff;
+  font-size: 32px;
+}
+.section-one-details>p{
+  text-align: start;
+  color: #fff;
+  font-size: 32px;
+}
+.section-one-details>span>p{
+  text-align: start;
+  color: #fff;
+  font-size: 20px;
+}
+/* Section Two */
+.review-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+}
+.review-title>h1{
+  font-size: 36px;
+  color: #fff;
+}
+.review-title>button{
+  font-size: 32px;
+  background-color: #227093;
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.review-title>button:hover{
+  background-color: #34ace0;
+}
+hr.section-two-devider{
+  border-top: 1px solid #fff;
+  width: 90%;
+}
 /* Place Holder */
 ::placeholder {
   color: #8ABCD7;

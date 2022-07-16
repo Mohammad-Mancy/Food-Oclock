@@ -456,3 +456,16 @@ hr.section-two-devider{
   color: #fff;
   font-size: 40px;
 }
+
+/* Middle Navbar */
+.admin-middlenavbar{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.admin-middlenavbar>a.active{
+  color: #fff ;
+  background-color: #227093;
+}

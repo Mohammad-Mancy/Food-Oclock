@@ -557,3 +557,6 @@ hr.section-two-devider{
   cursor: pointer;
   border-radius: 50%;
 }
+.admin-restaurant-card>span>.restaurant-delete-btn:hover,.admin-restaurant-card>span>.restaurant-edit-btn:hover{
+  background-color: #fff;
+}

@@ -5,6 +5,8 @@ import Signup from './components/forms/Signup';
 import Main from './components/main/Main'
 import Collections from './components/main/Collections';
 import RestaurantPage from './components/main/restaurants/RestaurantPage';
+import ManageRestaurant from './components/admin/ManageRestaurant';
+import ManageReview from './components/admin/ManageReview';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="manageRestaurant" element={<ManageRestaurant />} />
+              <Route path="manageReview" element={<ManageReview />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />
               <Route path="login" element={<Login />} />

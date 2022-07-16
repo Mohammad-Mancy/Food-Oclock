@@ -443,3 +443,16 @@ hr.section-two-devider{
  color: #8ABCD7;
  opacity: 0.5;
 }
+
+/* Admin Top NavBar */
+
+.admin-topnavbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 60px;
+}
+.admin-topnavbar>div>h1{
+  color: #fff;
+  font-size: 40px;
+}

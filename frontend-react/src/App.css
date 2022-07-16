@@ -469,3 +469,45 @@ hr.section-two-devider{
   color: #fff ;
   background-color: #227093;
 }
+
+/* User card */
+.user-card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+}
+.user-card-devider{
+  border-top-style: ridge;
+  width: 90vw;
+}
+.user-card-header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+}
+.user-card-header>span{
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+.user-card>span{
+  color: #227093;
+  font-size: 30px;
+  font-weight: 600;
+  flex-basis: 25%;
+  overflow-wrap: anywhere;
+}
+.user-card>span>button{
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #FF524E;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.user-card>span>button:hover{
+  background-color: #b33939;
+}

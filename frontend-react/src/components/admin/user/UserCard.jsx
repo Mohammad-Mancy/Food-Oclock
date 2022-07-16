@@ -1,4 +1,5 @@
 import React from 'react'
+import {RiDeleteBin5Line} from 'react-icons/ri'
 
 const UserCard = () => {
   return (
@@ -8,7 +9,7 @@ const UserCard = () => {
         <span>email</span>
         <span>phone number</span>
         <span>
-            <button>X</button>
+            <button><RiDeleteBin5Line/></button>
         </span>
     </div>
     <hr className="user-card-devider" />

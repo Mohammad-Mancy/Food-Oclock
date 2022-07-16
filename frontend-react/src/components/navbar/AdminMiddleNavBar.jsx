@@ -6,15 +6,15 @@ const AdminMiddleNavBar = () => {
     <div className="admin-middlenavbar">
         <NavLink
         className="navbar__link"
-        to="/manageRestaurant"
-        >
-        Manage Restaurant
-        </NavLink>
-        <NavLink
-        className="navbar__link"
         to="/manageReview"
         >
         Manage Review
+        </NavLink>
+        <NavLink
+        className="navbar__link"
+        to="/manageRestaurant"
+        >
+        Manage Restaurant
         </NavLink>
         <NavLink
         className="navbar__link"

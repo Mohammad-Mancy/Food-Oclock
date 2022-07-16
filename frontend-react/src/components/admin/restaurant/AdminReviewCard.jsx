@@ -5,10 +5,10 @@ const AdminReviewCard = () => {
   return (
     <>
     <div className="admin-review-card">
-        <span>Name</span>
-        <span>location name</span>
-        <span>Capacity</span>
-        <span>Capacity</span>
+        <span>Username</span>
+        <span>Restaurant Name</span>
+        <span>Rate</span>
+        <span>Description</span>
         <span>
             <button className='review-approve-btn'><MdDone/></button>
             <button className='review-disapprove-btn'><MdClose/></button>

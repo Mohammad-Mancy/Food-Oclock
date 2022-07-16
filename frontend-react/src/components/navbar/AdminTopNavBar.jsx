@@ -5,7 +5,7 @@ import { FaUserAlt,FaRedoAlt  } from 'react-icons/fa';
 const AdminTopNavBar = () => {
   return (
     <div className="admin-topnavbar">
-        <div>
+        <div style={{width: '300px'}}>
             <FaRedoAlt style={{width : '30px', height :'30px' , color : "#fff"}} />
             <Link to='/login' className='back-form-link'>    
                 <span> Back</span>

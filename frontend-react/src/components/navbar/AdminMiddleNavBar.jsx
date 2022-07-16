@@ -16,6 +16,12 @@ const AdminMiddleNavBar = () => {
         >
         Manage Review
         </NavLink>
+        <NavLink
+        className="navbar__link"
+        to="/manageUser"
+        >
+        Manage User
+        </NavLink>
         
     </div>
   )

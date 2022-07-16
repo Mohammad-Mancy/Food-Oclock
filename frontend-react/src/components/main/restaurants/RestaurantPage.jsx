@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TopNavBar from '../../navbar/TopNavBar'
 import restaurantImage from '../../../assets/baverage.jpg'
 import PersonReview from './reviews/PersonReview'
+import AddReviewForm from './reviews/AddReviewForm'
 
 const RestaurantPage = () => {
+
+  const [openAddReviewForm, setOpenAddReviewForm] = useState(false)
+
   return (
     <div className="restaurant-page">
         <TopNavBar status={false}/>
@@ -27,15 +31,22 @@ const RestaurantPage = () => {
         <div className="section-two">
           <div className="review-title">
             <h1>Username</h1>
-            <button>Add Review</button>
+            <button
+            className='add-review-popup' 
+            onClick={() => {
+              setOpenAddReviewForm(true)
+            }}
+            >
+            Add Review
+            </button>
           </div>
           <hr className="section-two-devider" />
+          {openAddReviewForm && <AddReviewForm  closeForm={setOpenAddReviewForm} />}
           <PersonReview/>
           <PersonReview/>
           <PersonReview/>
           <PersonReview/>
         </div>
-        
     </div>
   )
 }

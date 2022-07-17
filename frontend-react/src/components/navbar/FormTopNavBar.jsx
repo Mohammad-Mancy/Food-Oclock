@@ -6,7 +6,7 @@ import { FaUserAlt,FaRedoAlt } from 'react-icons/fa';
 const FormTopNavBar = (props) => {
   return (
     <div className="form-top-navbar">
-        <div>
+        <div style={{ width: '150px' }}>
             <FaRedoAlt style={{width : '30px', height :'30px' , color : "#fff"}} />
             <Link to='/' className='back-form-link'>    
                 <span> Back</span>
@@ -16,12 +16,17 @@ const FormTopNavBar = (props) => {
         <img src={logo} className="logo-foodoclock" />
 
         <div>
-        {props.status
+        {props.status === true
         ?
         <>
             <FaUserAlt style={{width : '30px', height :'30px'}} />
             <Link to="/signup" className='signup-form-navbar'> Signup</Link>
         </>
+        :props.status === 'logout'?
+        <>
+            <FaUserAlt style={{width : '30px', height :'30px', color : '#fff' }}/> 
+            <Link to="/" className='logout-link'> Logout</Link>
+        </>   
         :
         <>
             <FaUserAlt style={{width : '30px', height :'30px'}}/>

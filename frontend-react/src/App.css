@@ -608,3 +608,60 @@ hr.section-two-devider{
 .review-approve-btn:hover,.review-disapprove-btn:hover{
   background-color: #fff;
 }
+
+/* Edit Profile */
+
+.logout-link{
+  font-size: 36px;
+  text-decoration: none;
+  color: white;
+}
+.edit-form>img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.edit-profile-container{
+  font-size: 30px;
+  color: #fff;
+  text-align: -webkit-center;
+}
+.edit-form{
+  width: 500px;
+}
+.edit-form>label>input{
+  width: 100%;
+  font-size: 30px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+}
+.edit-form>label>p{
+  margin: 0;
+  text-align: start;
+}
+.cancel-edit-profile{
+  font-size: 30px;
+  background-color: #FF524E;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.save-edit-profile{
+  font-size: 30px;
+  background-color: #218c74;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.edit-profile-btn-div{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

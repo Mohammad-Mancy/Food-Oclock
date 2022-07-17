@@ -8,6 +8,7 @@ import RestaurantPage from './components/main/restaurants/RestaurantPage';
 import ManageRestaurant from './components/admin/ManageRestaurant';
 import ManageReview from './components/admin/ManageReview';
 import ManageUser from './components/admin/ManageUser';
+import EditProfile from './components/main/EditProfile';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="manageRestaurant" element={<ManageRestaurant />} />
               <Route path="manageReview" element={<ManageReview />} />
               <Route path="manageUser" element={<ManageUser />} />
+              <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />
               <Route path="login" element={<Login />} />

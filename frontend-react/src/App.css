@@ -665,3 +665,26 @@ hr.section-two-devider{
   justify-content: space-evenly;
   align-items: center;
 }
+.adding-restaurant{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+.adding-restaurant>span{
+  font-size: 30px;
+  color: #227093;
+  font-weight: bolder;
+}
+.adding-restaurant>button{
+  font-size: 30px;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #227093;
+  color: #fff;
+  cursor: pointer;
+}
+.adding-restaurant>button:hover{
+  background-color: #34ace0;
+}

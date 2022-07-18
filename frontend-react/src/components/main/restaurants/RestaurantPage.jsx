@@ -3,14 +3,19 @@ import TopNavBar from '../../navbar/TopNavBar'
 import restaurantImage from '../../../assets/baverage.jpg'
 import PersonReview from './reviews/PersonReview'
 import AddReviewForm from './reviews/AddReviewForm'
+import { reactLocalStorage } from 'reactjs-localstorage'
 
 const RestaurantPage = () => {
 
+  const token_key = reactLocalStorage.get('token_key');
   const [openAddReviewForm, setOpenAddReviewForm] = useState(false)
 
   return (
     <div className="restaurant-page">
-        <TopNavBar status={false}/>
+      {token_key !== undefined?
+      <TopNavBar status={'logout'} locate={'restPage'}/>
+      :
+      <TopNavBar status={false} locate={'restPage'}/>}
         <div className="section-one">
             <img src={restaurantImage} className="section-one-img" />
             <div className="section-one-details">

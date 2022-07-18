@@ -11,28 +11,21 @@ class RestaurantController extends Controller
 
     public function getRestaurants($id = null)
     {
-        if(auth()->user()){
-
-            if($id != null){
-                $restaurants = Restaurant::find($id);
-            }
-            else{
-                $restaurants = Restaurant::all();
-            }
-
-            if(!isset($restaurants)){
-                return response()->json(['data' => 'Not Found!'], 404);
-            }
-
-            return response()->json([
-                "status" => "Success",
-                "restaurants" => $restaurants
-            ], 200);
+        if($id != null){
+            $restaurants = Restaurant::find($id);
         }
-        else
-        {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        else{
+            $restaurants = Restaurant::all();
         }
+
+        if(!isset($restaurants)){
+            return response()->json(['data' => 'Not Found!'], 404);
+        }
+
+        return response()->json([
+            "status" => "Success",
+            "restaurants" => $restaurants
+        ], 200);
     }
 
     public function addReview(Request $request)

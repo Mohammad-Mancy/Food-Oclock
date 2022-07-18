@@ -7,8 +7,7 @@ import { reactLocalStorage } from 'reactjs-localstorage'
 const Main = () => {
 
   const token_key = reactLocalStorage.get('token_key');
-  console.log(token_key)
-
+  
   return (
     <div className="main-wrapper">
       {token_key !== undefined?

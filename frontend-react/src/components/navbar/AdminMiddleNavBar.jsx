@@ -22,6 +22,12 @@ const AdminMiddleNavBar = () => {
         >
         Manage User
         </NavLink>
+        <NavLink
+        className="navbar__link"
+        to="/manageCollection"
+        >
+        Manage Collection
+        </NavLink>
         
     </div>
   )

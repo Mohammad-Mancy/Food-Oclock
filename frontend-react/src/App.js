@@ -9,6 +9,7 @@ import ManageRestaurant from './components/admin/ManageRestaurant';
 import ManageReview from './components/admin/ManageReview';
 import ManageUser from './components/admin/ManageUser';
 import EditProfile from './components/main/EditProfile';
+import ManageCollection from './components/admin/ManageCollection';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="manageRestaurant" element={<ManageRestaurant />} />
               <Route path="manageReview" element={<ManageReview />} />
               <Route path="manageUser" element={<ManageUser />} />
+              <Route path="manageCollection" element={<ManageCollection />} />
               <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />

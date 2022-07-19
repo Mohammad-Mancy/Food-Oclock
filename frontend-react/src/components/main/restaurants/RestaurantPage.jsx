@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
 import TopNavBar from '../../navbar/TopNavBar'
-import restaurantImage from '../../../assets/baverage.jpg'
 import PersonReview from './reviews/PersonReview'
 import AddReviewForm from './reviews/AddReviewForm'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import { useLocation } from 'react-router-dom'
 
 const RestaurantPage = () => {
 
   const token_key = reactLocalStorage.get('token_key');
   const [openAddReviewForm, setOpenAddReviewForm] = useState(false)
+  const location = useLocation();
+  
+  console.log(location.state)
 
   return (
     <div className="restaurant-page">
@@ -17,18 +20,12 @@ const RestaurantPage = () => {
       :
       <TopNavBar status={false} locate={'restPage'}/>}
         <div className="section-one">
-            <img src={restaurantImage} className="section-one-img" />
+            <img src={'http://127.0.0.1:8000/images/'+location.state.image} className="section-one-img" />
             <div className="section-one-details">
-                <h2>Restaurant name</h2>
-                <p>Location</p>
+                <h2>{location.state.name}</h2>
+                <p>{location.state.location_name}</p>
                 <span>
-                <p>Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                   when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                   It has survived not only five centuries, but also the leap into electronic typesetting, 
-                   remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                   sheets containing Lorem Ipsum passages, and more recently
-                   with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <p>{location.state.description}
                 </p>
                 </span>
             </div>

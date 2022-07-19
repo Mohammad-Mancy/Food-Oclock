@@ -41,13 +41,15 @@ const Main = () => {
       <TopNavBar status={true}/>}
       <MiddleNavBar/>
       <div className="content-wrapper">
-          {restaurants.map(({id,name,rate,image,location_name})=>(
+          {restaurants.map(({id,name,rate,image,location_name,description})=>(
             <RestaurantCard 
             key={id}
+            id={id}
             name={name}
             rate={rate}
             image={image}
             location_name={location_name}
+            description={description}
             />
           ))}
       </div>

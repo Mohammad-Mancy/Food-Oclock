@@ -32,7 +32,6 @@ class RestaurantController extends Controller
         return response()->json([
             "status" => "Success",
             "restaurants" => $restaurants,
-            // "location" => $location
         ], 200);
     }
 
@@ -86,5 +85,24 @@ class RestaurantController extends Controller
             "status" => "Success",
             "collections" => $collections
         ], 200);
+    }
+
+    public function getRestaurantsByCollection($id)
+    {
+        $restaurants = Restaurant::where('restaurants.collection_id','=',$id)->get();  
+        foreach ($restaurants as $restaurant) {
+            $restaurant -> location_name = Location::find($restaurant->location_id)->city;
+        }
+
+        if(!isset($restaurants)){
+            return response()->json(['data' => 'Not Found!'], 404);
+        }
+
+        return response()->json([
+            "status" => "Success",
+            "restaurants" => $restaurants
+        ], 200);
+
+
     }
 }

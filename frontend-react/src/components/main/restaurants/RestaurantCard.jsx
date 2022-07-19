@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const RestaurantCard = ({id,name,image,rate,location_name,description}) => {
     const navigation = useNavigate();
     const hundleRestaurant = (id) => {
-        navigation('restaurantPage',
+        navigation('/restaurantPage',
         {state:
             {id:id,
              name:name,

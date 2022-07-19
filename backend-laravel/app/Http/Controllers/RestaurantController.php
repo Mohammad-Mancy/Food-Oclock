@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Review;
+use App\Models\Location;
 
 class RestaurantController extends Controller
 {
@@ -13,9 +14,14 @@ class RestaurantController extends Controller
     {
         if($id != null){
             $restaurants = Restaurant::find($id);
+            $restaurants -> location_name = Location::find($restaurants->location_id)->city;
         }
         else{
+            $location = [];
             $restaurants = Restaurant::all();
+            foreach ($restaurants as $restaurant) {
+                $restaurant -> location_name = Location::find($restaurant->location_id)->city;
+            }
         }
 
         if(!isset($restaurants)){
@@ -24,7 +30,8 @@ class RestaurantController extends Controller
 
         return response()->json([
             "status" => "Success",
-            "restaurants" => $restaurants
+            "restaurants" => $restaurants,
+            // "location" => $location
         ], 200);
     }
 

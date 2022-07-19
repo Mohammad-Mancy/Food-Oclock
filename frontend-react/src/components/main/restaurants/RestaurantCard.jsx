@@ -1,15 +1,15 @@
 import React from 'react'
-import restaurantImage from '../../../assets/baverage.jpg'
-const RestaurantCard = () => {
+
+const RestaurantCard = ({name,image,rate,location_id}) => {
   return (
     <div className="restaurant-card">
-        <img src={restaurantImage} className='restaurant-card-image'/>
+        <img src={image} className='restaurant-card-image'/>
         <div className='restaurant-details'>
             <div className='restaurant-topbar'>
-                <p>rate</p>
-                <p>location name</p>
+                <p>{rate}</p>
+                <p>{location_id}</p>
             </div>
-            <div className='restaurant-title' >Restaurant name</div>
+            <div className='restaurant-title' >{[name]}</div>
         </div>
     </div>
   )

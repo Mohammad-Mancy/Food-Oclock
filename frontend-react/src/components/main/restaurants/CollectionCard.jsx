@@ -1,11 +1,11 @@
 import React from 'react'
-import CollectionImage from '../../../assets/steakHouse.jpg'
-const CollectionCard = () => {
+
+const CollectionCard = ({id,name,image}) => {
   return (
-    <div className="collection-card">
-        <img src={CollectionImage} className='collection-card-image'/>
+    <div className="collection-card" key={id}>
+        <img src={'http://127.0.0.1:8000/images/collections/'+image}  className='collection-card-image'/>
         <div className="collection-title">
-            <div className='collection-name'>Collection Name</div>
+            <div className='collection-name'>{name}</div>
         </div>
     </div>
   )

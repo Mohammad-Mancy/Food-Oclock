@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Review;
 use App\Models\Location;
+use App\Models\Collection;
 
 class RestaurantController extends Controller
 {
@@ -71,5 +72,19 @@ class RestaurantController extends Controller
         {
             return response()->json(['error' => 'Unauthorized'],401);
         }
+    }
+
+    public function getCollections()
+    {
+        $collections = Collection::all();
+
+        if(!isset($collections)){
+            return response()->json(['data' => 'Not Found!'], 404);
+        }
+
+        return response()->json([
+            "status" => "Success",
+            "collections" => $collections
+        ], 200);
     }
 }

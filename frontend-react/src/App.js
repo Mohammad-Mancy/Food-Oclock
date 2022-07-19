@@ -10,6 +10,7 @@ import ManageReview from './components/admin/ManageReview';
 import ManageUser from './components/admin/ManageUser';
 import EditProfile from './components/main/EditProfile';
 import ManageCollection from './components/admin/ManageCollection';
+import RestaurantByCollection from './components/main/RestaurantByCollection';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />
+              <Route path="restaurantByCollection" element={<RestaurantByCollection />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
             </Routes>

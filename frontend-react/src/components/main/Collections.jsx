@@ -40,6 +40,7 @@ const Collections = () => {
         {collection.map(({id,name,image})=>(
             <CollectionCard 
             key={id}
+            id={id}
             name={name}
             image={image}
             />

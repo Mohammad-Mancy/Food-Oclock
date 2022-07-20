@@ -58,7 +58,10 @@ const RestaurantPage = () => {
             <button
             className='add-review-popup' 
             onClick={() => {
+              token_key !== undefined?
               setOpenAddReviewForm(true)
+              :
+              alert('Sorry ! You need to login')
             }}
             >
             Add Review

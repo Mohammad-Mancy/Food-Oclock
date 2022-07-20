@@ -65,7 +65,7 @@ const RestaurantPage = () => {
             </button>
           </div>
           <hr className="section-two-devider" />
-          {openAddReviewForm && <AddReviewForm  closeForm={setOpenAddReviewForm} />}
+          {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}
           
           {reviews?
           reviews.map(({id,rate,description,user_name}) => (

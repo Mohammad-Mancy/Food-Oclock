@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use App\Models\Review;
 use App\Models\Location;
 use App\Models\Collection;
+use App\Models\User;
 
 class RestaurantController extends Controller
 {
@@ -60,6 +61,9 @@ class RestaurantController extends Controller
     public function getApprovedReviews($id = null)
     {
         $reviews = Review::where('restaurant_id', '=', $id)->Where('status', '=', 1)->get();
+        foreach ($reviews as $review) {
+            $review -> user_name = User::find($review->user_id)->name;
+        }
         return response()->json([
             "status" => "Success",
             "reviews" => $reviews

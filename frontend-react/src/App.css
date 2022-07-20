@@ -379,6 +379,9 @@ hr.section-two-devider{
   text-align: start;
   color: #fff;
 }
+.loading{
+  color: #fff;
+}
 
 /* Add Review Form */
 .add-review-title{

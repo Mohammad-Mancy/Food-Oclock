@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import TopNavBar from '../../navbar/TopNavBar'
 import PersonReview from './reviews/PersonReview'
 import AddReviewForm from './reviews/AddReviewForm'
@@ -9,9 +9,31 @@ const RestaurantPage = () => {
 
   const token_key = reactLocalStorage.get('token_key');
   const [openAddReviewForm, setOpenAddReviewForm] = useState(false)
+  const [reviews, setReviews] = useState();
   const location = useLocation();
   
-  console.log(location.state)
+  let handleReviews = async (e) => {
+    try{
+      let res = await fetch (`http://127.0.0.1:8000/api/v1/auth/restaurant/all-approved-reviews/${location.state.id}`,{
+        method: 'GET',
+        headers:{
+          'Content-Type' : 'application/json'
+        }
+      })
+      const data = await res.json();
+      if(res.status === 200) {
+        setReviews(data.reviews)
+      }
+    }catch(error){
+      console.error(error)
+    }
+  }
+
+  useEffect( () => {
+    handleReviews();
+  }, [])
+  
+  console.log(reviews)
 
   return (
     <div className="restaurant-page">
@@ -44,10 +66,20 @@ const RestaurantPage = () => {
           </div>
           <hr className="section-two-devider" />
           {openAddReviewForm && <AddReviewForm  closeForm={setOpenAddReviewForm} />}
-          <PersonReview/>
-          <PersonReview/>
-          <PersonReview/>
-          <PersonReview/>
+          
+          {reviews?
+          reviews.map(({id,rate,description,user_name}) => (
+            <PersonReview
+            key={id}
+            rate={rate}
+            description={description}
+            user_name={user_name}
+            />
+          ))
+          :
+         <h1 className='loading'>Loading ....</h1>
+        }
+
         </div>
     </div>
   )

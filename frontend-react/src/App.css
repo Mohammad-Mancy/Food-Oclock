@@ -206,11 +206,12 @@ hr.signup-divider{
 .form-top-navbar>img{
   width: 350px;
 }
-.signup-form-navbar,.login-form-navbar,.back-form-link{
+.signup-form-navbar,.login-form-navbar,.welcome-admin{
   font-size: 36px;
   text-decoration: none;
   color: white;
 }
+
 
 /* Middle NavBar */
 .middle-navbar{  

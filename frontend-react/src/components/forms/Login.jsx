@@ -30,7 +30,12 @@ const Login = () => {
                  'name': data.user.name,
                  'type': data.user.type
                 });
-                navigation('/')
+                if(data.user.type === 0){
+                    navigation('/')
+                }else if (data.user.type === 1){
+                    navigation('/manageReview')
+                }
+                
             }else{
                 alert('Somthing went wrong')
             }

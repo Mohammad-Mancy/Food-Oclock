@@ -34,6 +34,28 @@ const ManageReview = () => {
     handleReviews();
   },[]);
 
+  const approveReview = async (id) => {
+    try{
+      let res = await fetch('http://127.0.0.1:8000/api/v1/auth/admin/approve-review',{
+        method:'PUT',
+        headers:{
+          'Content-Type' : 'application/json',
+          'Authorization': `Bearer ${token_key}`},
+        body:JSON.stringify({
+          type:user_type,
+          id:id
+      })
+    })
+    const data = await res.json();
+    if(res.status === 200) {
+      alert(`Review with ID : ${id} was approved`)
+      window.location.reload();
+    }
+    }catch(error){
+      console.error(error)
+    }
+  }
+  
   return (
     <div className="manage-review-container">
         <AdminTopNavBar />
@@ -53,10 +75,12 @@ const ManageReview = () => {
         {reviews.map(({id,user_name,restaurant_name,rate,description}) => (
         <AdminReviewCard 
         key={id}
+        id={id}
         user_name={user_name}
         restaurant_name={restaurant_name}
         rate={rate}
         description={description}
+        onClick={() => {approveReview(id)}}
         />
         ))}
 

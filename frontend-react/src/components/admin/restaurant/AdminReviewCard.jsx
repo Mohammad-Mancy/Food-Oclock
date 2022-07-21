@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdDone, MdClose } from 'react-icons/md'
 
-const AdminReviewCard = ({id,user_name,restaurant_name,rate,description}) => {
+const AdminReviewCard = ({onClick,user_name,restaurant_name,rate,description}) => {
   return (
     <>
     <div className="admin-review-card">
@@ -10,7 +10,10 @@ const AdminReviewCard = ({id,user_name,restaurant_name,rate,description}) => {
         <span>{rate}</span>
         <span>{description}</span>
         <span>
-            <button className='review-approve-btn'><MdDone/></button>
+            <button 
+            className='review-approve-btn' 
+            onClick={onClick}
+            ><MdDone/></button>
             <button className='review-disapprove-btn'><MdClose/></button>
         </span>
     </div>

@@ -33,7 +33,7 @@ const TopNavBar = (props) => {
         {props.locate !== 'restPage'
         ?
         <div className="search">
-          <input ref={props.myRef} onInput={props.onInput} type="text" className='search-input' placeholder='Search for a restaurant'/>
+          <input ref={props.myRef} onInput={props.onInput} type="text" className='search-input' placeholder='  Search  '/>
         </div> 
         :
         <div className='restaurant-welcome'>Welcome to our Restaurant</div> 

@@ -71,6 +71,10 @@ class AdminController extends Controller
         if(auth()->user()){
 
             $reviews = Review::Where('status', '=', 0)->get();
+            foreach ($reviews as $review) {
+                $review -> user_name = User::find($review->user_id)->name;
+                $review -> restaurant_name =Restaurant::find($review->restaurant_id)->name;
+            }
             return response()->json([
                 "status" => "Success",
                 "reviews" => $reviews

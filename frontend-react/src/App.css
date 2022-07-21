@@ -206,7 +206,7 @@ hr.signup-divider{
 .form-top-navbar>img{
   width: 350px;
 }
-.signup-form-navbar,.login-form-navbar,.welcome-admin{
+.signup-form-navbar,.login-form-navbar,.welcome-admin,.back-form-link{
   font-size: 36px;
   text-decoration: none;
   color: white;

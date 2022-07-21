@@ -2,13 +2,13 @@ import React from 'react'
 import { FaEdit} from 'react-icons/fa'
 import {RiDeleteBin5Line} from 'react-icons/ri'
 
-const AdminRestaurantCard = () => {
+const AdminRestaurantCard = ({id,name,location_name,capacity}) => {
   return (
     <>
     <div className="admin-restaurant-card">
-        <span>Name</span>
-        <span>location name</span>
-        <span>Capacity</span>
+        <span>{name}</span>
+        <span>{location_name}</span>
+        <span>{capacity}</span>
         <span>
             <button className='restaurant-delete-btn'><RiDeleteBin5Line/></button>
             <button className='restaurant-edit-btn'><FaEdit/></button>

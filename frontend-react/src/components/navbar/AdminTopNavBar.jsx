@@ -1,9 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import { FaUserAlt  } from 'react-icons/fa';
 import { reactLocalStorage } from 'reactjs-localstorage';
 
-const AdminTopNavBar = () => {
+const AdminTopNavBar = (props) => {
 
     const token_key = reactLocalStorage.get('token_key');
     const admin = reactLocalStorage.getObject('user');
@@ -36,10 +36,18 @@ const AdminTopNavBar = () => {
             <h1>Admin Panel</h1>
         </div>
         <div className="account-login">
+          {
+            props.status === 'form-col'?
+            <Link to='/manageCollection' className='back-link-form'>Back</Link>
+            :
+            <>
             <FaUserAlt/>
             <span
             onClick={handleLogout}
             > Logout</span>
+            </>
+          }
+
         </div>
     </div>
   )

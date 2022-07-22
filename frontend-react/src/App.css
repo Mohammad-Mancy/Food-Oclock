@@ -461,6 +461,10 @@ hr.section-two-devider{
   color: #fff;
   font-size: 40px;
 }
+.back-link-form{
+  text-decoration-line: none;
+  color: #fff;
+}
 
 /* Middle Navbar */
 .admin-middlenavbar{
@@ -707,7 +711,7 @@ hr.section-two-devider{
   color: #227093;
   font-weight: bolder;
 }
-.adding-collection>button{
+.adding-collection>a>button{
   font-size: 30px;
   padding: 10px 40px;
   border: none;

@@ -3,6 +3,7 @@ import AdminMiddleNavBar from '../navbar/AdminMiddleNavBar'
 import AdminTopNavBar from '../navbar/AdminTopNavBar'
 import AdminCollectionCard from './restaurant/AdminCollectionCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import { Link } from 'react-router-dom'
 
 const ManageCollection = () => {
   
@@ -56,7 +57,9 @@ const ManageCollection = () => {
       <AdminMiddleNavBar />
       <div className="adding-collection">
         <span>Adding New Collection :</span>
-        <button>Add Collection</button>
+        <Link to='/addCollectionForm'>
+          <button>Add Collection</button>
+        </Link>
       </div>
       <hr className="manage-collection-devider" />
       

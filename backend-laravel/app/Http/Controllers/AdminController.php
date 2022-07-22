@@ -181,4 +181,19 @@ class AdminController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
     }
+
+    public function deleteCollection(Request $request)
+    {
+        if(auth()->user()){
+            
+            $collection = Collection::find($request->id);
+            $collection->delete();
+
+            return response()->json([],204);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
 }

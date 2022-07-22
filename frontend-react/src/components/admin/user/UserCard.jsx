@@ -1,7 +1,7 @@
 import React from 'react'
 import {RiDeleteBin5Line} from 'react-icons/ri'
 
-const UserCard = ({name,email,phone_number}) => {
+const UserCard = ({onClick,name,email,phone_number}) => {
   return (
     <>
     <div className="user-card">
@@ -9,7 +9,9 @@ const UserCard = ({name,email,phone_number}) => {
         <span>{email}</span>
         <span>{phone_number}</span>
         <span>
-            <button><RiDeleteBin5Line/></button>
+            <button
+            onClick={onClick}
+            ><RiDeleteBin5Line/></button>
         </span>
     </div>
     <hr className="user-card-devider" />

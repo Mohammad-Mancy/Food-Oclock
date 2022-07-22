@@ -154,12 +154,27 @@ class AdminController extends Controller
     {
         if(auth()->user()){
 
-            $users = User::all();
+            $users = User::where('type','=',0)->get();
 
             return response()->json([
             "status" => "Success",
             "users" => $users
             ], 200);
+        }
+        else
+        {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    public function deleteUserAccount(Request $request)
+    {
+        if(auth()->user()){
+            
+            $user = User::find($request->id);
+            $user->delete();
+
+            return response()->json([],204);
         }
         else
         {

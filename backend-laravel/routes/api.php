@@ -44,6 +44,7 @@ Route::group(['prefix' => 'v1'], function(){
 
             Route::delete('/reject-review', [AdminController::class, 'rejectReview']);
             Route::delete('/delete-restaurant', [AdminController::class, 'deleteRestaurant']);
+            Route::delete('/delete-user-account', [AdminController::class, 'deleteUserAccount']);
 
         });
     });

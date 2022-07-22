@@ -30,6 +30,26 @@ const ManageCollection = () => {
     handleCollections();
   },[]);
 
+  const deleteCollection = async (id) => {
+    try{
+      let res = await fetch('http://127.0.0.1:8000/api/v1/auth/admin/delete-collection',{
+        method: 'DELETE',
+        headers:{
+          'Content-Type' : 'application/json',
+          'Authorization': `Bearer ${token_key}`},
+        body:JSON.stringify({
+          type:user_type,
+          id:id
+      })
+      })
+      if(res.status === 204) {
+        alert(`Collection with ID : ${id} was Deleted`)
+        window.location.reload();
+      }
+    }catch(error){
+      console.error(error)
+    }
+  }
   return (
     <div className="manage-collection-container">
       <AdminTopNavBar />
@@ -52,6 +72,7 @@ const ManageCollection = () => {
         <AdminCollectionCard 
         key={id}
         name={name}
+        onDelete={ () => {deleteCollection(id)}}
         />
         ))}
     </div>

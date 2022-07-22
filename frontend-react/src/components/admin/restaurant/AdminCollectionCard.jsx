@@ -2,13 +2,16 @@ import React from 'react'
 import { RiDeleteBin5Line } from 'react-icons/ri'
 import { FaEdit } from 'react-icons/fa'
 
-const AdminCollectionCard = ({name}) => {
+const AdminCollectionCard = ({name,onDelete}) => {
   return (
     <>
     <div className="collection-card-container">
         <span>{name}</span>
         <span>
-            <button className='collection-delete-btn'><RiDeleteBin5Line/></button>
+            <button 
+            className='collection-delete-btn'
+            onClick={onDelete}
+            ><RiDeleteBin5Line/></button>
             <button className='collection-edit-btn'><FaEdit/></button>
         </span>
     </div>

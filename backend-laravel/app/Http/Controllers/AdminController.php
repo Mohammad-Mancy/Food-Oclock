@@ -8,6 +8,8 @@ use App\Models\Collection;
 use App\Models\Location;
 use App\Models\Review;
 use app\Models\User;
+use File;
+use Storage;
 
 class AdminController extends Controller
 {
@@ -51,19 +53,31 @@ class AdminController extends Controller
     public function addCollection(Request $request)
     {
         if(auth()->user()){
+            
+            $image_64 = $request->image; //base64 encoded data
+            $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+            $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+          
+            $image = str_replace($replace, '', $image_64); 
+            $image = str_replace(' ', '+', $image); 
+            $imageName = uniqid().'.'.$extension;
+            Storage::disk('public')->put($imageName, base64_decode($image));
+
             $collection = new Collection;
             $collection->name = $request->name;
-            $collection->image = $request->image;
+            $collection->image = $imageName;
             $collection->save();
-
+            
             return response()->json([
                 "status" => "Success"
             ], 200);
-        }
-        else
-        {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+            
+
+            }else
+            {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+
     }
 
     public function getOnProgressReviews(Request $request)

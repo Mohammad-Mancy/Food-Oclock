@@ -42,7 +42,7 @@ const RestaurantPage = () => {
       :
       <TopNavBar status={false} locate={'restPage'}/>}
         <div className="section-one">
-            <img src={'http://127.0.0.1:8000/images/'+location.state.image} className="section-one-img" />
+            <img src={'http://127.0.0.1:8000/app/public/'+location.state.image} className="section-one-img" />
             <div className="section-one-details">
                 <h2>{location.state.name}</h2>
                 <p>{location.state.location_name}</p>

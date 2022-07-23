@@ -52,4 +52,7 @@ $app->singleton(
 |
 */
 
+$app->useStoragePath( env( 'APP_STORAGE', base_path() . '/public' ) );
+
+
 return $app;

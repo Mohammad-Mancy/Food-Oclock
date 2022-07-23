@@ -3,12 +3,15 @@ import AdminTopNavBar from '../../navbar/AdminTopNavBar'
 import { Link } from 'react-router-dom'
 import imageIcon from '../../../assets/Images-icon.png'
 import { useState } from 'react'
+import { reactLocalStorage } from 'reactjs-localstorage'
 
 const AddCollecionForm = () => {
 
+  const user_type = reactLocalStorage.getObject('user').type;
+  const token_key = reactLocalStorage.get('token_key');
   const [imageName,setImageName] = useState("Choose Image")
   const [name,setName] = useState()
-  let base64code = ""
+  const [base64code,setBase64code] = useState('')
   const imageChoice = (e) => {
     const files = e.target.files;
     const file = files[0];
@@ -17,7 +20,8 @@ const AddCollecionForm = () => {
   };
 
   const onLoad = (fileString) => {
-    base64code = fileString
+    setBase64code(fileString)
+
     console.log(base64code)
   };
 
@@ -30,10 +34,32 @@ const AddCollecionForm = () => {
     };
   }
 
-  let handleSaveCollection = (e) => {
+  let handleSaveCollection = async (e) => {
     e.preventDefault()
-    alert(name)
-    //call an API ...
+    try{
+      let res = await fetch('http://127.0.0.1:8000/api/v1/auth/admin/add-collection',{
+        method: 'POST',
+        headers:{
+          'Content-Type' : 'application/json',
+          'Authorization': `Bearer ${token_key}`
+        },
+        body: JSON.stringify({
+          name:name,
+          image:base64code,
+          type:user_type
+        })
+      })
+      const data = await res.json();
+      if (res.status === 200) {
+
+          alert('the collection added successfully')
+          setBase64code('')
+          setImageName('Choose Image')
+
+      }
+    }catch(error){
+      console.error(error)
+    }
   }
 
   return (

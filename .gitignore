@@ -52,4 +52,4 @@ yarn-error.log*
 
 logs/
 
-**/framework/cache/data/**
+**/framework/cache/**

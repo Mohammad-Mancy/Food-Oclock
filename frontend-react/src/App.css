@@ -780,3 +780,79 @@ hr.section-two-devider{
   background-color: #227093;
   padding: 20px;
 }
+
+/* collection form */
+
+.collection-form{
+  text-align: -webkit-center;
+}
+
+.collection-form>label>p{
+  width: 500px;
+  color: #fff;
+  font-size: 28px;
+  text-align: start;
+}
+
+.collection-form>label{
+  text-align: -webkit-center;
+}
+
+.collection-form>label>input{
+  width: 500px;
+  font-size: 30px;
+  border: none;
+  padding: 10px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+}
+.add-col-title{
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.save-add-collection{
+  width: 200px;
+  font-size: 30px;
+  background-color: #218c74;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.save-add-collection:hover{
+  background-color: #61dafb;
+}
+.cancel-add-collection{
+  width: 200px;
+  font-size: 30px;
+  background-color: #b33939;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.cancel-add-collection{
+  background-color: #FF524E;
+}
+.input-file-image{
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.image-input-label{
+  display: inline-grid;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  justify-items: center;
+}
+.image-input-label:hover{
+  color: #227093;
+}

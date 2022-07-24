@@ -3,6 +3,7 @@ import logo from '../../assets/logo/logo-navbar.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import avatar from '../../assets/img_avatar.png'
 
 const TopNavBar = (props) => {
 
@@ -40,9 +41,10 @@ const TopNavBar = (props) => {
         }
         {props.status === 'logout'?
           <div className="account-login">
-                <FaUserAlt/>
+                <Link to='/editprofile'><img src={avatar} style={{width:'50px',height:'50px',borderRadius:'50%' }}/></Link>
                 <span 
                 onClick={handleLogout}
+                style={{verticalAlign:'top'}}
                 > logout</span>
           </div>
         :

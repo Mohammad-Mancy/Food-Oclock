@@ -806,12 +806,12 @@ hr.section-two-devider{
   margin-bottom: 25px;
   border-radius: 15px;
 }
-.add-col-title{
+.add-col-title,.edit-col-title{
   color: #fff;
   font-size: 36px;
   margin-bottom: 20px;
 }
-.save-add-collection{
+.save-add-collection,.save-edit-collection{
   width: 200px;
   font-size: 30px;
   background-color: #218c74;
@@ -822,10 +822,10 @@ hr.section-two-devider{
   cursor: pointer;
   margin-left: 10px;
 }
-.save-add-collection:hover{
+.save-add-collection:hover,.save-edit-collection:hover{
   background-color: #61dafb;
 }
-.cancel-add-collection{
+.cancel-add-collection,.cancel-edit-collection{
   width: 200px;
   font-size: 30px;
   background-color: #b33939;
@@ -836,7 +836,7 @@ hr.section-two-devider{
   cursor: pointer;
   margin-right: 10px;
 }
-.cancel-add-collection{
+.cancel-add-collection:hover,.cancel-edit-collection:hover{
   background-color: #FF524E;
 }
 .input-file-image{

@@ -3,7 +3,7 @@ import AdminMiddleNavBar from '../navbar/AdminMiddleNavBar'
 import AdminTopNavBar from '../navbar/AdminTopNavBar'
 import AdminCollectionCard from './restaurant/AdminCollectionCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 const ManageCollection = () => {
   
@@ -51,6 +51,16 @@ const ManageCollection = () => {
       console.error(error)
     }
   }
+
+  const navigation = useNavigate();
+  const navigateEditCollection = (id) => {
+    navigation('/editCollectionForm',
+    {
+      state:{
+        id:id
+      }
+    })
+  }
   return (
     <div className="manage-collection-container">
       <AdminTopNavBar />
@@ -76,6 +86,7 @@ const ManageCollection = () => {
         key={id}
         name={name}
         onDelete={ () => {deleteCollection(id)}}
+        onEdit= { () => {navigateEditCollection(id)}}
         />
         ))}
     </div>

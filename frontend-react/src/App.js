@@ -12,6 +12,7 @@ import EditProfile from './components/main/EditProfile';
 import ManageCollection from './components/admin/ManageCollection';
 import RestaurantByCollection from './components/main/RestaurantByCollection';
 import AddCollecionForm from './components/admin/forms/AddCollecionForm';
+import EditCollectionForm from './components/admin/forms/EditCollectionForm';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="manageUser" element={<ManageUser />} />
               <Route path="manageCollection" element={<ManageCollection />} />
               <Route path="addCollectionForm" element={<AddCollecionForm />} />
+              <Route path="editCollectionForm" element={<EditCollectionForm />} />
               <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />

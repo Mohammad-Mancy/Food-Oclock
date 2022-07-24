@@ -2,11 +2,14 @@ import React,{useState,useEffect} from 'react'
 import { useLocation,Link } from 'react-router-dom';
 import AdminTopNavBar from '../../navbar/AdminTopNavBar'
 import imageIcon from '../../../assets/Images-icon.png'
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 const EditCollectionForm = () => {
     const location = useLocation();
+    const user_type = reactLocalStorage.getObject('user').type;
+    const token_key = reactLocalStorage.get('token_key');
     const [name,setName] = useState()
-    const [base64code,setBase64code] = useState('')
+    const [base64code,setBase64code] = useState('noChange')
     const [imageName,setImageName] = useState("Choose Image")
 
     let handleCallCurrentCollection = async (e) => {
@@ -51,7 +54,27 @@ const EditCollectionForm = () => {
     };
 
     let handleSaveEdit = async (e) => {
-      //call an API to save changes
+      e.preventDefault()
+      try {
+        let res = await fetch('http://127.0.0.1:8000/api/v1/auth/admin/update-collection',{
+          method:'PUT',
+          headers:{
+            'Content-Type' : 'application/json',
+            'Authorization': `Bearer ${token_key}`
+          },
+          body: JSON.stringify({
+            id:location.state.id,
+            name:name,
+            image:base64code,
+            type:user_type
+          })
+        })
+        if (res.status === 204) {
+            alert('the collection updated successfully')
+        }
+      }catch(error){
+        console.error(error)
+      }
     }
 
   return (

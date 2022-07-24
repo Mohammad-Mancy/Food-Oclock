@@ -28,7 +28,8 @@ const Login = () => {
                 reactLocalStorage.setObject('user', 
                 {'id': data.user.id,
                  'name': data.user.name,
-                 'type': data.user.type
+                 'type': data.user.type,
+                 'image': data.user.image
                 });
                 if(data.user.type === 0){
                     navigation('/')

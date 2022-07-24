@@ -71,12 +71,13 @@ const RestaurantPage = () => {
           {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}
           
           {reviews?
-          reviews.map(({id,rate,description,user_name}) => (
+          reviews.map(({id,rate,description,user_name,user_image}) => (
             <PersonReview
             key={id}
             rate={rate}
             description={description}
             user_name={user_name}
+            user_image={user_image}
             />
           ))
           :

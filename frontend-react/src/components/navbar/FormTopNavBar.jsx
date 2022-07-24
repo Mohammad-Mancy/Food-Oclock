@@ -2,13 +2,13 @@ import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo/logofoodoclock.png'
 import { FaUserAlt,FaRedoAlt } from 'react-icons/fa';
-import avatar from '../../assets/img_avatar.png'
 import { reactLocalStorage } from 'reactjs-localstorage';
 
 
 const FormTopNavBar = (props) => {
 
     const token_key = reactLocalStorage.get('token_key');
+    const user_image = reactLocalStorage.getObject('user').image;
     const navigation = useNavigate()  
 
     let handleLogout = async (e) => {
@@ -49,7 +49,7 @@ const FormTopNavBar = (props) => {
         :props.status === 'logout'?
         <>
           <div className="account-login">
-                <Link to='/editprofile'><img src={avatar} style={{width:'50px',height:'50px',borderRadius:'50%' }}/></Link>
+                <Link to='/editprofile'><img src={'http://127.0.0.1:8000/app/public/'+user_image} style={{width:'50px',height:'50px',borderRadius:'50%' }}/></Link>
                 <span 
                 onClick={handleLogout}
                 style={{verticalAlign:'top'}}

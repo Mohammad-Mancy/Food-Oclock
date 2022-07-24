@@ -62,7 +62,9 @@ class RestaurantController extends Controller
     {
         $reviews = Review::where('restaurant_id', '=', $id)->Where('status', '=', 1)->get();
         foreach ($reviews as $review) {
-            $review -> user_name = User::find($review->user_id)->name;
+            $user = User::find($review->user_id);
+            $review -> user_name = $user->name;
+            $review -> user_image = $user->image;
         }
         return response()->json([
             "status" => "Success",

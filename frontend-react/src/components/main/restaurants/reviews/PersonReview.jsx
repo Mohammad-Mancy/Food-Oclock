@@ -1,13 +1,12 @@
 import React from 'react'
-import profilePic from '../../../../assets/img_avatar.png'
 import ReactStars from "react-rating-stars-component";
 
-const PersonReview = ({rate,description,user_name}) => {
+const PersonReview = ({rate,description,user_name,user_image}) => {
   return (
     <div className="section-person-review">
         <div className='section-person-review-title'>
             <div className="profile-details">
-                <img src={profilePic} className="profile-pic-review"/>
+                <img src={'http://127.0.0.1:8000/app/public/'+user_image}  className="profile-pic-review"/>
                 <h2>{user_name}</h2>
             </div>
             <span>

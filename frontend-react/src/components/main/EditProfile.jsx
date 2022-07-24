@@ -62,7 +62,6 @@ const EditProfile = () => {
     }
 
     let handleSaveEdit = async (e) => {
-        e.preventDefault()
         try {
             let res = await fetch('http://127.0.0.1:8000/api/v1/auth/user/update-profile',{
                 method:'PUT',
@@ -78,7 +77,17 @@ const EditProfile = () => {
                     image:base64code
                 })
             })
-            if (res.status === 204) {
+            console.log('testttetstttestt')
+            const data = await res.json();
+            console.log(data)
+            if (res.status === 200) {
+                reactLocalStorage.remove('user');
+                reactLocalStorage.setObject('user', 
+                {'id': data.id,
+                 'name': data.name,
+                 'type': data.type,
+                 'image': data.image
+                });
                 alert('Your Account successfully updated')
             }
         }catch(error){

@@ -100,4 +100,33 @@ class AuthController extends Controller
             'user' => auth()->user()
         ]);
     }
+
+    public function updateProfile(Request $request)
+    {
+        if(auth()->user()){
+                
+            $user = User::find($request->id);
+            if($request->image != 'noChange'){
+                $image_64 = $request->image; //base64 encoded data
+                $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+                $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+            
+                $image = str_replace($replace, '', $image_64); 
+                $image = str_replace(' ', '+', $image); 
+                $imageName = uniqid().'.'.$extension;
+                Storage::disk('public')->put($imageName, base64_decode($image));
+            }else{
+                $imageName = $user->image;
+            }
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone_number = $request->phone_number;
+            $user->update();
+            
+            return response()->json([],204);
+        
+        }else{
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }   
+    }
 }

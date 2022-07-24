@@ -19,6 +19,8 @@ Route::group(['prefix' => 'v1'], function(){
 
             Route::get('/user-profile', [AuthController::class, 'userProfile']);
 
+            Route::put('/update-profile', [AuthController::class, 'updateProfile']);
+
         });
 
         Route::group(['prefix' => 'restaurant'], function(){

@@ -41,6 +41,7 @@ Route::group(['prefix' => 'v1'], function(){
 
             Route::put('/approve-review', [AdminController::class, 'approveReview']);
             Route::put('/update-restaurant', [AdminController::class, 'updateRestaurant']);
+            Route::put('/update-collection', [AdminController::class, 'updateCollection']);
 
             Route::delete('/reject-review', [AdminController::class, 'rejectReview']);
             Route::delete('/delete-restaurant', [AdminController::class, 'deleteRestaurant']);

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Validator;
+use Storage;
 
 class AuthController extends Controller
 {
@@ -121,6 +122,7 @@ class AuthController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->phone_number = $request->phone_number;
+            $user->image = $imageName;
             $user->update();
             
             return response()->json([],204);

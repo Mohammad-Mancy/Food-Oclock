@@ -6,6 +6,7 @@ import imageIcon from '../../assets/Images-icon.png'
 
 const EditProfile = () => {
 
+    const [id,setId] = useState();
     const [name,setName] = useState();
     const [email,setEmail] = useState();
     const [phone_number,setPhone_number] = useState();
@@ -28,6 +29,7 @@ const EditProfile = () => {
                 setEmail(data.email)
                 setPhone_number(data.phone_number)
                 setImageName(data.image)
+                setId(data.id)
             }
         }catch(error){
             console.error(error)
@@ -61,8 +63,27 @@ const EditProfile = () => {
 
     let handleSaveEdit = async (e) => {
         e.preventDefault()
-        console.log('test')
-        // call an API to save changes
+        try {
+            let res = await fetch('http://127.0.0.1:8000/api/v1/auth/user/update-profile',{
+                method:'PUT',
+                headers:{
+                    'Content-Type' : 'application/json',
+                    'Authorization': `Bearer ${token_key}`
+                },
+                body: JSON.stringify({
+                    id:id,
+                    name:name,
+                    email:email,
+                    phone_number:phone_number,
+                    image:base64code
+                })
+            })
+            if (res.status === 204) {
+                alert('Your Account successfully updated')
+            }
+        }catch(error){
+            console.error(error)
+        }
     }
 
   return (

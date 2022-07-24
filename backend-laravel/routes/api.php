@@ -27,7 +27,7 @@ Route::group(['prefix' => 'v1'], function(){
 
             Route::get('/get-restaurants/{id?}',[RestaurantController::class,'getRestaurants']); 
             Route::get('/all-approved-reviews/{id}',[RestaurantController::class,'getApprovedReviews']);
-            Route::get('/get-collections',[RestaurantController::class,'getCollections']);
+            Route::get('/get-collections/{id?}',[RestaurantController::class,'getCollections']);
             Route::get('/get-restaurants-by-collection/{id}',[RestaurantController::class,'getRestaurantsByCollection']); 
 
         });

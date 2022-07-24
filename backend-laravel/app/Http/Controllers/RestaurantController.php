@@ -70,9 +70,13 @@ class RestaurantController extends Controller
         ], 200);
     }
 
-    public function getCollections()
+    public function getCollections($id = null)
     {
-        $collections = Collection::all();
+        if($id != null){
+            $collections = Collection::find($id);
+        }else{
+            $collections = Collection::all();
+        }
 
         if(!isset($collections)){
             return response()->json(['data' => 'Not Found!'], 404);

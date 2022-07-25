@@ -28,6 +28,15 @@ class AdminController extends Controller
             $location->longitude = $request->longitude;
             $location->save();
             $location_id = $location->id; // Get back the id after genarating it
+
+            $image_64 = $request->image; //base64 encoded data
+            $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+            $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+          
+            $image = str_replace($replace, '', $image_64); 
+            $image = str_replace(' ', '+', $image); 
+            $imageName = uniqid().'.'.$extension;
+            Storage::disk('public')->put($imageName, base64_decode($image));
             
             $restaurant = new Restaurant;
             $restaurant->name = $request->name;
@@ -35,7 +44,7 @@ class AdminController extends Controller
             $restaurant->location_id = $location_id;
             $restaurant->capacity = $request->capacity;
             $restaurant->rate = 0; // if 0 then in frontend make it "new"
-            $restaurant->image = $request->image;
+            $restaurant->image = $imageName;
             $restaurant->collection_id = $request->collection_id;
             $restaurant->save();
     

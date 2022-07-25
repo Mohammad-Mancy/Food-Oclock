@@ -4,9 +4,14 @@ import AdminTopNavBar from '../../navbar/AdminTopNavBar'
 import imageIcon from '../../../assets/Images-icon.png'
 import Select from 'react-select'
 import Map from '../../main/Map'
+import { reactLocalStorage } from 'reactjs-localstorage'
 
 const AddRestaurantForm = () => {
 
+  const user_type = reactLocalStorage.getObject('user').type;
+  const token_key = reactLocalStorage.get('token_key');
+  const longitude = reactLocalStorage.get('coordinateLng')
+  const latitude = reactLocalStorage.get('coordinateLat')
   const [options,setOptions] = useState([]);
   const [imageName,setImageName] = useState("Choose Image")
   const [description,setDescription] = useState()
@@ -35,7 +40,35 @@ const AddRestaurantForm = () => {
 
   let handleSaveRestaurant = async (e) => {
     e.preventDefault()
-    //call ana API to Add restaurant
+    try{
+      let res = await fetch('http://127.0.0.1:8000/api/v1/auth/admin/add-restaurant',{
+        method: 'POST',
+        headers:{
+          'Content-Type' : 'application/json',
+          'Authorization': `Bearer ${token_key}`
+        },
+        body: JSON.stringify({
+          name:name,
+          image:base64code,
+          type:user_type,
+          description:description,
+          capacity:capacity,
+          longitude:longitude,
+          latitude:latitude,
+          collection_id:collection
+        })
+      })
+      const data = await res.json();
+      if (res.status === 200) {
+
+          alert('the Restaurant added successfully')
+          setBase64code('')
+          setImageName('Choose Image')
+
+      }
+    }catch(error){
+      console.error(error)
+    }
   }
 
   let handleCallCollection = async (e) => {

@@ -26,7 +26,6 @@ class AdminController extends Controller
             $location = new Location;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
-            $location->city = $request->city;
             $location->save();
             $location_id = $location->id; // Get back the id after genarating it
             

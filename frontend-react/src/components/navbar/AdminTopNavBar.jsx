@@ -39,6 +39,8 @@ const AdminTopNavBar = (props) => {
           {
             props.status === 'form-col'?
             <Link to='/manageCollection' className='back-link-form'>Back</Link>
+            :props.status === 'form-col-rest'?
+            <Link to='/manageRestaurant' className='back-link-form'>Back</Link>
             :
             <>
             <FaUserAlt/>

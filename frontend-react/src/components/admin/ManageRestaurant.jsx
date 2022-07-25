@@ -3,6 +3,7 @@ import AdminMiddleNavBar from '../navbar/AdminMiddleNavBar'
 import AdminTopNavBar from '../navbar/AdminTopNavBar'
 import AdminRestaurantCard from './restaurant/AdminRestaurantCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import { Link } from 'react-router-dom'
 
 const ManageRestaurant = () => {
 
@@ -57,8 +58,10 @@ const ManageRestaurant = () => {
       <AdminMiddleNavBar />
       <div className="adding-restaurant">
         <span>Adding New Restuarant :</span>
-        <button>Add Restaurant</button>
-      </div>
+        <Link to='/addRestaurantForm'>
+          <button>Add Restaurant</button>
+        </Link>
+        </div>
       <hr className="manage-restaurant-devider" />
       
       {/* Manage Restaurants Header */}

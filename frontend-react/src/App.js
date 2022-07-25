@@ -13,6 +13,7 @@ import ManageCollection from './components/admin/ManageCollection';
 import RestaurantByCollection from './components/main/RestaurantByCollection';
 import AddCollecionForm from './components/admin/forms/AddCollecionForm';
 import EditCollectionForm from './components/admin/forms/EditCollectionForm';
+import AddRestaurantForm from './components/admin/forms/AddRestaurantForm';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="manageUser" element={<ManageUser />} />
               <Route path="manageCollection" element={<ManageCollection />} />
               <Route path="addCollectionForm" element={<AddCollecionForm />} />
+              <Route path="addRestaurantForm" element={<AddRestaurantForm />} />
               <Route path="editCollectionForm" element={<EditCollectionForm />} />
               <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />

@@ -685,7 +685,7 @@ hr.section-two-devider{
   color: #227093;
   font-weight: bolder;
 }
-.adding-restaurant>button{
+.adding-restaurant>a>button{
   font-size: 30px;
   padding: 10px 40px;
   border: none;
@@ -694,7 +694,7 @@ hr.section-two-devider{
   color: #fff;
   cursor: pointer;
 }
-.adding-restaurant>button:hover{
+.adding-restaurant>a>button:hover{
   background-color: #34ace0;
 }
 
@@ -720,7 +720,7 @@ hr.section-two-devider{
   color: #fff;
   cursor: pointer;
 }
-.adding-collection>button:hover{
+.adding-collection>a>button:hover{
   background-color: #34ace0;
 }
 .manage-collection-devider{
@@ -806,7 +806,7 @@ hr.section-two-devider{
   margin-bottom: 25px;
   border-radius: 15px;
 }
-.add-col-title,.edit-col-title{
+.add-col-title,.edit-col-title,.add-rest-title{
   color: #fff;
   font-size: 36px;
   margin-bottom: 20px;

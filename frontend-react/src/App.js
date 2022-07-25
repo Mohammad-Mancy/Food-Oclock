@@ -14,6 +14,7 @@ import RestaurantByCollection from './components/main/RestaurantByCollection';
 import AddCollecionForm from './components/admin/forms/AddCollecionForm';
 import EditCollectionForm from './components/admin/forms/EditCollectionForm';
 import AddRestaurantForm from './components/admin/forms/AddRestaurantForm';
+import Map from './components/main/Map'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="map" element={<Map />} />
               <Route path="manageRestaurant" element={<ManageRestaurant />} />
               <Route path="manageReview" element={<ManageReview />} />
               <Route path="manageUser" element={<ManageUser />} />

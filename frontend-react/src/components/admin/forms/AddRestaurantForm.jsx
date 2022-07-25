@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import AdminTopNavBar from '../../navbar/AdminTopNavBar'
 import imageIcon from '../../../assets/Images-icon.png'
 import Select from 'react-select'
+import Map from '../../main/Map'
 
 const AddRestaurantForm = () => {
 
@@ -92,7 +93,13 @@ const AddRestaurantForm = () => {
             onChange={ (e) => setCapacity(e.target.value)}
             />
         </label>
-        <Select options={options} onChange={(e) => setCollection(e.value)}/>
+        <div className='map-wrapper'>
+          <span>Location</span>
+          <Map latLngg={true}/>
+        </div>
+        <div>
+          <Select options={options} onChange={(e) => setCollection(e.value)}/>  
+        </div>
         <div className='add-restaurant-btn-div'>
             <Link to="/manageRestaurant"><button type="submit" className='cancel-add-restaurant'>Cancel</button></Link>
             <button type="submit" className='save-add-restaurant'>Save</button>

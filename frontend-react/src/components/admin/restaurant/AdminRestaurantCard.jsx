@@ -2,7 +2,7 @@ import React from 'react'
 import { FaEdit} from 'react-icons/fa'
 import {RiDeleteBin5Line} from 'react-icons/ri'
 
-const AdminRestaurantCard = ({onDelete,name,location_name,capacity}) => {
+const AdminRestaurantCard = ({onEdit,onDelete,name,location_name,capacity}) => {
   return (
     <>
     <div className="admin-restaurant-card">
@@ -14,7 +14,10 @@ const AdminRestaurantCard = ({onDelete,name,location_name,capacity}) => {
             className='restaurant-delete-btn'
             onClick={onDelete}
             ><RiDeleteBin5Line/></button>
-            <button className='restaurant-edit-btn'><FaEdit/></button>
+            <button 
+            className='restaurant-edit-btn'
+            onClick={onEdit}
+            ><FaEdit/></button>
         </span>
     </div>
     <hr className="user-card-devider" />

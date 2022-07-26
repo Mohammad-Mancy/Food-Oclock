@@ -15,6 +15,7 @@ import AddCollecionForm from './components/admin/forms/AddCollecionForm';
 import EditCollectionForm from './components/admin/forms/EditCollectionForm';
 import AddRestaurantForm from './components/admin/forms/AddRestaurantForm';
 import Map from './components/main/Map'
+import EditRestaurantForm from './components/admin/forms/EditRestaurantForm';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="addCollectionForm" element={<AddCollecionForm />} />
               <Route path="addRestaurantForm" element={<AddRestaurantForm />} />
               <Route path="editCollectionForm" element={<EditCollectionForm />} />
+              <Route path="editRestaurantForm" element={<EditRestaurantForm />} /> 
               <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />

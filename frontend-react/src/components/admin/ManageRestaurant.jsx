@@ -3,7 +3,7 @@ import AdminMiddleNavBar from '../navbar/AdminMiddleNavBar'
 import AdminTopNavBar from '../navbar/AdminTopNavBar'
 import AdminRestaurantCard from './restaurant/AdminRestaurantCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ManageRestaurant = () => {
 
@@ -52,6 +52,16 @@ const ManageRestaurant = () => {
     }
   }
 
+  const navigation = useNavigate()
+  const navigateEditRestaurant = (id) => {
+    navigation('/editRestaurantForm',
+    {
+      state:{
+        id:id
+      }
+    })
+  }
+
   return (
     <div className="manage-restaurant-container">
       <AdminTopNavBar />
@@ -81,6 +91,7 @@ const ManageRestaurant = () => {
         location_name={location_name}
         capacity={capacity}
         onDelete={() => {deleteRestaurant(id)}}
+        onEdit= { () => {navigateEditRestaurant(id)}}
         />
         ))}
     </div>

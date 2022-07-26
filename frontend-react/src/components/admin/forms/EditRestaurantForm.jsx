@@ -8,8 +8,8 @@ import Map from '../../main/Map'
 
 const EditRestaurantForm = () => {
 
-  const longitude = reactLocalStorage.get('coordinateLng')
-  const latitude = reactLocalStorage.get('coordinateLat')
+  const user_type = reactLocalStorage.getObject('user').type;
+  const token_key = reactLocalStorage.get('token_key');
   const location = useLocation();
   const [options,setOptions] = useState([]);
   const [name,setName] = useState()
@@ -34,6 +34,8 @@ const EditRestaurantForm = () => {
         setCollection(data.restaurants.collection)
         reactLocalStorage.set('lat-coordinates',data.restaurants.latitude)
         reactLocalStorage.set('lng-coordinates',data.restaurants.longitude)
+        reactLocalStorage.set('coordinateLat',data.restaurants.latitude)
+        reactLocalStorage.set('coordinateLng',data.restaurants.longitude)
       }
     }catch(error){
       console.error(error)
@@ -81,14 +83,38 @@ const EditRestaurantForm = () => {
   }
 
   const handleSaveRestaurant = async (e) => {
-    e.preventDefaulat()
-    // Call An API to sav changes
+    e.preventDefault()
+    try{
+      let res = await fetch('http://127.0.0.1:8000/api/v1/auth/admin/update-restaurant',{
+        method:'PUT',
+        headers:{
+          'Content-Type' : 'application/json',
+          'Authorization': `Bearer ${token_key}`
+        },
+        body: JSON.stringify({
+          id:location.state.id,
+          name:name,
+          image:base64code,
+          type:user_type,
+          description:description,
+          capacity:capacity,
+          collection:collection,
+          longitude:reactLocalStorage.get('coordinateLng'),
+          latitude:reactLocalStorage.get('coordinateLat')
+        })
+      })
+      if (res.status === 204 ){
+        alert('the restaurant updated successfully')
+      }
+    }catch(error){
+      console.error(error)
+    }
   }
 
   return (
     <div className="edit-restaurant-container">
       <AdminTopNavBar status={'form-col-rest'}/>
-      <div className="edit-rest-title">Edit Restaurant</div>
+      <div className="edit-rest-title">Edit Restaurant with ID: {location.state.id}</div>
       <form 
         className='restaurant-form'
         onSubmit={handleSaveRestaurant}

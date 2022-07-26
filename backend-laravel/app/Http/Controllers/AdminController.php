@@ -174,8 +174,9 @@ class AdminController extends Controller
                 $imageName = $restaurant->image;
             }
             $restaurant->image = $imageName;
-            $restaurant->update($request->except('id', 'type','logitude','latitude','image'));    
-            $restaurant->location()->update($request->only('logitude','latitude'));
+            $restaurant->location()->update($request->only('longitude','latitude'));
+            $restaurant->update($request->except('id', 'type','longitude','latitude','image'));    
+
 
             return response()->json([],204);
         }

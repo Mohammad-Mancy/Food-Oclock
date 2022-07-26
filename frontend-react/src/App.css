@@ -806,7 +806,7 @@ hr.section-two-devider{
   margin-bottom: 25px;
   border-radius: 15px;
 }
-.add-col-title,.edit-col-title,.add-rest-title{
+.add-col-title,.edit-col-title,.add-rest-title,.edit-rest-title{
   color: #fff;
   font-size: 36px;
   margin-bottom: 20px;
@@ -870,7 +870,7 @@ hr.section-two-devider{
   font-size: 36px;
   margin: 15px 0px;
 }
-.add-restaurant-container{
+.add-restaurant-container,.edit-restaurant-container{
   background-color: #8ABCD7;
   color: #227093;
   text-align: -webkit-center;
@@ -894,10 +894,10 @@ hr.section-two-devider{
   margin-top: 27px;
   width: 458px;
 }
-.add-restaurant-btn-div{
+.add-restaurant-btn-div,.edit-restaurant-btn-div{
   width: 458px;
 }
-.cancel-add-restaurant{
+.cancel-add-restaurant,.cancel-edit-restaurant{
   font-size: 26px;
   padding: 10px;
   background-color: #b33939;
@@ -909,10 +909,10 @@ hr.section-two-devider{
   cursor: pointer;
   margin-right: 5%;
 }
-.cancel-add-restaurant:hover{
+.cancel-add-restaurant:hover,.cancel-edit-restaurant:hover{
   background-color: #FF524E;
 }
-.save-add-restaurant{
+.save-add-restaurant,.save-edit-restaurant{
   font-size: 26px;
   padding: 10px;
   background-color: #218c74;
@@ -924,7 +924,7 @@ hr.section-two-devider{
   cursor: pointer;
   margin-left: 5%;
 }
-.save-add-restaurant:hover{
+.save-add-restaurant:hover,.save-edit-restaurant:hover{
   background-color: #61dafb;
 }
 .leaflet-container{

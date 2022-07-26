@@ -48,8 +48,9 @@ const Map = ({latLngg}) => {
             {latLngg?<HandleClickMap/>:""}
             {latLngg?"":<Marker position={[latMarker,lngMarker]}>
                 <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
+                    your current location
                 </Popup>
+                <HandleClickMap/>
             </Marker>}
         </MapContainer> 
     </div>

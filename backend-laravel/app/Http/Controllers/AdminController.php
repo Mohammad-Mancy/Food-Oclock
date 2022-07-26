@@ -161,8 +161,21 @@ class AdminController extends Controller
         if(auth()->user()){
 
             $restaurant = Restaurant::find($request->id);
-            $restaurant->update($request->except('id', 'type','logitude','latitude','city'));    
-            $restaurant->location()->update($request->only('logitude','latitude','city'));
+            if($request->image != 'noChange'){
+                $image_64 = $request->image; //base64 encoded data
+                $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+                $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
+              
+                $image = str_replace($replace, '', $image_64); 
+                $image = str_replace(' ', '+', $image); 
+                $imageName = uniqid().'.'.$extension;
+                Storage::disk('public')->put($imageName, base64_decode($image));
+            }else{
+                $imageName = $restaurant->image;
+            }
+            $restaurant->image = $imageName;
+            $restaurant->update($request->except('id', 'type','logitude','latitude','image'));    
+            $restaurant->location()->update($request->only('logitude','latitude'));
 
             return response()->json([],204);
         }

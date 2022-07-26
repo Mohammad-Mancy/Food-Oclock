@@ -16,13 +16,15 @@ class RestaurantController extends Controller
     {
         if($id != null){
             $restaurants = Restaurant::find($id);
-            $restaurants -> location_name = Location::find($restaurants->location_id)->city;
+            $restaurants -> longitude = Location::find($restaurants->location_id)->longitude;
+            $restaurants -> latitude = Location::find($restaurants->location_id)->latitude;
         }
         else{
             $location = [];
             $restaurants = Restaurant::all();
             foreach ($restaurants as $restaurant) {
-                $restaurant -> location_name = Location::find($restaurant->location_id)->city;
+                $restaurant -> longitude = Location::find($restaurant->location_id)->longitude;
+                $restaurant -> latitude = Location::find($restaurant->location_id)->latitude;
             }
         }
 

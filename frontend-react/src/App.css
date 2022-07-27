@@ -1004,3 +1004,13 @@ rem
   cursor: pointer;
   transform: scale(1.1);
 }
+.rest-card{
+  background-color: transparent;
+  border: none;
+  text-align: start;
+  color: #227093;
+  font-weight: 600;
+}
+.rest-card:hover{
+ transform: scale(1);
+}

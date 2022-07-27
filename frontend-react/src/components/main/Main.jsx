@@ -5,8 +5,9 @@ import RestaurantCard from './restaurants/RestaurantCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import TrendCarousel from './TrendCarousel'
 import Categories from './Categories'
-import {BiCategory} from 'react-icons/bi'
+import {BiCategory,BiRestaurant} from 'react-icons/bi'
 import { Link } from 'react-router-dom'
+import Restaurants from './Restaurants'
 
 const Main = () => {
 
@@ -102,19 +103,12 @@ useEffect(() => {
         <Link to='/Collections'><BiCategory/></Link>
       </div>
           <Categories />
-      <div className="content-wrapper">
-          {filter.map(({id,name,rate,image,location_name,description})=>(
-            <RestaurantCard 
-            key={id}
-            id={id}
-            name={name}
-            rate={rate}
-            image={image}
-            location_name={location_name}
-            description={description}
-            />
-          ))}
+      <div className="section-title">
+        <span>Restaurants</span>
+        <Link to='#'><BiRestaurant/></Link>
       </div>
+          <Restaurants />
+
     </div>
   )
 }

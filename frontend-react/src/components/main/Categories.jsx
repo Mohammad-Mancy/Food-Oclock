@@ -51,7 +51,6 @@ function Categories() {
   }
   return (
     <Row xs={1} md={4} className="g-4">
-        {console.log(category)}
       {category.map(({id,name,image}) => (
         <Col key={id} >
           <Card>

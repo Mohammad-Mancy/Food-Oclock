@@ -27,6 +27,7 @@ Route::group(['prefix' => 'v1'], function(){
 
             Route::post('/add-review', [RestaurantController::class, 'addReview']);
 
+            Route::get('/get-trend-restaurants',[RestaurantController::class,'getTrendRestaurants']); 
             Route::get('/get-restaurants/{id?}',[RestaurantController::class,'getRestaurants']); 
             Route::get('/all-approved-reviews/{id}',[RestaurantController::class,'getApprovedReviews']);
             Route::get('/get-collections/{id?}',[RestaurantController::class,'getCollections']);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
 
 function TrendCarousel() {
   const [index, setIndex] = useState(0);
@@ -9,7 +10,16 @@ function TrendCarousel() {
     setIndex(selectedIndex);
   };
 
+  let handleTrendRestaurant = async (e) => {
+    e.preventDefault()
+    //some logic
+  }
+
+  useEffect(() => {
+    handleTrendRestaurant()
+  })
   return (
+
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img

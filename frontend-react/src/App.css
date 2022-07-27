@@ -957,6 +957,10 @@ hr.section-two-devider{
 .main-wrapper{
   text-align: -webkit-center;
 }
+.App{
+  background-color: whitesmoke;
+}
+
 .section-title{
   width: 70vw;
   font-size: 3rem;

@@ -5,6 +5,7 @@ import { reactLocalStorage } from 'reactjs-localstorage';
 import imageIcon from '../../../assets/Images-icon.png'
 import Select from 'react-select'
 import Map from '../../main/Map'
+import Form from 'react-bootstrap/Form';
 
 const EditRestaurantForm = () => {
 
@@ -16,6 +17,7 @@ const EditRestaurantForm = () => {
   const [capacity,setCapacity] = useState()
   const [description,setDescription] = useState()
   const [collection,setCollection] = useState()
+  const [trend,setTrend] = useState()
   const [imageName,setImageName] = useState("Choose Image")
   const [base64code,setBase64code] = useState('noChange')
 
@@ -32,6 +34,7 @@ const EditRestaurantForm = () => {
         setCapacity(data.restaurants.capacity)
         setDescription(data.restaurants.description)
         setCollection(data.restaurants.collection)
+        setTrend(data.restaurants.trend)
         reactLocalStorage.set('lat-coordinates',data.restaurants.latitude)
         reactLocalStorage.set('lng-coordinates',data.restaurants.longitude)
         reactLocalStorage.set('coordinateLat',data.restaurants.latitude)
@@ -99,6 +102,7 @@ const EditRestaurantForm = () => {
           description:description,
           capacity:capacity,
           collection:collection,
+          trend:trend,
           longitude:reactLocalStorage.get('coordinateLng'),
           latitude:reactLocalStorage.get('coordinateLat')
         })
@@ -152,6 +156,13 @@ const EditRestaurantForm = () => {
         <div>
           <Select options={options} onChange={(e) => setCollection(e.value)}/>  
         </div>
+        <Form.Check 
+          type="switch"
+          id="custom-switch"
+          label="Trend this week"
+          onChange={ () => {trend === 1 ?setTrend(0):setTrend(1)}}
+        />
+        {console.log(trend)}
         <div className='edit-restaurant-btn-div'>
             <Link to="/manageRestaurant"><button type="submit" className='cancel-edit-restaurant'>Cancel</button></Link>
             <button type="submit" className='save-edit-restaurant'>Save</button>

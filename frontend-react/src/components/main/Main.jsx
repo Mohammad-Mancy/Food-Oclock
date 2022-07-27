@@ -4,6 +4,9 @@ import TopNavBar from '../navbar/TopNavBar'
 import RestaurantCard from './restaurants/RestaurantCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import TrendCarousel from './TrendCarousel'
+import Categories from './Categories'
+import {BiCategory} from 'react-icons/bi'
+import { Link } from 'react-router-dom'
 
 const Main = () => {
 
@@ -94,6 +97,11 @@ useEffect(() => {
         <span>Trending This Week</span>
       </div>
           <TrendCarousel first={first} second={second} third={third}/>
+      <div className="section-title">
+        <span>Cuisines</span>
+        <Link to='/Collections'><BiCategory/></Link>
+      </div>
+          <Categories />
       <div className="content-wrapper">
           {filter.map(({id,name,rate,image,location_name,description})=>(
             <RestaurantCard 

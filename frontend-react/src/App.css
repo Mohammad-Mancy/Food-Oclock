@@ -969,11 +969,12 @@ hr.section-two-devider{
   margin-bottom: 15px;
   justify-content: space-between;
   align-items: center;
+  margin-top: 15px;
 }
 .w-100 {
   width: 100%!important;
   border-radius: 20px;
-  height: 60vh;
+  height: 75vh;
 }
 .carousel-caption {
   position: absolute;
@@ -992,4 +993,14 @@ rem
   border-radius: 30px;
   text-align: start;
   padding-left: 1rem;
+}
+
+.g-4, .gy-4 {
+  --bs-gutter-y: 1.5rem;
+  width: 70vw;
+}
+.card:hover{
+  box-shadow: 0px 0px 20px grey;
+  cursor: pointer;
+  transform: scale(1.1);
 }

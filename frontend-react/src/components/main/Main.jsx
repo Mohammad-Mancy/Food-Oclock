@@ -3,6 +3,7 @@ import MiddleNavBar from '../navbar/MiddleNavBar'
 import TopNavBar from '../navbar/TopNavBar'
 import RestaurantCard from './restaurants/RestaurantCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import TrendCarousel from './TrendCarousel '
 
 const Main = () => {
 
@@ -62,7 +63,11 @@ const filter_restaurants = () => {
       <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={'logout'}/>
       :
       <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={true}/>}
-      <MiddleNavBar/>
+      {/* <MiddleNavBar/> */}
+      <div className="section-title">
+        <span>Trending This Week</span>
+      </div>
+      <TrendCarousel />
       <div className="content-wrapper">
           {filter.map(({id,name,rate,image,location_name,description})=>(
             <RestaurantCard 

@@ -945,3 +945,28 @@ hr.section-two-devider{
   margin-top: 10px;
   text-align: start;
 }
+
+
+/* Bootstrap */
+.carousel{
+  position: relative;
+  width: 70vw;
+  margin: auto;
+}
+
+.main-wrapper{
+  text-align: -webkit-center;
+}
+.section-title{
+  width: 70vw;
+  font-size: 3rem;
+  color: #227093;
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+.w-100 {
+  width: 100%!important;
+  border-radius: 20px;
+}

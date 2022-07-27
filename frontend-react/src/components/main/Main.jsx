@@ -35,7 +35,6 @@ const Main = () => {
     handleRestaurant();
   },[]);
 
-  console.log(restaurants);
 
 // _______________ Search __________________________
 
@@ -56,7 +55,34 @@ const filter_restaurants = () => {
 }
 
 // _________________________________________________
+const [first,setFirst] = useState();
+const [second,setSecond] = useState();
+const [third,setThird] = useState();   
 
+let handleTrendRestaurant = async (e) => {
+  try{
+    let res = await fetch('http://127.0.0.1:8000/api/v1/auth/restaurant/get-trend-restaurants',{
+      method:'GET',
+      headers:{'Content-Type' : 'application/json'}
+    })
+    const data = await res.json();
+    if (res.status === 200 ){
+        setFirst(data.restaurants[0])
+        setSecond(data.restaurants[1])
+        setThird(data.restaurants[2])
+    }
+  }catch(error){
+    console.error(error)
+  }
+}
+useEffect(() => {
+  handleTrendRestaurant()
+},[])
+
+
+  if (first === undefined && second === undefined && third === undefined) {
+    return <> Still loading...</>;
+  }
   return (
     <div className="main-wrapper">
       {token_key !== undefined?
@@ -67,7 +93,7 @@ const filter_restaurants = () => {
       <div className="section-title">
         <span>Trending This Week</span>
       </div>
-      <TrendCarousel/>
+          <TrendCarousel first={first} second={second} third={third}/>
       <div className="content-wrapper">
           {filter.map(({id,name,rate,image,location_name,description})=>(
             <RestaurantCard 

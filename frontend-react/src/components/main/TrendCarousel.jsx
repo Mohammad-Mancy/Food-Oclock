@@ -1,61 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect } from 'react';
 
-function TrendCarousel() {
+function TrendCarousel({first,second,third}) {
+  
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
-  let handleTrendRestaurant = async (e) => {
-    e.preventDefault()
-    //some logic
-  }
 
-  useEffect(() => {
-    handleTrendRestaurant()
-  })
+
   return (
-
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={'http://127.0.0.1:8000/app/public/rest4.jpg'}
+          src={'http://127.0.0.1:8000/app/public/'+first.image}
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>{first.name}</h3>
+          <p>{first.description}</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={'http://127.0.0.1:8000/app/public/rest4.jpg'}
+          src={'http://127.0.0.1:8000/app/public/'+second.image}
           alt="Second slide"
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>{second.name}</h3>
+          <p>{second.description}</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={'http://127.0.0.1:8000/app/public/rest4.jpg'}
+          src={'http://127.0.0.1:8000/app/public/'+third.image}
           alt="Third slide"
         />
-
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>{third.name}</h3>
+          <p>{third.description}</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

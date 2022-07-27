@@ -114,7 +114,7 @@ class RestaurantController extends Controller
         $restaurants = Restaurant::where('restaurants.trend', '=', 1)->get();
         return response()->json([
             "status" => "Success",
-            "reviews" => $restaurants
+            "restaurants" => $restaurants
         ], 200);
     }
 }

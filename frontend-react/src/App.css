@@ -187,8 +187,9 @@ hr.signup-divider{
   text-decoration: none;
 }
 .account-link{
-  color: white;
+  color: black;
   text-decoration: none;
+  font-size: 26px;
 }
 .restaurant-welcome{
   font-size: 32px;
@@ -1013,4 +1014,19 @@ rem
 }
 .rest-card:hover{
  transform: scale(1);
+}
+
+.top-image-container{
+  background: rgb(200, 200, 200);
+  height: calc(100vh - 30rem);
+  min-height: 42rem;
+  max-height: 57rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-image: url('./assets/20491982.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }

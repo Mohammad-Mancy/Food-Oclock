@@ -88,12 +88,16 @@ useEffect(() => {
     return <> Still loading...</>;
   }
   return (
-    <div className="main-wrapper">
-      {token_key !== undefined?
-      <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={'logout'}/>
-      :
-      <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={true}/>}
-      {/* <MiddleNavBar/> */}
+    <div className="main-wrapper">      
+      <div className="top-image-container">
+        {token_key !== undefined?
+
+        <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={'logout'}/>
+        :
+        <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={true}/>}
+      </div>
+      
+
       <div className="section-title">
         <span>Trending This Week</span>
       </div>

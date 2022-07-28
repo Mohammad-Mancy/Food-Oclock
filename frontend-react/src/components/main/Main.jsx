@@ -8,6 +8,7 @@ import Categories from './Categories'
 import {BiCategory,BiRestaurant} from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import Restaurants from './Restaurants'
+import Search from './search/Search'
 
 const Main = () => {
 
@@ -96,6 +97,7 @@ useEffect(() => {
         :
         <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={true}/>}
       </div>
+      <Search />
       
 
       <div className="section-title">

@@ -61,8 +61,12 @@ function TopNavBar(props) {
               }
 
             </NavDropdown>
+            {props.locate === 'restByCol'?
+              <Nav.Link href="/collections">Back</Nav.Link>
+            :
+            <></>}
           </Nav>
-          {props.locate === 'col' || props.locate === 'rest'?
+          {props.locate === 'col' || props.locate === 'rest' || props.locate === 'restByCol'?
           <div className="search">
             <input ref={props.myRef} onInput={props.onInput} type="text" className='search-input' placeholder='  Search  '/>
           </div> 

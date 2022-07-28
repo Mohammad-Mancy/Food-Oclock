@@ -1,7 +1,5 @@
 import React,{useEffect,useState,useRef} from 'react'
-import MiddleNavBar from '../navbar/MiddleNavBar'
 import TopNavBar from '../navbar/TopNavBar'
-import CollectionCard from './restaurants/CollectionCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -15,7 +13,7 @@ const Restaurants = () => {
   const [filter, setFilter] = useState([]);
   const filter_input = useRef();
 
-  let handleCollection = async (e) => {
+  let handleRestaurants = async (e) => {
     try{
       let res = await fetch('http://127.0.0.1:8000/api/v1/auth/restaurant/get-restaurants',{
         method: 'GET',
@@ -34,7 +32,7 @@ const Restaurants = () => {
   };
 
   useEffect ( () => {
-    handleCollection();
+    handleRestaurants();
   },[]);
 
   // _______________ Search __________________________
@@ -82,7 +80,7 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description}) => {
                 <Card className='rest-card'>
                     <Card.Img variant="top" 
                     src={'http://127.0.0.1:8000/app/public/'+image} 
-                    style={{width:'100%',height:'40vh'}} 
+                    style={{width:'100%',height:'45vh',borderRadius:'10px'}} 
                     onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description}) } } 
                     />
                     <Card.Body>

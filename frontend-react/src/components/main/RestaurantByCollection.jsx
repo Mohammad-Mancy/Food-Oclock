@@ -1,8 +1,10 @@
 import React,{useEffect,useState,useRef} from 'react'
 import TopNavBar from '../navbar/TopNavBar'
-import RestaurantCard from './restaurants/RestaurantCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
-import { useLocation } from 'react-router-dom'
+import { useLocation,useNavigate} from 'react-router-dom'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const RestaurantByCollection = () => {
 
@@ -12,9 +14,7 @@ const RestaurantByCollection = () => {
     const location = useLocation();
     const filter_input = useRef();
 
-    console.log(location.state)
-
-    let handleRestaurant = async (e) => {
+    let handleRest = async (e) => {
       try{
         let res = await fetch(`http://127.0.0.1:8000/api/v1/auth/restaurant/get-restaurants-by-collection/${location.state.id}`,{
           method: 'GET',
@@ -34,7 +34,7 @@ const RestaurantByCollection = () => {
     };
   
     useEffect ( () => {
-      handleRestaurant();
+      handleRest();
     },[]);
   
     console.log(restaurants);
@@ -59,25 +59,51 @@ const filter_restaurants = () => {
 
 // _________________________________________________
 
+const navigation = useNavigate();
+const hundleRestaurant = ({id,name,image,rate,capacity,description}) => {
+    navigation('/restaurantPage',
+    {state:
+        {id:id,
+        name:name,
+        rate:rate,
+        description:description,
+        capacity:capacity,
+        image:image}
+        })
+}
+
 return (
     <div className="restaurantByCollection-wrapper">
         {token_key !== undefined?
-      <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={'logout'}/>
+      <TopNavBar locate={'restByCol'} myRef={filter_input} onInput={() =>{filter_restaurants()}} status={'logout'}/>
       :
-      <TopNavBar myRef={filter_input} onInput={() =>{filter_restaurants()}} status={true}/>}
-      <div className="collection-name-header"><h1>{location.state.name}</h1></div>
+      <TopNavBar locate={'restByCol'} myRef={filter_input} onInput={() =>{filter_restaurants()}} status={true}/>}
+            <h1 style={{paddingTop:'11vh',color:'#227093'}}>
+              {location.state.name}
+            </h1>
             <div className="content-wrapper">
-          {filter.map(({id,name,rate,image,location_name,description})=>(
-            <RestaurantCard 
-            key={id}
-            id={id}
-            name={name}
-            rate={rate}
-            image={image}
-            location_name={location_name}
-            description={description}
-            />
-          ))}
+              <Row xs={1} md={2} className="g-4">
+              {filter.map(({id,name,image,rate,capacity,description}) => (
+                  <Col key={id}>
+                  <Card className='rest-card'>
+                      <Card.Img variant="top" 
+                      src={'http://127.0.0.1:8000/app/public/'+image} 
+                      style={{width:'100%',height:'45vh',borderRadius:'10px'}} 
+                      onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description}) } } 
+                      />
+                      <Card.Body>
+                      <Card.Title>{name}</Card.Title>
+                      <Card.Text>
+                          Rate : {rate == 0 ?<span>New</span>:rate}
+                      </Card.Text>
+                      <Card.Text>
+                          Capacity : {capacity}
+                      </Card.Text>
+                      </Card.Body>
+                  </Card>
+                  </Col>
+              ))}
+              </Row>
       </div>
     </div>
   )

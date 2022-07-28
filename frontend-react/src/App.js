@@ -16,6 +16,7 @@ import EditCollectionForm from './components/admin/forms/EditCollectionForm';
 import AddRestaurantForm from './components/admin/forms/AddRestaurantForm';
 import Map from './components/main/Map'
 import EditRestaurantForm from './components/admin/forms/EditRestaurantForm';
+import RestaurantsList from './components/main/RestaurantsList'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path="editprofile" element={<EditProfile />} />
               <Route path="restaurantPage" element={<RestaurantPage />} />
               <Route path="collections" element={<Collections />} />
+              <Route path="restaurantsList" element={<RestaurantsList />} />
               <Route path="restaurantByCollection" element={<RestaurantByCollection />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />

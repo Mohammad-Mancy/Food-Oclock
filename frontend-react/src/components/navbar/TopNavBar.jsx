@@ -39,6 +39,7 @@ function TopNavBar(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/restaurantsList">Restaurants</Nav.Link>
             <Nav.Link href="/collections">Cuisines</Nav.Link>
             <NavDropdown title="Settings" id="basic-nav-dropdown">
               {props.status === 'logout'?
@@ -61,7 +62,7 @@ function TopNavBar(props) {
 
             </NavDropdown>
           </Nav>
-          {props.locate === 'col'?
+          {props.locate === 'col' || props.locate === 'rest'?
           <div className="search">
             <input ref={props.myRef} onInput={props.onInput} type="text" className='search-input' placeholder='  Search  '/>
           </div> 

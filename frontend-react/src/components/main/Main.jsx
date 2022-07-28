@@ -111,7 +111,7 @@ useEffect(() => {
           <Categories />
       <div className="section-title">
         <span>Restaurants</span>
-        <Link to='#'><BiRestaurant/></Link>
+        <Link to='/restaurantsList#'><BiRestaurant/></Link>
       </div>
           <Restaurants />
 

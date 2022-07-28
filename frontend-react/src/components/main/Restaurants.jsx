@@ -19,7 +19,7 @@ function Restaurants() {
           const data = await res.json();
           if (res.status === 200 ) {
             // setCategory(data.collections)
-            for(let i= 0;i<=2;i++){
+            for(let i= 0;i<=3;i++){
                 setRest(current => [...current, data.restaurants[i]]);
             }
 

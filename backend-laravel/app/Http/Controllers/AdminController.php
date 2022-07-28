@@ -46,6 +46,7 @@ class AdminController extends Controller
             $restaurant->rate = 0; // if 0 then in frontend make it "new"
             $restaurant->image = $imageName;
             $restaurant->collection_id = $request->collection_id;
+            $restaurant->trend = 0;
             $restaurant->save();
     
             return response()->json([

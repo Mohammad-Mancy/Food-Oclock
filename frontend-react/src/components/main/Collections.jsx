@@ -3,6 +3,10 @@ import MiddleNavBar from '../navbar/MiddleNavBar'
 import TopNavBar from '../navbar/TopNavBar'
 import CollectionCard from './restaurants/CollectionCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { useNavigate } from 'react-router-dom';
 
 const Collections = () => {
 
@@ -53,23 +57,36 @@ const filterCollection = () => {
 
 // _________________________________________________
 
+const navigation = useNavigate();
+const hundleRestaurantByCollection = ({id,name}) => {
+  navigation('/restaurantByCollection',
+  {
+    state:{
+      id:id,
+      name:name
+    }
+  })
+}
 
   return (
     <div className="collection-wrapper">
       {token_key !== undefined?
-      <TopNavBar myRef={filter_input} onInput={() =>{filterCollection()}} status={'logout'}/>
+      <TopNavBar locate={'col'} myRef={filter_input} onInput={() =>{filterCollection()}} status={'logout'}/>
       :
-      <TopNavBar myRef={filter_input} onInput={() =>{filterCollection()}} status={true}/>}
-        <MiddleNavBar/>
+      <TopNavBar locate={'col'}myRef={filter_input} onInput={() =>{filterCollection()}} status={true}/>}
         <div className="collection-content-wrapper">
-        {filter.map(({id,name,image})=>(
-            <CollectionCard 
-            key={id}
-            id={id}
-            name={name}
-            image={image}
-            />
+        <Row xs={1} md={4} className="g-4">
+          {filter.map(({id,name,image}) => (
+            <Col key={id} >
+              <Card>
+                <Card.Img style={{'height':'22vh'}} variant="top" src={'http://127.0.0.1:8000/app/public/'+image} onClick = { () => { hundleRestaurantByCollection({id,name}) }  }/>
+                <Card.Body>
+                  <Card.Title>{name}</Card.Title>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
+        </Row>
         </div>
     </div>
   )

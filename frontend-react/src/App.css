@@ -177,7 +177,7 @@ hr.signup-divider{
   cursor: pointer;
 }
 .search-input{
-  border: none;
+  border: 1px solid lightblue;
   font-size: 36px;
   border-radius: 15px;
   padding: 10px;
@@ -277,7 +277,7 @@ hr.signup-divider{
 }
 
 /* Main Content */
-.content-wrapper,.collection-content-wrapper{
+.content-wrapper{
   display: flex;
   flex-wrap: wrap;
   gap: 100px;
@@ -285,7 +285,14 @@ hr.signup-divider{
   padding-top: 50px;
   padding-bottom: 50px;
 }
-
+.collection-content-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  justify-content: center;
+  padding-top: 120px;
+  padding-bottom: 50px;
+}
 /* Restaurant Page */
 
 /* Section One */

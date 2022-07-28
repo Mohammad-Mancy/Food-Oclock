@@ -61,6 +61,13 @@ function TopNavBar(props) {
 
             </NavDropdown>
           </Nav>
+          {props.locate === 'col'?
+          <div className="search">
+            <input ref={props.myRef} onInput={props.onInput} type="text" className='search-input' placeholder='  Search  '/>
+          </div> 
+          :
+          <></>
+          }
           {props.status === 'logout'?
           <div className="account-login">
                 <Link to='/editprofile'><img src={'http://127.0.0.1:8000/app/public/'+user_image} style={{width:'50px',height:'50px',borderRadius:'50%' }}/></Link>

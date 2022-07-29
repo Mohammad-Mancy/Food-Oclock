@@ -640,8 +640,8 @@ hr.section-two-devider{
 }
 .edit-profile-container{
   font-size: 30px;
-  color: #fff;
   text-align: -webkit-center;
+  margin-top: 110px;
 }
 .edit-form{
   width: 500px;
@@ -649,7 +649,7 @@ hr.section-two-devider{
 .edit-form>label>input{
   width: 100%;
   font-size: 30px;
-  border: none;
+  border-left-color: #227093;
   border-radius: 20px;
   padding: 10px;
 }
@@ -676,6 +676,7 @@ hr.section-two-devider{
   margin-top: 20px;
   border-radius: 15px;
   cursor: pointer;
+  width: 107px;
 }
 .edit-profile-btn-div{
   display: flex;
@@ -856,7 +857,6 @@ hr.section-two-devider{
 
 .image-input-label{
   display: inline-grid;
-  color: #fff;
   font-size: 36px;
   cursor: pointer;
   justify-items: center;

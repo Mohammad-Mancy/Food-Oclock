@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import FormTopNavBar from '../navbar/FormTopNavBar'
 import { reactLocalStorage } from 'reactjs-localstorage'
-import imageIcon from '../../assets/Images-icon.png'
+import TopNavBar from '../navbar/TopNavBar'
 
 const EditProfile = () => {
 
@@ -62,6 +61,7 @@ const EditProfile = () => {
     }
 
     let handleSaveEdit = async (e) => {
+        e.preventDefault()
         try {
             let res = await fetch('http://127.0.0.1:8000/api/v1/auth/user/update-profile',{
                 method:'PUT',
@@ -77,27 +77,32 @@ const EditProfile = () => {
                     image:base64code
                 })
             })
-            console.log('testttetstttestt')
             const data = await res.json();
             console.log(data)
             if (res.status === 200) {
                 reactLocalStorage.remove('user');
                 reactLocalStorage.setObject('user', 
-                {'id': data.id,
-                 'name': data.name,
-                 'type': data.type,
-                 'image': data.image
+                {'id': data.user.id,
+                 'name': data.user.name,
+                 'type': data.user.type,
+                 'image': data.user.image
                 });
                 alert('Your Account successfully updated')
+                window.location.reload(false);
+
             }
         }catch(error){
             console.error(error)
         }
     }
 
+    if(!imageName||!name||!email||!phone_number)
+    return(
+        <>Still Loading...</>
+    )
   return (
     <>
-    <FormTopNavBar status={'logout'}/>
+    <TopNavBar status={'logout'}/>
     <div className="edit-profile-container">
         <h2>Edit Profile</h2>
         <form 
@@ -106,7 +111,11 @@ const EditProfile = () => {
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
             <label htmlFor="image-input" className='image-input-label'>
-                <img src={imageIcon} style={{width:'150px',height:'150px'}}/>
+                {base64code === 'noChange' ?
+                <img src={'http://127.0.0.1:8000/app/public/'+imageName} style={{width:'150px',height:'150px',borderRadius:'50%'}}/>
+                :
+                <img src={base64code} alt='profile pic' style={{width:'150px',height:'150px',borderRadius:'50%'}}/>
+                }
                 <span>{imageName}</span>
             </label>
             <label>

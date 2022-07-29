@@ -125,7 +125,10 @@ class AuthController extends Controller
             $user->image = $imageName;
             $user->update();
             
-            return response()->json(auth()->user(), 200);
+            return response()->json([
+                "status" => "Success",
+                "user" => $user,
+            ], 200);
         
         }else{
             return response()->json(['error' => 'Unauthorized'], 401);

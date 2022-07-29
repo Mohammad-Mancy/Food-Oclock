@@ -1130,3 +1130,37 @@ div.map-rest-page .leaflet-container{
 .css-b62m3t-container{
   margin-top: 0;
 }
+
+/* reserve card */
+.react-datepicker__input-container>input{
+  width: 80%;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid steelblue;
+}
+.guest-range-slider{
+  margin-top: 20px;
+}
+.calendar-title>span{
+  margin-right: 55%;
+  width: 80%;
+  font-size: 24px;
+}
+.guest-range-slider>span{
+  margin-right: 28%;
+  width: 80%;
+  font-size: 24px;
+}
+.note-textarea>span{
+  margin-right: 62%;
+  width: 80%;
+  font-size: 24px;
+}
+.reservation-card{
+  padding: 18px;
+  margin-top: 64px;
+  margin-left: 15px;
+  border: 2px solid black;
+  border-radius: 15px;
+}

@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Map from './../Map'
+import ReservationCard from './reserve/ReservationCard'
 const RestaurantPage = () => {
 
   const token_key = reactLocalStorage.get('token_key');
@@ -46,7 +47,7 @@ const RestaurantPage = () => {
         <div className="section-one">
             <img src={'http://127.0.0.1:8000/app/public/'+location.state.image} className="section-one-img" />
             <div className='reserve-form'>
-              Reserve
+              <ReservationCard />
             </div>
         </div>
         <h2>{location.state.name}</h2>

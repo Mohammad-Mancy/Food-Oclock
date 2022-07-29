@@ -6,7 +6,7 @@ import { reactLocalStorage } from 'reactjs-localstorage'
 import { useLocation } from 'react-router-dom'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-
+import Map from './../Map'
 const RestaurantPage = () => {
 
   const token_key = reactLocalStorage.get('token_key');
@@ -111,6 +111,10 @@ const RestaurantPage = () => {
           </Tab>
         </Tabs>
         </div>
+        <div className='location-title'>Loaction</div>
+        <div className='map-rest-page'>
+          <Map latLngg={false} display={true}/>
+        </div> 
     </div>
   )
 }

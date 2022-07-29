@@ -466,7 +466,7 @@ hr.section-two-devider{
   width: 70vw;
 }
 .tab-content{
-  height: 61vh;
+  max-height: 62vh;
   overflow: auto;
   background-color: #fff;
   width: 72vw;
@@ -971,8 +971,21 @@ hr.section-two-devider{
   height: 50vh;
   border-radius: 20px;
 }
-
-
+/* ________________________________ */
+div.map-wrapper .leaflet-container{
+    width: 456px;
+    height: 50vh;
+    border-radius: 20px;
+}
+/* OR */
+div.map-rest-page .leaflet-container{
+  width: 70vw;
+  height: 50vh;
+  border-radius: 20px;
+  margin-bottom: 6vh;
+  border-radius: 10px;
+}
+/* _______________________________ */
 #css-14el2xx-placeholder span {
   display: none;
 }
@@ -993,7 +1006,12 @@ hr.section-two-devider{
   margin-top: 10px;
   text-align: start;
 }
-
+.location-title{
+  width: 70vw;
+  text-align-last: start;
+  font-size: 36px;
+  margin-bottom: 24px;
+}
 
 /* Bootstrap */
 .carousel{

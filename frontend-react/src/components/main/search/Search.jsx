@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Select from 'react-select'
 import { useNavigate } from 'react-router-dom'
+import { reactLocalStorage } from 'reactjs-localstorage'
 
 const Search = (props) => {
     const [options,setOptions] = useState([]);
@@ -12,8 +13,8 @@ const Search = (props) => {
           })
           const data = await res.json();
           if (res.status === 200 ){
-            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend})=>{
-              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend}])
+            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude})=>{
+              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude}])
             })
           }
         }catch(error){
@@ -26,7 +27,9 @@ const Search = (props) => {
       }, [])
 
       const navigation = useNavigate();
-      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend}) => {
+      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude}) => {
+        reactLocalStorage.set('lat-coordinates',latitude)
+        reactLocalStorage.set('lng-coordinates',longitude)
           navigation('/restaurantPage',
           {state:
               {id:id,
@@ -35,6 +38,8 @@ const Search = (props) => {
                 image:img,
                 cuisine:cuisine,
                 trend:trend,
+                latitude:latitude,
+                longitude:longitude,
                 capacity:cap}
               })
       }
@@ -43,11 +48,39 @@ const Search = (props) => {
     <>
         {props.locate === 'restPage'?
           <div className="search-rest-page">
-              <Select options={options} onChange={  (e) => { hundleRestaurant({id:e.value,n:e.label,desc:e.description,img:e.image,cap:e.capacity,cuisine:e.cuisine,trend:e.trend}) } }  />
+              <Select 
+              options={options} 
+              onChange={  
+                (e) => { 
+                  hundleRestaurant({
+                    id:e.value,
+                    n:e.label,
+                    desc:e.description,
+                    img:e.image,
+                    cap:e.capacity,
+                    cuisine:e.cuisine,
+                    trend:e.trend,
+                    latitude:e.latitude,
+                    longitude:e.longitude
+                    }) } }  />
           </div>
       :
         <div className="search-main">
-          <Select options={options} onChange={  (e) => { hundleRestaurant({id:e.value,n:e.label,desc:e.description,img:e.image,cap:e.capacity,cuisine:e.cuisine,trend:e.trend}) } }  />
+            <Select 
+              options={options} 
+              onChange={  
+                (e) => { 
+                  hundleRestaurant({
+                    id:e.value,
+                    n:e.label,
+                    desc:e.description,
+                    img:e.image,cap:
+                    e.capacity,
+                    cuisine:e.cuisine,
+                    trend:e.trend,
+                    latitude:e.latitude,
+                    longitude:e.longitude
+                    }) } }  />
         </div>
     }
     </>

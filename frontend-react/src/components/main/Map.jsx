@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import '../../App.css';
 import { reactLocalStorage } from 'reactjs-localstorage';
 
 
-const Map = ({latLngg}) => {
+const Map = ({latLngg,display}) => {
 
     let latCoordinate = reactLocalStorage.get("lat-coordinates");
     let lngCoordinate = reactLocalStorage.get("lng-coordinates");
@@ -40,19 +40,38 @@ const Map = ({latLngg}) => {
     
   return (
     <div>
-        <MapContainer center={[lat, lag]} zoom={13}  scrollWheelZoom={true}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {latLngg?<HandleClickMap/>:""}
-            {latLngg?"":<Marker position={[latMarker,lngMarker]}>
-                <Popup>
-                    your current location
-                </Popup>
-                <HandleClickMap/>
-            </Marker>}
-        </MapContainer> 
+            {!latLngg && display?
+            <MapContainer center={[latMarker, lngMarker]} zoom={13}  scrollWheelZoom={false}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[latMarker,lngMarker]}>
+                </Marker>    
+            </MapContainer> 
+            :
+            !latLngg?
+            <MapContainer center={[latMarker, lngMarker]} zoom={13}  scrollWheelZoom={false}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[latMarker,lngMarker]}>
+                    <Popup>
+                        your current location
+                    </Popup>
+                    <HandleClickMap/>
+                </Marker>    
+            </MapContainer> 
+            :
+            <MapContainer center={[lat, lag]} zoom={13}  scrollWheelZoom={true}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {latLngg?<HandleClickMap/>:""}
+            </MapContainer> 
+            }
     </div>
   )
 }

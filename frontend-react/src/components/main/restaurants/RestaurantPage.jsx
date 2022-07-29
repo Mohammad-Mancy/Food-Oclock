@@ -73,6 +73,13 @@ const RestaurantPage = () => {
           className="mb-3">
           <Tab eventKey="Overview" title="Overview">
             <div className="section-one-details">
+              {location.state.trend === 1 ?
+                <span className='overview-section'>
+                  <h2>This Restaurant is Trending</h2>
+                </span>
+              :
+              <></>
+              }
                 <span className='overview-section'>
                   <h2>About</h2>
                   <h3>{location.state.description}</h3>

@@ -56,7 +56,7 @@ const filterRestaurants = () => {
 // _________________________________________________
 
 const navigation = useNavigate();
-const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine}) => {
+const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend}) => {
     navigation('/restaurantPage',
     {state:
         {id:id,
@@ -65,6 +65,7 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine}) => 
         description:description,
         capacity:capacity,
         cuisine:cuisine,
+        trend:trend,
         image:image}
         })
 }
@@ -76,13 +77,13 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine}) => 
       <TopNavBar locate={'rest'} myRef={filter_input} onInput={() =>{filterRestaurants()}} status={true}/>}
         <div className="collection-content-wrapper">
         <Row xs={1} md={2} className="g-4">
-            {filter.map(({id,name,image,rate,capacity,description,cuisine}) => (
+            {filter.map(({id,name,image,rate,capacity,description,cuisine,trend}) => (
                 <Col key={id}>
                 <Card className='rest-card'>
                     <Card.Img variant="top" 
                     src={'http://127.0.0.1:8000/app/public/'+image} 
                     style={{width:'100%',height:'45vh',borderRadius:'10px'}} 
-                    onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine}) } } 
+                    onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine,trend}) } } 
                     />
                     <Card.Body>
                     <Card.Title>{name}</Card.Title>

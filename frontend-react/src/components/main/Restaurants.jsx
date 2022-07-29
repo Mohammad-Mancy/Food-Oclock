@@ -35,7 +35,7 @@ function Restaurants() {
       console.log(rest)
 
     const navigation = useNavigate();
-    const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine}) => {
+    const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend}) => {
         navigation('/restaurantPage',
         {state:
             {id:id,
@@ -44,6 +44,7 @@ function Restaurants() {
             description:description,
             capacity:capacity,
             cuisine:cuisine,
+            trend:trend,
             image:image}
             })
     }
@@ -55,13 +56,13 @@ function Restaurants() {
     }
   return (
     <Row xs={1} md={2} className="g-4">
-      {rest.map(({id,name,image,rate,capacity,description,cuisine}) => (
+      {rest.map(({id,name,image,rate,capacity,description,cuisine,trend}) => (
         <Col key={id}>
           <Card className='rest-card'>
             <Card.Img variant="top" 
             src={'http://127.0.0.1:8000/app/public/'+image} 
             style={{width:'100%',height:'40vh'}} 
-            onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine}) } } 
+            onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine,trend}) } } 
             />
             <Card.Body>
               <Card.Title>{name}</Card.Title>

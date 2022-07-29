@@ -18,6 +18,7 @@ class RestaurantController extends Controller
             $restaurants = Restaurant::find($id);
             $restaurants -> longitude = Location::find($restaurants->location_id)->longitude;
             $restaurants -> latitude = Location::find($restaurants->location_id)->latitude;
+            $restaurants -> cuisine = Collection::find($restaurants->collection_id)->name;
         }
         else{
             $location = [];
@@ -25,6 +26,7 @@ class RestaurantController extends Controller
             foreach ($restaurants as $restaurant) {
                 $restaurant -> longitude = Location::find($restaurant->location_id)->longitude;
                 $restaurant -> latitude = Location::find($restaurant->location_id)->latitude;
+                $restaurant -> cuisine = Collection::find($restaurant->collection_id)->name;
             }
         }
 
@@ -97,6 +99,7 @@ class RestaurantController extends Controller
         $restaurants = Restaurant::where('restaurants.collection_id','=',$id)->get();  
         foreach ($restaurants as $restaurant) {
             $restaurant -> location_name = Location::find($restaurant->location_id)->city;
+            $restaurant -> cuisine = Collection::find($restaurant->collection_id)->name;
         }
 
         if(!isset($restaurants)){

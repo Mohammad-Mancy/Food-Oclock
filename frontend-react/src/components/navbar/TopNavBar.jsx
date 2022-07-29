@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import Search from '../main/search/Search';
 
 function TopNavBar(props) {
   
@@ -70,6 +71,8 @@ function TopNavBar(props) {
           <div className="search">
             <input ref={props.myRef} onInput={props.onInput} type="text" className='search-input' placeholder='  Search  '/>
           </div> 
+          :props.locate === 'restPage'?
+          <Search locate={'restPage'}/>
           :
           <></>
           }

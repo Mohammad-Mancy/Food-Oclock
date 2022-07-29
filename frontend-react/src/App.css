@@ -1076,6 +1076,14 @@ hr.section-two-devider{
   background-size: cover;
 
 }
+.search-rest-page{
+  border-radius: 0.8rem;
+  box-shadow: rgb(28 28 28 / 8%) 0px 2px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+}
 .search-main{
   height: 5.4rem;
   border-radius: 0.8rem;

@@ -33,7 +33,7 @@ const RestaurantPage = () => {
 
   useEffect( () => {
     handleReviews();
-  }, [])
+  }, [location.state.id])
   
   console.log(reviews)
 

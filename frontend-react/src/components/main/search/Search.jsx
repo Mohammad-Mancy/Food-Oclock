@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Select from 'react-select'
 import { useNavigate } from 'react-router-dom'
 
-const Search = () => {
+const Search = (props) => {
     const [options,setOptions] = useState([]);
     let handleCallRest = async (e) => {
         try{
@@ -12,8 +12,8 @@ const Search = () => {
           })
           const data = await res.json();
           if (res.status === 200 ){
-            data.restaurants.map(({id,name,description,image,capacity})=>{
-              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity}])
+            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend})=>{
+              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend}])
             })
           }
         }catch(error){
@@ -26,21 +26,32 @@ const Search = () => {
       }, [])
 
       const navigation = useNavigate();
-      const hundleRestaurant = ({id,n,desc,img,cap}) => {
+      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend}) => {
           navigation('/restaurantPage',
           {state:
               {id:id,
                 name:n,
                 description:desc,
                 image:img,
+                cuisine:cuisine,
+                trend:trend,
                 capacity:cap}
               })
       }
 
   return (
-    <div className="search-main">
-          <Select options={options} onChange={  (e) => { hundleRestaurant({id:e.value,n:e.label,desc:e.description,img:e.image,cap:e.capacity}) } }  />
-    </div>
+    <>
+        {props.locate === 'restPage'?
+          <div className="search-rest-page">
+              <Select options={options} onChange={  (e) => { hundleRestaurant({id:e.value,n:e.label,desc:e.description,img:e.image,cap:e.capacity,cuisine:e.cuisine,trend:e.trend}) } }  />
+          </div>
+      :
+        <div className="search-main">
+          <Select options={options} onChange={  (e) => { hundleRestaurant({id:e.value,n:e.label,desc:e.description,img:e.image,cap:e.capacity,cuisine:e.cuisine,trend:e.trend}) } }  />
+        </div>
+    }
+    </>
+
   )
 }
 

@@ -6,8 +6,12 @@ import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row'
 import RangeSlider from 'react-bootstrap/FormRange'
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 const ReservationCard = () => {
+
+    const [fields,setFields] = useState(true)
+    const navigation = useNavigate();
     const [startDate, setStartDate] = useState(null);
     const [guestRange, setGuestRange] = useState(1);
     const [note, setNote] = useState();
@@ -16,10 +20,21 @@ const ReservationCard = () => {
         result.setDate(result.getDate() + days);
         return result;
       }
+
+    const handleReserve = (e) => {
+        if (!startDate || !guestRange)
+        {
+            setFields(false)
+            return
+        }
+        setFields(true)
+        e.preventDefault()
+        console.log('test')
+    }
     return (
         <div className='reservation-card'>
             <div className='calendar-title'>
-                <span>Check-in</span>
+                <span className='required-date'>Check-in</span>
                     <DatePicker
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
@@ -28,11 +43,12 @@ const ReservationCard = () => {
                         ]}
                     
                         placeholderText="Month / Day / Year"
+                        required={true}
                     />
             </div>
 
             <div className='guest-range-slider'>
-                <span>How Many Guest's</span>
+                <span className='required-date'>How Many Guest's</span>
                 <Form style={{width:'80%'}}>
                     <Form.Group as={Row}>
                         <Col xs="9">
@@ -68,8 +84,10 @@ const ReservationCard = () => {
                 </Form>
             </div>
             <hr className="devider-reserve" style={{width:'70%',marginTop:'30px',marginBottom:'30px'}}/>
-            
-            <Button variant="primary" className='reserve-btn'>Reserve</Button>
+            {!fields ? 
+                <div className='validate-notification'>please fill all required field</div> 
+            : <></>}
+            <Button variant="primary" className='reserve-btn' onClick={ (e) => { handleReserve(e) }}>Reserve</Button>
       </div>
 
     );

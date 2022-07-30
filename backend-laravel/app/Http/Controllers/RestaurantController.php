@@ -8,6 +8,8 @@ use App\Models\Review;
 use App\Models\Location;
 use App\Models\Collection;
 use App\Models\User;
+use App\Models\Reservation;
+use Validator;
 
 class RestaurantController extends Controller
 {
@@ -120,5 +122,40 @@ class RestaurantController extends Controller
             "status" => "Success",
             "restaurants" => $restaurants
         ], 200);
+    }
+
+    public function reserve(Request $request)
+    {
+        if(auth()->user()){
+
+            $validator = Validator::make($request->only('email','password'), [
+                'email' => 'required|email',
+                'password' => 'required|string|min:6',
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(), 422);
+            }
+            if (! $token = auth()->attempt($validator->validated())) {
+                return response()->json(['error' => 'wrong email or password'], 401);
+            }
+            
+            $reservation = new Reservation;
+            $reservation->note = $request->note;
+            $reservation->number_of_guest = $request->number_of_guest;
+            $reserve_date = date('Y-m-d', strtotime($request->reservation_date));
+            $reservation->reservation_date = $reserve_date;
+            $reservation->user_id = $request->user_id;
+            $reservation->restaurant_id = $request->restaurant_id;
+            $reservation->save();
+
+            return response()->json([
+                "status" => "Success",
+                'reservation' => $reservation
+            ], 200);
+
+        }else{
+            return response()->json(['error' => 'Unauthorized'],401);
+        }
+
     }
 }

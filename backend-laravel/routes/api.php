@@ -26,6 +26,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['prefix' => 'restaurant'], function(){
 
             Route::post('/add-review', [RestaurantController::class, 'addReview']);
+            Route::post('/reserve', [RestaurantController::class, 'reserve']);
 
             Route::get('/get-trend-restaurants',[RestaurantController::class,'getTrendRestaurants']); 
             Route::get('/get-restaurants/{id?}',[RestaurantController::class,'getRestaurants']); 

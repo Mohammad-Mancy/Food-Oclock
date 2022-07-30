@@ -8,9 +8,13 @@ import RangeSlider from 'react-bootstrap/FormRange'
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import Moment from 'moment';
+import { reactLocalStorage } from 'reactjs-localstorage';
 
-const ReservationCard = () => {
+const ReservationCard = ({rest_id}) => {
 
+    const user_id = reactLocalStorage.getObject('user').id;
+    const token_key = reactLocalStorage.get('token_key');
     const [show, setShow] = useState(false);
     const [fields,setFields] = useState(true)
     const [fieldsVal,setFieldsVal] = useState(true)
@@ -42,14 +46,56 @@ const ReservationCard = () => {
         handleShow()
     }
 
-    const handleReserveSubmit = (e) => {
+    const handleReserveSubmit = async (e) => {
 
         if (!name || !email || !password || !phone_number)
         {
             setFieldsVal(false)
             return
         }
-        console.log(name + " " + email + " " + password +" " + phone_number + " " + startDate + " " + guestRange + " " + note)
+        try{
+            Moment(startDate).format('DD-MM-YYYY')
+            console.log(name + " " + email + " " + password +" " + phone_number + " " + Moment(startDate).format('DD-MM-YYYY') + " " + guestRange + " " + note)
+            let res = await fetch('http://127.0.0.1:8000/api/v1/auth/restaurant/reserve',{
+                method: 'POST',
+                headers:{
+                    'Content-Type' : 'application/json',
+                    'Authorization' : `Bearer ${token_key}`
+                },
+                body: JSON.stringify({
+                    email:email,
+                    password:password,
+                    note:note,
+                    number_of_guest:guestRange,
+                    reservation_date:startDate,
+                    user_id:user_id,
+                    restaurant_id:rest_id
+                })
+            })
+            const data = await res.json();
+
+            if (res.status === 200) {
+              alert('The restaurant will call you to confirm the appointment')
+              handleClose()
+
+            }else if (res.status === 401){
+
+                if(data.error === 'Unauthorized'){
+                    alert('You need to login')
+                    handleClose()
+                }else{
+                    alert('invalid email or password')
+                    handleClose()
+                }
+
+            }else{
+                alert('something went wrong try again')
+                handleClose()
+            }
+
+        }catch(error){
+            console.error(error)
+        }
     }
 
     return (
@@ -92,7 +138,7 @@ const ReservationCard = () => {
             <div className='note-textarea'>
                 <span>Note</span>
                 <Form style={{width:'80%'}}>
-                    <Form.Group className="textarea-note" controlId="exampleForm.ControlTextarea1">
+                    <Form.Group className="textarea-note" >
                         <Form.Control 
                         as="textarea" 
                         rows={5} 
@@ -149,8 +195,9 @@ const ReservationCard = () => {
                             <Form.Group className="mb-3 validate-pop-up" >
                             <Form.Label className='required'>Password</Form.Label>
                             <Form.Control
-                                type="password"
+                                type="text"
                                 placeholder="Password"
+                                id='txtPassword'
                                 onChange={(e) => {setPassword(e.target.value)}}
                             />
                             </Form.Group>

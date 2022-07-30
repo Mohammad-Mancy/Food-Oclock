@@ -1190,3 +1190,6 @@ div.map-rest-page .leaflet-container{
   width: 100% !important;
   margin-top: 15px !important;
 }
+#txtPassword{
+  -webkit-text-security:disc;
+}

@@ -47,7 +47,7 @@ const RestaurantPage = () => {
         <div className="section-one">
             <img src={'http://127.0.0.1:8000/app/public/'+location.state.image} className="section-one-img" />
             <div className='reserve-form'>
-              <ReservationCard />
+              <ReservationCard rest_id={location.state.id}/>
             </div>
         </div>
         <h2>{location.state.name}</h2>

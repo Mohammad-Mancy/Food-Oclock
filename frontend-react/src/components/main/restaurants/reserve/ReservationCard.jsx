@@ -61,13 +61,15 @@ const ReservationCard = () => {
                         rows={5} 
                         onChange={(e) => {
                             setNote(e.target.value)
-                        }}/>
+                        }}
+                        style={{maxHeight:'calc(6.5em + 0.75rem + 2px)',minHeight:'calc(6.5em + 0.75rem + 2px)'}}
+                        />
                     </Form.Group>
                 </Form>
             </div>
             <hr className="devider-reserve" style={{width:'70%',marginTop:'30px',marginBottom:'30px'}}/>
             
-            <Button variant="primary">Reserve</Button>
+            <Button variant="primary" className='reserve-btn'>Reserve</Button>
       </div>
 
     );

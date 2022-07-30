@@ -1130,6 +1130,10 @@ div.map-rest-page .leaflet-container{
 .css-b62m3t-container{
   margin-top: 0;
 }
+.no-reviews{
+  font-size: 32px;
+  color: darkgrey;
+}
 
 /* reserve card */
 .react-datepicker__input-container>input{
@@ -1159,8 +1163,15 @@ div.map-rest-page .leaflet-container{
 }
 .reservation-card{
   padding: 18px;
-  margin-top: 64px;
+  margin-top: 48px;
   margin-left: 15px;
-  border: 2px solid black;
   border-radius: 15px;
+  border: 1px solid grey;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+  background-color: #fff;
+}
+.reserve-btn{
+  --bs-btn-padding-x: 2.75rem;
+  --bs-btn-padding-y: 0.375rem;
+  font-size: 22px;
 }

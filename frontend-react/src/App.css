@@ -1182,7 +1182,11 @@ div.map-rest-page .leaflet-container{
   font-family: 'Arial';
   font-size: 14px;
 }
-.required-date:after {
+.required:after {
   content:" *";
   color: red;
+}
+.validate-pop-up{
+  width: 100% !important;
+  margin-top: 15px !important;
 }

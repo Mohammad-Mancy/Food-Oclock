@@ -919,6 +919,11 @@ hr.section-two-devider{
 .image-input-label:hover{
   color: #227093;
 }
+.check-trend{
+  padding-left: 2.5em;
+  width: 500px;
+  padding-bottom: 24px;
+}
 
 /* restaurant form */
 

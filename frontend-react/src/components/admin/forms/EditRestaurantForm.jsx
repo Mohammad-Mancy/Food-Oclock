@@ -153,10 +153,11 @@ const EditRestaurantForm = () => {
           <span>Location</span>
           <Map latLngg={false}/>
         </div>
-        <div>
+        <div style={{width:'500px',marginBottom:'20px',marginTop:'20px'}}>
           <Select options={options} onChange={(e) => setCollection(e.value)}/>  
         </div>
         <Form.Check 
+          className='check-trend'
           type="switch"
           id="custom-switch"
           label="Trend this week"

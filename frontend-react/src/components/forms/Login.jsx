@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import { Link , useNavigate } from 'react-router-dom';
-import FormTopNavBar from '../navbar/FormTopNavBar';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import TopNavBar from './../navbar/TopNavBar'
+import { Footer } from './../main/footer/Footer'
 
 const Login = () => {
 
@@ -46,7 +47,7 @@ const Login = () => {
     }
     return (
         <div className='login-wrapper'>
-            <FormTopNavBar status={true}/>
+            <TopNavBar />
             <h1>Login</h1>
             <form 
             className='login-form'
@@ -74,6 +75,7 @@ const Login = () => {
                 <Link to="/signup" >Create new account!</Link>
                 </div>
             </form>
+            <Footer />
         </div>
     )
 }

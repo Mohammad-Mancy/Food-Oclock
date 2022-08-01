@@ -41,8 +41,8 @@
 /* Login Component */
 
 .login-wrapper{
-  background-color: #8ABCD7;
-  color: white;
+  background-color: whitesmoke;
+  color: #227093;
   text-align: -webkit-center;
 }
 .login-wrapper>h1{
@@ -67,6 +67,8 @@
   font-size: 36px;
   border-radius: 15px;
   padding: 18px;
+  border: 2px solid lightblue;
+  box-shadow: 0px 0px 20px grey;
 }
 .login-btn-div{
   width: 420px;

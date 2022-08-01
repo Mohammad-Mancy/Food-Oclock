@@ -87,7 +87,11 @@ const EditCollectionForm = () => {
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
-          <img src={imageIcon} style={{width:'150px',height:'150px'}}/>
+        {base64code === 'noChange' ?
+          <img src={'http://127.0.0.1:8000/app/public/'+imageName} style={{width:'400px',height:'300px'}}/>
+        :
+          <img src={base64code} style={{width:'400px',height:'300px'}}/>
+        }
           <span>{imageName}</span>
         </label>
             <label>

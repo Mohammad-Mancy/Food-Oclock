@@ -13,8 +13,8 @@ const Search = (props) => {
           })
           const data = await res.json();
           if (res.status === 200 ){
-            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude})=>{
-              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude}])
+            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude,rate})=>{
+              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude,'rate':rate}])
             })
           }
         }catch(error){
@@ -27,7 +27,7 @@ const Search = (props) => {
       }, [])
 
       const navigation = useNavigate();
-      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude}) => {
+      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude,rate}) => {
         reactLocalStorage.set('lat-coordinates',latitude)
         reactLocalStorage.set('lng-coordinates',longitude)
           navigation('/restaurantPage',
@@ -40,6 +40,7 @@ const Search = (props) => {
                 trend:trend,
                 latitude:latitude,
                 longitude:longitude,
+                rate:rate,
                 capacity:cap}
               })
       }
@@ -61,7 +62,8 @@ const Search = (props) => {
                     cuisine:e.cuisine,
                     trend:e.trend,
                     latitude:e.latitude,
-                    longitude:e.longitude
+                    longitude:e.longitude,
+                    rate:e.rate
                     }) } }  />
           </div>
       :
@@ -79,7 +81,8 @@ const Search = (props) => {
                     cuisine:e.cuisine,
                     trend:e.trend,
                     latitude:e.latitude,
-                    longitude:e.longitude
+                    longitude:e.longitude,
+                    rate:e.rate
                     }) } }  />
         </div>
     }

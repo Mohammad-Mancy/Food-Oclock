@@ -9,6 +9,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Map from './../Map'
 import ReservationCard from './reserve/ReservationCard'
 import { Footer } from '../footer/Footer'
+import { FaStar } from 'react-icons/fa'
 
 const RestaurantPage = () => {
 
@@ -16,8 +17,9 @@ const RestaurantPage = () => {
   const [openAddReviewForm, setOpenAddReviewForm] = useState(false)
   const [reviews, setReviews] = useState();
   const location = useLocation();
-  
+  const [rest_rate,setRest_rate] = useState(parseFloat(location.state.rate))
   let handleReviews = async (e) => {
+    setRest_rate(parseFloat(location.state.rate))
     try{
       let res = await fetch (`http://127.0.0.1:8000/api/v1/auth/restaurant/all-approved-reviews/${location.state.id}`,{
         method: 'GET',
@@ -38,8 +40,7 @@ const RestaurantPage = () => {
     handleReviews();
   }, [location.state.id])
   
-  console.log(reviews)
-
+console.log(rest_rate)
   return (
     <div className="restaurant-page">
       {token_key !== undefined?
@@ -66,6 +67,10 @@ const RestaurantPage = () => {
             >
             Add Review
             </button>
+            {rest_rate === 0?
+            <div className='rate-rest-page'><span>No Rating </span> <span><FaStar/></span></div>
+            :
+            <div className='rate-rest-page'><span>{rest_rate} </span> <span><FaStar/></span></div>}
           </div>
           <hr className="section-two-devider" />
           {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}

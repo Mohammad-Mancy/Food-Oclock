@@ -2,6 +2,7 @@ import React from 'react'
 import ReactStars from "react-rating-stars-component";
 
 const PersonReview = ({rate,description,user_name,user_image}) => {
+  const ratefloat = parseFloat(rate)
   return (
     <div className="section-person-review">
         <div className='section-person-review-title'>
@@ -12,7 +13,7 @@ const PersonReview = ({rate,description,user_name,user_image}) => {
             <span>
               <ReactStars
               count={5}
-              value={rate}
+              value={ratefloat}
               size={36}
               edit={false}
               isHalf={true}

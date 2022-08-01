@@ -113,7 +113,18 @@ class AdminController extends Controller
     {
         if(auth()->user()){
 
+            $all_rate = 0.0;
             $review = Review::find($request->id);
+            $rest_id = $review->restaurant_id;
+            $reviews = Review::where('restaurant_id', '=' , $rest_id)->get();
+            foreach ($reviews as $review) {
+                $each_rate = $review->rate;
+                $all_rate = $all_rate + $each_rate;
+            }
+            $all_rate = ($all_rate/count($reviews));
+            $restaurant = Restaurant::find($rest_id);
+            $restaurant->rate = $all_rate;
+            $restaurant->update();
             $review->status = 1;
             $review->save();
 

@@ -18,7 +18,7 @@ const EditRestaurantForm = () => {
   const [description,setDescription] = useState()
   const [collection,setCollection] = useState()
   const [trend,setTrend] = useState()
-  const [imageName,setImageName] = useState("Choose Image")
+  const [imageName,setImageName] = useState('')
   const [base64code,setBase64code] = useState('noChange')
 
   let handleCallCurrentRestaurant = async (e) => {
@@ -114,7 +114,11 @@ const EditRestaurantForm = () => {
       console.error(error)
     }
   }
-
+  if(imageName === ''){
+    return(
+      <>Still loading...</>
+    )
+  }
   return (
     <div className="edit-restaurant-container">
       <AdminTopNavBar status={'form-col-rest'}/>
@@ -125,7 +129,11 @@ const EditRestaurantForm = () => {
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
-          <img src={imageIcon} style={{width:'150px',height:'150px'}}/>
+        {base64code === 'noChange' ?
+          <img src={'http://127.0.0.1:8000/app/public/'+imageName} style={{width:'500px',height:'350px'}}/>
+        :
+          <img src={base64code} style={{width:'500px',height:'350px'}}/>
+        }
           <span>{imageName}</span>
         </label>
         <label>

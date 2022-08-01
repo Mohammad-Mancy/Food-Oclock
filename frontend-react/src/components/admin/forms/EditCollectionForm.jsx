@@ -10,7 +10,7 @@ const EditCollectionForm = () => {
     const token_key = reactLocalStorage.get('token_key');
     const [name,setName] = useState()
     const [base64code,setBase64code] = useState('noChange')
-    const [imageName,setImageName] = useState("Choose Image")
+    const [imageName,setImageName] = useState('')
 
     let handleCallCurrentCollection = async (e) => {
       try{
@@ -77,6 +77,11 @@ const EditCollectionForm = () => {
       }
     }
 
+    if(imageName === ''){
+      return(
+        <>Still loading...</>
+      )
+    }
   return (
     <div className="edit-collection-form">
         <AdminTopNavBar status={'form-col'}/>

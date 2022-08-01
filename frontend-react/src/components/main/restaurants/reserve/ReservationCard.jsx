@@ -36,7 +36,12 @@ const ReservationCard = ({rest_id}) => {
       }
 
     const handleReserve = (e) => {
-        if (!startDate || !guestRange)
+        
+        if (!token_key){
+            alert('you need to login')
+            return
+        }
+        else if (!startDate || !guestRange)
         {
             setFields(false)
             return

@@ -102,7 +102,11 @@ const AddRestaurantForm = () => {
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
-          <img src={imageIcon} style={{width:'150px',height:'150px'}}/>
+        {base64code === '' ?
+          <img src={imageIcon} style={{width:'250px',height:'250px'}}/>
+        :
+          <img src={base64code} style={{width:'500px',height:'350px'}}/>
+        }
           <span>{imageName}</span>
         </label>
         <label>
@@ -130,8 +134,10 @@ const AddRestaurantForm = () => {
           <span>Location</span>
           <Map latLngg={true}/>
         </div>
-        <div>
-          <Select options={options} onChange={(e) => setCollection(e.value)}/>  
+        <div style={{width:'500px',marginBottom:'20px',marginTop:'20px'}}>
+          <Select 
+          options={options} 
+          onChange={(e) => setCollection(e.value)}/>  
         </div>
         <div className='add-restaurant-btn-div'>
             <Link to="/manageRestaurant"><button type="submit" className='cancel-add-restaurant'>Cancel</button></Link>

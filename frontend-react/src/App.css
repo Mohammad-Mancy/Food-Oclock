@@ -934,22 +934,25 @@ hr.section-two-devider{
   margin: 15px 0px;
 }
 .add-restaurant-container,.edit-restaurant-container{
-  background-color: #8ABCD7;
   color: #227093;
   text-align: -webkit-center;
 }
 .restaurant-form>label>input{
-  width: 100%;
+  width: 500px;
   border: none;
   font-size: 36px;
   border-radius: 15px;
   padding: 18px;
+  border: 2px solid lightblue;
+  box-shadow: 0px 0px 20px grey;
 }
 .restaurant-form>label>textarea{
-  width: 449px;
+  width: 500px;
   height: 300px;
   border: none;
   font-size: 26px;
+  border: 2px solid lightblue;
+  box-shadow: 0px 0px 20px grey;
 }
 .css-b62m3t-container {
   position: relative;
@@ -958,7 +961,7 @@ hr.section-two-devider{
   width: 458px;
 }
 .add-restaurant-btn-div,.edit-restaurant-btn-div{
-  width: 458px;
+  width: 500px;
 }
 .cancel-add-restaurant,.cancel-edit-restaurant{
   font-size: 26px;
@@ -970,7 +973,7 @@ hr.section-two-devider{
   margin-top: 20px;
   width: 120px;
   cursor: pointer;
-  margin-right: 5%;
+  margin-right: auto;
 }
 .cancel-add-restaurant:hover,.cancel-edit-restaurant:hover{
   background-color: #FF524E;
@@ -997,7 +1000,7 @@ hr.section-two-devider{
 }
 /* ________________________________ */
 div.map-wrapper .leaflet-container{
-    width: 456px;
+    width: 500px;
     height: 50vh;
     border-radius: 20px;
 }

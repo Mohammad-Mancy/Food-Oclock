@@ -118,6 +118,11 @@ class RestaurantController extends Controller
     public function getTrendRestaurants ()
     {
         $restaurants = Restaurant::where('restaurants.trend', '=', 1)->get();
+        foreach ($restaurants as $restaurant) {
+            $restaurant -> longitude = Location::find($restaurant->location_id)->longitude;
+            $restaurant -> latitude = Location::find($restaurant->location_id)->latitude;
+            $restaurant -> cuisine = Collection::find($restaurant->collection_id)->name;
+        }
         return response()->json([
             "status" => "Success",
             "restaurants" => $restaurants

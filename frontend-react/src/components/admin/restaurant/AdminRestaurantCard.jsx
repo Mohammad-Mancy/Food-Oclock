@@ -1,13 +1,18 @@
 import React from 'react'
 import { FaEdit} from 'react-icons/fa'
 import {RiDeleteBin5Line} from 'react-icons/ri'
+import { MdDone, MdClose } from 'react-icons/md'
 
-const AdminRestaurantCard = ({onEdit,onDelete,name,location_name,capacity}) => {
+const AdminRestaurantCard = ({onEdit,onDelete,name,trend,capacity}) => {
   return (
     <>
     <div className="admin-restaurant-card">
         <span>{name}</span>
-        <span>{location_name}</span>
+        {trend === 1?
+        <span style={{color:'green'}}><MdDone/></span>
+        :
+        <span style={{color:'red'}}><MdClose/></span>
+        }
         <span>{capacity}</span>
         <span>
             <button 

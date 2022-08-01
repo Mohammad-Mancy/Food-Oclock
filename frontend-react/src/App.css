@@ -514,7 +514,7 @@ hr.section-two-devider{
 }
 .back-link-form{
   text-decoration-line: none;
-  color: #fff;
+  color: #227093;
 }
 
 /* Middle Navbar */
@@ -845,11 +845,12 @@ hr.section-two-devider{
 
 .collection-form{
   text-align: -webkit-center;
+  display: flex;
+  flex-direction: column;
 }
 
 .collection-form>label>p{
   width: 500px;
-  color: #fff;
   font-size: 28px;
   text-align: start;
 }
@@ -860,14 +861,16 @@ hr.section-two-devider{
 
 .collection-form>label>input{
   width: 500px;
-  font-size: 30px;
   border: none;
-  padding: 10px;
-  margin-bottom: 25px;
+  font-size: 36px;
   border-radius: 15px;
+  padding: 18px;
+  border: 2px solid lightblue;
+  box-shadow: 0px 0px 20px grey;
 }
 .add-col-title,.edit-col-title,.add-rest-title,.edit-rest-title{
-  color: #fff;
+  color: #227093;
+  background-color: #fff;
   font-size: 36px;
   margin-bottom: 20px;
 }
@@ -880,7 +883,8 @@ hr.section-two-devider{
   border-radius: 15px;
   padding: 10px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: auto;
+  margin-top: 5vh;
 }
 .save-add-collection:hover,.save-edit-collection:hover{
   background-color: #61dafb;

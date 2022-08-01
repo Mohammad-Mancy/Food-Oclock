@@ -76,18 +76,18 @@ const ManageRestaurant = () => {
       {/* Manage Restaurants Header */}
       <div className="manage-restaurant-header">
         <span>Name</span>
-        <span>location</span>
+        <span>Trend</span>
         <span>Capacity</span>
         <span>Action</span>      
       </div>
       <hr className="manage-restaurant-devider" />
       {/* _________________________ */}
       
-      {restaurants.map(({id,name,location_name,capacity}) => (
+      {restaurants.map(({id,name,trend,capacity}) => (
         <AdminRestaurantCard 
         key={id}
         name={name}
-        location_name={location_name}
+        trend={trend}
         capacity={capacity}
         onDelete={() => {deleteRestaurant(id)}}
         onEdit= { () => {navigateEditRestaurant(id)}}

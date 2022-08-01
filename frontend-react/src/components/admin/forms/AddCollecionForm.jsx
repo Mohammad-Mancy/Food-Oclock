@@ -72,7 +72,11 @@ const AddCollecionForm = () => {
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
+        {base64code === '' ?
           <img src={imageIcon} style={{width:'150px',height:'150px'}}/>
+        :
+          <img src={base64code} style={{width:'400px',height:'300px'}}/>
+        }
           <span>{imageName}</span>
         </label>
             <label>

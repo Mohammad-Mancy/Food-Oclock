@@ -66,7 +66,6 @@ const ManageCollection = () => {
       <AdminTopNavBar />
       <AdminMiddleNavBar />
       <div className="adding-collection">
-        <span>Adding New Collection :</span>
         <Link to='/addCollectionForm'>
           <button>Add Collection</button>
         </Link>

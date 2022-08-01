@@ -67,7 +67,6 @@ const ManageRestaurant = () => {
       <AdminTopNavBar />
       <AdminMiddleNavBar />
       <div className="adding-restaurant">
-        <span>Adding New Restuarant :</span>
         <Link to='/addRestaurantForm'>
           <button>Add Restaurant</button>
         </Link>

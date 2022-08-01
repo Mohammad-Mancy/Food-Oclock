@@ -177,7 +177,7 @@ hr.signup-divider{
   width: 300px;
 }
 .account-login{
-  color: white;
+  color: #227093;
   font-size: 36px;
   width: 300px;
   cursor: pointer;
@@ -213,10 +213,15 @@ hr.signup-divider{
 .form-top-navbar>img{
   width: 350px;
 }
-.signup-form-navbar,.login-form-navbar,.welcome-admin,.back-form-link{
+.signup-form-navbar,.login-form-navbar,.back-form-link{
   font-size: 36px;
   text-decoration: none;
   color: white;
+}
+.welcome-admin{
+  font-size: 36px;
+  text-decoration: none;
+  color: #227093;
 }
 
 
@@ -229,13 +234,11 @@ hr.signup-divider{
   background-color: #fff;
 }
 .navbar__link {
-  margin: 1em;
-  font-size: 2em;
+  padding: 1em;
+  font-size: 1.5em;
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
   text-decoration: none;
-  letter-spacing: .3em;
-  text-indent: .3em;
   color: #227093;
 }
 
@@ -503,11 +506,11 @@ hr.section-two-devider{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 60px;
+  padding: 0px 60px;
 }
 .admin-topnavbar>div>h1{
-  color: #fff;
-  font-size: 40px;
+  color: #227093;
+  font-size: 36px;
 }
 .back-link-form{
   text-decoration-line: none;
@@ -523,8 +526,8 @@ hr.section-two-devider{
   background-color: #fff;
 }
 .admin-middlenavbar>a.active{
-  color: #fff ;
-  background-color: #227093;
+  color: #227093;
+  border-bottom-style: solid;
 }
 
 /* User card */
@@ -533,33 +536,35 @@ hr.section-two-devider{
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .user-card-devider{
-  border-top-style: ridge;
-  width: 90vw;
+  border-top-style: solid;
+  width: 70vw;
+  color: black;
 }
 .user-card-header{
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .user-card-header>span{
-  color: #fff;
-  font-size: 30px;
+  color: #227093;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 25%;
 }
 .user-card>span{
-  color: #227093;
-  font-size: 30px;
+  font-size: 1.2rem;
   font-weight: 600;
   flex-basis: 25%;
   overflow-wrap: anywhere;
 }
 .user-card>span>button{
   border: none;
-  font-size: 36px;
+  font-size: 24px;
   background-color: transparent;
   color: #FF524E;
   cursor: pointer;
@@ -576,33 +581,35 @@ hr.section-two-devider{
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .manage-restaurant-header>span{
-  color: #fff;
-  font-size: 30px;
+  color: #227093;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 25%;
 }
 .manage-restaurant-devider{
-  border-top-style: ridge;
-  width: 90vw;
+  border-top-style: solid;
+  width: 70vw;
+  color: black;
 }
 .admin-restaurant-card{
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .admin-restaurant-card>span{
-  color: #227093;
-    font-size: 30px;
-    font-weight: 600;
-    flex-basis: 25%;
-    overflow-wrap: anywhere;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-basis: 25%;
+  overflow-wrap: anywhere;
 }
 .admin-restaurant-card>span>.restaurant-delete-btn{
   border: none;
-  font-size: 36px;
+  font-size: 24px;
   background-color: transparent;
   color: #FF524E;
   cursor: pointer;
@@ -610,7 +617,7 @@ hr.section-two-devider{
 }
 .admin-restaurant-card>span>.restaurant-edit-btn{
   border: none;
-  font-size: 36px;
+  font-size: 24px;
   background-color: transparent;
   color: #218c74;
   cursor: pointer;
@@ -626,10 +633,11 @@ hr.section-two-devider{
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .manage-review-header>span{
-  color: #fff;
-  font-size: 30px;
+  color: #227093;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 25%;
 }
@@ -638,10 +646,11 @@ hr.section-two-devider{
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .admin-review-card>span{
-  color: #227093;
-  font-size: 30px;
+  color: black;
+  font-size: 1rem;
   font-weight: 600;
   flex-basis: 25%;
   overflow-wrap: anywhere;
@@ -773,18 +782,20 @@ hr.section-two-devider{
   background-color: #34ace0;
 }
 .manage-collection-devider{
-  border-top-style: ridge;
-  width: 90vw;
+  border-top-style: solid;
+  width: 70vw;
+  color: #282c34;
 }
 .manage-collection-header{
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .manage-collection-header>span{
-  color: #fff;
-  font-size: 30px;
+  color: #227093;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 50%;
 }
@@ -793,17 +804,17 @@ hr.section-two-devider{
   justify-content: space-around;
   align-items: center;
   padding: 20px 0px;
+  width: 70vw;
 }
 .collection-card-container>span{
-  color: #227093;
-  font-size: 30px;
+  font-size: 1.2rem;
   font-weight: 600;
   flex-basis: 50%;
   overflow-wrap: anywhere;
 }
 .collection-delete-btn{
   border: none;
-  font-size: 36px;
+  font-size: 24px;
   background-color: transparent;
   color: #FF524E;
   cursor: pointer;
@@ -811,7 +822,7 @@ hr.section-two-devider{
 }
 .collection-edit-btn{
   border: none;
-  font-size: 36px;
+  font-size: 24px;
   background-color: transparent;
   color: #218c74;
   cursor: pointer;
@@ -1209,4 +1220,9 @@ div.map-rest-page .leaflet-container{
 }
 .shadow{
   margin-top: 3rem;
+}
+
+/* admin panel */
+.manage-review-container,.manage-restaurant-container,.manage-user,.manage-collection-container{
+  text-align: -webkit-center;
 }

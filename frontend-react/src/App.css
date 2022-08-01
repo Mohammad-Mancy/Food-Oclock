@@ -1193,3 +1193,11 @@ div.map-rest-page .leaflet-container{
 #txtPassword{
   -webkit-text-security:disc;
 }
+
+/* Footer */
+.logo-footer-img{
+  cursor: pointer;
+}
+.shadow{
+  margin-top: 3rem;
+}

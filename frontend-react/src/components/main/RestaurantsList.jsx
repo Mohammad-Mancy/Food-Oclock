@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
+import { Footer } from './footer/Footer';
 
 const Restaurants = () => {
 
@@ -101,6 +102,7 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend
             ))}
             </Row>
         </div>
+        <Footer />
     </div>
   )
 }

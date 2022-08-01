@@ -8,6 +8,8 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Map from './../Map'
 import ReservationCard from './reserve/ReservationCard'
+import { Footer } from '../footer/Footer'
+
 const RestaurantPage = () => {
 
   const token_key = reactLocalStorage.get('token_key');
@@ -116,6 +118,7 @@ const RestaurantPage = () => {
         <div className='map-rest-page'>
           <Map latLngg={false} display={true}/>
         </div> 
+        <Footer />
     </div>
   )
 }

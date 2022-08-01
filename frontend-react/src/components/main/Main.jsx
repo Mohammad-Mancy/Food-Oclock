@@ -9,6 +9,7 @@ import {BiCategory,BiRestaurant} from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import Restaurants from './Restaurants'
 import Search from './search/Search'
+import { Footer } from './footer/Footer'
 
 const Main = () => {
 
@@ -114,7 +115,7 @@ useEffect(() => {
         <Link to='/restaurantsList#'><BiRestaurant/></Link>
       </div>
           <Restaurants />
-
+          <Footer />
     </div>
   )
 }

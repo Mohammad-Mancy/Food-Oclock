@@ -169,6 +169,7 @@ const EditRestaurantForm = () => {
           type="switch"
           id="custom-switch"
           label="Trend this week"
+          defaultChecked={trend}
           onChange={ () => {trend === 1 ?setTrend(0):setTrend(1)}}
         />
         {console.log(trend)}

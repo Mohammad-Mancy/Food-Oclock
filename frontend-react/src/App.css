@@ -744,7 +744,7 @@ hr.section-two-devider{
   font-weight: bolder;
 }
 .adding-restaurant>a>button{
-  font-size: 30px;
+  font-size: 1.3rem;
   padding: 10px 40px;
   border: none;
   border-radius: 20px;
@@ -1237,4 +1237,11 @@ div.map-rest-page .leaflet-container{
 /* admin panel */
 .manage-review-container,.manage-restaurant-container,.manage-user,.manage-collection-container{
   text-align: -webkit-center;
+}
+.admin-search{
+  font-size: 1.5rem;
+  padding: 1vh;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 0 10px black;
 }

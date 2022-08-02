@@ -133,15 +133,11 @@ class RestaurantController extends Controller
     {
         if(auth()->user()){
 
-            $validator = Validator::make($request->only('email','password'), [
-                'email' => 'required|email',
-                'password' => 'required|string|min:6',
+            $validator = Validator::make($request->only('email'), [
+                'email' => 'required|email'
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
-            }
-            if (! $token = auth()->attempt($validator->validated())) {
-                return response()->json(['error' => 'wrong email or password'], 401);
             }
             
             $reservation = new Reservation;

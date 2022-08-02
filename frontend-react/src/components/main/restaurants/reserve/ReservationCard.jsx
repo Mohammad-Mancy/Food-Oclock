@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useRef} from 'react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import Form from 'react-bootstrap/Form';
@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Moment from 'moment';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import emailjs from '@emailjs/browser';
 
 const ReservationCard = ({rest_id}) => {
 
@@ -23,8 +24,8 @@ const ReservationCard = ({rest_id}) => {
     const [note, setNote] = useState('empty');
     const [name,setName] = useState();
     const [email,setEmail] = useState();
-    const [password,setPassword] = useState();
     const [phone_number,setPhone_number] = useState();
+    const form = useRef();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -53,14 +54,15 @@ const ReservationCard = ({rest_id}) => {
 
     const handleReserveSubmit = async (e) => {
 
-        if (!name || !email || !password || !phone_number)
+        e.preventDefault();
+
+        if (!name || !email || !phone_number)
         {
             setFieldsVal(false)
             return
         }
         try{
             Moment(startDate).format('DD-MM-YYYY')
-            console.log(name + " " + email + " " + password +" " + phone_number + " " + Moment(startDate).format('DD-MM-YYYY') + " " + guestRange + " " + note)
             let res = await fetch('http://127.0.0.1:8000/api/v1/auth/restaurant/reserve',{
                 method: 'POST',
                 headers:{
@@ -69,7 +71,6 @@ const ReservationCard = ({rest_id}) => {
                 },
                 body: JSON.stringify({
                     email:email,
-                    password:password,
                     note:note,
                     number_of_guest:guestRange,
                     reservation_date:startDate,
@@ -81,6 +82,17 @@ const ReservationCard = ({rest_id}) => {
 
             if (res.status === 200) {
               alert('The restaurant will call you to confirm the appointment')
+                
+            //   ________________Sending Email________________________
+            
+              emailjs.sendForm('service_5cl8dm4', 'template_ir1ol4n', form.current , 'gY5HY8RbpUu5_O3tE')
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
+            //_________________________________________________________
+            
               handleClose()
 
             }else if (res.status === 401){
@@ -175,66 +187,21 @@ const ReservationCard = ({rest_id}) => {
                     <Modal.Title>Validation</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <form ref={form} onSubmit={handleReserveSubmit} className="validate-form">
 
-                        <Form.Group className="mb-3 validate-pop-up" >
-                            <Form.Label className='required'>Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="name"
-                                autoFocus
-                                onChange={(e) => {setName(e.target.value)}}
-                            />
-                            </Form.Group>
-
-
-                            <Form.Group className="mb-3 validate-pop-up" >
-                            <Form.Label className='required'>Email address</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder="name@example.com"
-                                onChange={(e) => {setEmail(e.target.value)}}
-                            />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3 validate-pop-up" >
-                            <Form.Label className='required'>Password</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Password"
-                                id='txtPassword'
-                                onChange={(e) => {setPassword(e.target.value)}}
-                            />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3 validate-pop-up" >
-                            <Form.Label className='required'>Phone Number</Form.Label>
-                            <Form.Control
-                                type="Phone"
-                                placeholder="phone number"
-                                onChange={(e) => {setPhone_number(e.target.value)}}
-                            />
-                            </Form.Group>
-
-                        </Form>
-                        {!fieldsVal ? 
-                            <div className='validate-notification'>please fill all required field</div> 
-                        : <></>}
+                            <label>Name</label>
+                            <input type="text" name="user_name" onChange={(e) =>{setName(e.target.value)}}/>
+                            <label>Email</label>
+                            <input type="email" name="user_email" onChange={(e) =>{setEmail(e.target.value)}}/>
+                            <label>Phone number</label>
+                            <input name="phone_number" onChange={(e) =>{setPhone_number(e.target.value)}}/>
+                            {!fieldsVal ? 
+                                <div className=
+                                'validate-notification'>please fill all required field</div> 
+                            : <></>}
+                            <input className='submit-validate' type="submit" value="Send" />
+                        </form>
                     </Modal.Body>
-
-
-                    <Modal.Footer>
-                        
-
-                        <Button variant="danger" onClick={handleClose}>
-                            Cancel
-                        </Button>
-
-                        <Button variant="success" onClick={handleReserveSubmit}>
-                            Reserve
-                        </Button>
-
-                    </Modal.Footer>
                 </Modal>
             </>
             {/* _____________________________________ */}

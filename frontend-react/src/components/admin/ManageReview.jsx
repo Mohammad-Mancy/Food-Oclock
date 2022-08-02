@@ -109,6 +109,8 @@ const ManageReview = () => {
     reviews.forEach(review => {
       if(
         review.restaurant_name.toLowerCase().includes(filter_input.current.value.toLowerCase())
+        ||
+        review.user_name.toLowerCase().includes(filter_input.current.value.toLowerCase())
         ){
             if(review in temp){
             }else{
@@ -126,7 +128,7 @@ const ManageReview = () => {
 
         <div className="manage-reviews-actions">
         <div className="search">
-             <input ref={filter_input} onInput={filterReviews} type="text" className='admin-search' placeholder='  Search by Restaurants '/>
+             <input ref={filter_input} onInput={filterReviews} type="text" className='admin-search' placeholder='  User / Restaurants '/>
           </div> 
         <OrderBy byName={OrderByName} byDate={OrderByDate} byRate={OrderByRate} locate={'reviews'}/>
       </div>

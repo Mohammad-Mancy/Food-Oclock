@@ -1,15 +1,19 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useReducer,useRef} from 'react'
 import AdminMiddleNavBar from '../navbar/AdminMiddleNavBar'
 import AdminTopNavBar from '../navbar/AdminTopNavBar'
 import AdminCollectionCard from './restaurant/AdminCollectionCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
 import { Link,useNavigate } from 'react-router-dom'
+import OrderBy from './button/OrderBy'
 
 const ManageCollection = () => {
   
   const user_type = reactLocalStorage.getObject('user').type;
   const token_key = reactLocalStorage.get('token_key');
   const [collections,setCollections] = useState([]);
+  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+  const [filter, setFilter] = useState([]);
+  const filter_input = useRef();
 
   let handleCollections = async (e) => {
     try{
@@ -21,6 +25,7 @@ const ManageCollection = () => {
       const data = await res.json();
       if(res.status === 200) {
         setCollections(data.collections)
+        setFilter(data.collections)
       }
     }catch(error){
       console.error(error)
@@ -61,6 +66,37 @@ const ManageCollection = () => {
       }
     })
   }
+
+  const OrderByName = () => {
+    filter.sort(function (a, b) {
+      forceUpdate()
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  const OrderByDate = () => {
+    filter.sort(function (a, b) {
+      forceUpdate()
+      return a.created_at.localeCompare(b.created_at);
+    });
+  }
+
+  const filterCollections = () => {
+    var temp =[];
+    setFilter([]);
+    collections.forEach(collection => {
+      if(
+        collection.name.toLowerCase().includes(filter_input.current.value.toLowerCase())
+        ){
+            if(collection in temp){
+            }else{
+                temp[temp.length] = collection;
+                setFilter(temp);
+            }
+        }
+    });
+  }
+
   return (
     <div className="manage-collection-container">
       <AdminTopNavBar />
@@ -69,6 +105,10 @@ const ManageCollection = () => {
         <Link to='/addCollectionForm'>
           <button>Add Collection</button>
         </Link>
+        <div className="search">
+             <input ref={filter_input} onInput={filterCollections} type="text" className='admin-search' placeholder='  Search  '/>
+          </div> 
+        <OrderBy byName={OrderByName} byDate={OrderByDate}/>
       </div>
       <hr className="manage-collection-devider" />
       
@@ -80,7 +120,7 @@ const ManageCollection = () => {
       <hr className="manage-collection-devider" />
       {/* _________________________ */}
         
-      {collections.map(({id,name}) => (
+      {filter.map(({id,name}) => (
         <AdminCollectionCard 
         key={id}
         name={name}

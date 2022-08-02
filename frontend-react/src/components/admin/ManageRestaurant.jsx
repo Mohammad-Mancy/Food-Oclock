@@ -114,7 +114,7 @@ const ManageRestaurant = () => {
         <div className="search">
             <input ref={filter_input} onInput={filterRestaurants} type="text" className='admin-search' placeholder='  Search  '/>
           </div> 
-        <OrderBy byName={OrderByName} byDate={OrderByDate} byCapacity={OrderByCapacity}/>
+        <OrderBy byName={OrderByName} byDate={OrderByDate} byCapacity={OrderByCapacity} locate={'rest'}/>
         </div>
       <hr className="manage-restaurant-devider" />
       

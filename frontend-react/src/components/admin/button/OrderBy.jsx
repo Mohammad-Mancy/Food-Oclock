@@ -1,6 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function BasicExample({byName,byDate,byCapacity,locate,byRate}) {
+function BasicExample({byName,byDate,byCapacity,locate,byRate,byEmail}) {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -14,6 +14,8 @@ function BasicExample({byName,byDate,byCapacity,locate,byRate}) {
         <Dropdown.Item onClick={byCapacity}>Capacity</Dropdown.Item>
         :locate === 'reviews'?
         <Dropdown.Item onClick={byRate}>Rate</Dropdown.Item>
+        :locate === 'users'?
+        <Dropdown.Item onClick={byEmail}>Email</Dropdown.Item>
         :
         <></>
         }

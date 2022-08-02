@@ -1246,7 +1246,7 @@ div.map-rest-page .leaflet-container{
   box-shadow: 0 0 10px black;
 }
 
-.manage-reviews-actions{
+.manage-reviews-actions,.manage-users-actions{
   display: flex;
   justify-content: space-evenly;
   align-items: center;

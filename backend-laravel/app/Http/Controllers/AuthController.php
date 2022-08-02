@@ -52,7 +52,8 @@ class AuthController extends Controller
         $user = User::create(array_merge(
                     $validator->validated(),
                     ['type' => 0],//by default 0 which is user type
-                    ['password' => bcrypt($request->password)]
+                    ['password' => bcrypt($request->password)],
+                    ['image' => 'img_avatar.png']//by default avatar image profile
                 ));
         return response()->json([
             'message' => 'User successfully registered',

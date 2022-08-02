@@ -1245,3 +1245,10 @@ div.map-rest-page .leaflet-container{
   border: none;
   box-shadow: 0 0 10px black;
 }
+
+.manage-reviews-actions{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}

@@ -1,14 +1,18 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useReducer,useRef} from 'react'
 import AdminMiddleNavBar from '../navbar/AdminMiddleNavBar'
 import AdminTopNavBar from '../navbar/AdminTopNavBar'
 import AdminReviewCard from './restaurant/AdminReviewCard'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import OrderBy from './button/OrderBy'
 
 const ManageReview = () => {
 
   const user_type = reactLocalStorage.getObject('user').type;
   const token_key = reactLocalStorage.get('token_key');
   const [reviews,setReviews] = useState([]);
+  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+  const filter_input = useRef();
+  const [filter, setFilter] = useState([]);
 
   let handleReviews = async (e) => {
     try{
@@ -24,6 +28,7 @@ const ManageReview = () => {
       const data = await res.json();
       if(res.status === 200) {
         setReviews(data.reviews)
+        setFilter(data.reviews)
       }
     }catch(error){
       console.error(error)
@@ -77,10 +82,54 @@ const ManageReview = () => {
     }
   }
   
+  const OrderByName = () => {
+    filter.sort(function (a, b) {
+      forceUpdate()
+      return a.restaurant_name.localeCompare(b.restaurant_name);
+    });
+  }
+
+  const OrderByDate = () => {
+    filter.sort(function (a, b) {
+      forceUpdate()
+      return a.created_at.localeCompare(b.created_at);
+    });
+  }
+
+  const OrderByRate = () => {
+    filter.sort(function (a, b) {
+      forceUpdate()
+      return a.rate - b.rate;
+    });
+  }
+
+  const filterReviews = () => {
+    var temp =[];
+    setFilter([]);
+    reviews.forEach(review => {
+      if(
+        review.restaurant_name.toLowerCase().includes(filter_input.current.value.toLowerCase())
+        ){
+            if(review in temp){
+            }else{
+                temp[temp.length] = review;
+                setFilter(temp);
+            }
+        }
+    });
+  }
+
   return (
     <div className="manage-review-container">
         <AdminTopNavBar />
         <AdminMiddleNavBar />
+
+        <div className="manage-reviews-actions">
+        <div className="search">
+             <input ref={filter_input} onInput={filterReviews} type="text" className='admin-search' placeholder='  Search by Restaurants '/>
+          </div> 
+        <OrderBy byName={OrderByName} byDate={OrderByDate} byRate={OrderByRate} locate={'reviews'}/>
+      </div>
 
         {/* Manage Review Header*/}
         <div className="manage-review-header">
@@ -93,7 +142,7 @@ const ManageReview = () => {
         <hr className="manage-restaurant-devider" />
         {/* ___________________ */}
         
-        {reviews.map(({id,user_name,restaurant_name,rate,description}) => (
+        {filter.map(({id,user_name,restaurant_name,rate,description}) => (
         <AdminReviewCard 
         key={id}
         user_name={user_name}

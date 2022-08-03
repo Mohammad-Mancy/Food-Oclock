@@ -18,6 +18,8 @@ const EditRestaurantForm = () => {
   const [description,setDescription] = useState()
   const [collection,setCollection] = useState()
   const [trend,setTrend] = useState()
+  const [email,setEmail] = useState()
+  const [phone_number,setPhone_number] = useState()
   const [imageName,setImageName] = useState('')
   const [base64code,setBase64code] = useState('noChange')
 
@@ -35,6 +37,8 @@ const EditRestaurantForm = () => {
         setDescription(data.restaurants.description)
         setCollection(data.restaurants.collection)
         setTrend(data.restaurants.trend)
+        setEmail(data.restaurants.email)
+        setPhone_number(data.restaurants.phone_number)
         reactLocalStorage.set('lat-coordinates',data.restaurants.latitude)
         reactLocalStorage.set('lng-coordinates',data.restaurants.longitude)
         reactLocalStorage.set('coordinateLat',data.restaurants.latitude)
@@ -103,6 +107,8 @@ const EditRestaurantForm = () => {
           capacity:capacity,
           collection:collection,
           trend:trend,
+          email:email,
+          phone_number:phone_number,
           longitude:reactLocalStorage.get('coordinateLng'),
           latitude:reactLocalStorage.get('coordinateLat')
         })
@@ -155,6 +161,20 @@ const EditRestaurantForm = () => {
             <input type="text" 
             placeholder={capacity}
             onChange={ (e) => setCapacity(e.target.value)}
+            />
+        </label>
+        <label>
+            <p>Email</p>
+            <input type="text" 
+            placeholder={email}
+            onChange={ (e) => setEmail(e.target.value)}
+            />
+        </label>
+        <label>
+            <p>Phone Number</p>
+            <input type="text" 
+            placeholder={phone_number}
+            onChange={ (e) => setPhone_number(e.target.value)}
             />
         </label>
         <div className='map-wrapper'>

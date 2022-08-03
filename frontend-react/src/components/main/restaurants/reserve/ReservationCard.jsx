@@ -83,7 +83,7 @@ const ReservationCard = ({rest_id}) => {
             if (res.status === 200) {
               alert('The restaurant will call you to confirm the appointment')
                 
-            //   ________________Sending Email________________________
+            //   _______________Sending Email for user________________
             
               emailjs.sendForm('service_5cl8dm4', 'template_ir1ol4n', form.current , 'gY5HY8RbpUu5_O3tE')
                 .then((result) => {
@@ -92,7 +92,16 @@ const ReservationCard = ({rest_id}) => {
                     console.log(error.text);
                 });
             //_________________________________________________________
-            
+            // ________________Sending Email for restaurant_____________
+
+            emailjs.sendForm('service_5cl8dm4', 'template_frqlsrd', form.current , 'gY5HY8RbpUu5_O3tE')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+
+            // _________________________________________________________
               handleClose()
 
             }else if (res.status === 401){
@@ -195,6 +204,10 @@ const ReservationCard = ({rest_id}) => {
                             <input type="email" name="user_email" onChange={(e) =>{setEmail(e.target.value)}}/>
                             <label>Phone number</label>
                             <input name="phone_number" onChange={(e) =>{setPhone_number(e.target.value)}}/>
+                            <input name="restaurant_email" value={'mohammad.mancy994@gmail.com'} style={{display:'none'}} readOnly/>
+                            <input name="note" value={note} style={{display:'none'}} readOnly/>
+                            <input name="reservation_date" value={Moment(startDate).format('DD-MM-YYYY')} style={{display:'none'}} readOnly/>
+                            <input name="guest" value={guestRange} style={{display:'none'}} readOnly/>
                             {!fieldsVal ? 
                                 <div className=
                                 'validate-notification'>please fill all required field</div> 

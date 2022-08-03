@@ -12,7 +12,7 @@ import Moment from 'moment';
 import { reactLocalStorage } from 'reactjs-localstorage';
 import emailjs from '@emailjs/browser';
 
-const ReservationCard = ({rest_id}) => {
+const ReservationCard = ({rest_id,rest_email}) => {
 
     const user_id = reactLocalStorage.getObject('user').id;
     const token_key = reactLocalStorage.get('token_key');
@@ -204,7 +204,7 @@ const ReservationCard = ({rest_id}) => {
                             <input type="email" name="user_email" onChange={(e) =>{setEmail(e.target.value)}}/>
                             <label>Phone number</label>
                             <input name="phone_number" onChange={(e) =>{setPhone_number(e.target.value)}}/>
-                            <input name="restaurant_email" value={'mohammad.mancy994@gmail.com'} style={{display:'none'}} readOnly/>
+                            <input name="restaurant_email" value={rest_email} style={{display:'none'}} readOnly/>
                             <input name="note" value={note} style={{display:'none'}} readOnly/>
                             <input name="reservation_date" value={Moment(startDate).format('DD-MM-YYYY')} style={{display:'none'}} readOnly/>
                             <input name="guest" value={guestRange} style={{display:'none'}} readOnly/>

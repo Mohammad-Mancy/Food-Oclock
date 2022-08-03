@@ -51,7 +51,9 @@ console.log(rest_rate)
         <div className="section-one">
             <img src={'http://127.0.0.1:8000/app/public/'+location.state.image} className="section-one-img" />
             <div className='reserve-form'>
-              <ReservationCard rest_id={location.state.id}/>
+              <ReservationCard 
+              rest_id={location.state.id} 
+              rest_email={location.state.email}/>
             </div>
         </div>
         <div className='restaurant-details-section'>

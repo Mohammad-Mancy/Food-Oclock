@@ -57,7 +57,7 @@ const filterRestaurants = () => {
 // _________________________________________________
 
 const navigation = useNavigate();
-const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude}) => {
+const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) => {
   reactLocalStorage.set('lat-coordinates',latitude)
   reactLocalStorage.set('lng-coordinates',longitude)
     navigation('/restaurantPage',
@@ -69,6 +69,8 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend
         capacity:capacity,
         cuisine:cuisine,
         trend:trend,
+        email:email,
+        phone_number:phone_number,
         image:image}
         })
 }
@@ -80,21 +82,21 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend
       <TopNavBar locate={'rest'} myRef={filter_input} onInput={() =>{filterRestaurants()}} status={true}/>}
         <div className="collection-content-wrapper">
         <Row xs={1} md={2} className="g-4">
-            {filter.map(({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude}) => (
+            {filter.map(({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) => (
                 <Col key={id}>
                 <Card className='rest-card'>
                     <Card.Img variant="top" 
                     src={'http://127.0.0.1:8000/app/public/'+image} 
                     style={{width:'100%',height:'45vh',borderRadius:'10px'}} 
-                    onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude}) } } 
+                    onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) } } 
                     />
                     <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text>
-                        Rate : {rate == 0 ?<span>New</span>:rate}
-                    </Card.Text>
+                    <Card.Title className='flex-title'><span>{name}</span><span>Rate : {rate == 0 ?<span>No Rating</span>:rate}</span></Card.Title>
                     <Card.Text>
                         Capacity : {capacity}
+                    </Card.Text>
+                    <Card.Text>
+                        Phone : {phone_number}
                     </Card.Text>
                     </Card.Body>
                 </Card>

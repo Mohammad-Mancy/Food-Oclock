@@ -13,8 +13,8 @@ const Search = (props) => {
           })
           const data = await res.json();
           if (res.status === 200 ){
-            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude,rate})=>{
-              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude,'rate':rate}])
+            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude,rate,email,phone_number})=>{
+              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude,'rate':rate, 'email':email,'phone_number':phone_number}])
             })
           }
         }catch(error){
@@ -27,7 +27,7 @@ const Search = (props) => {
       }, [])
 
       const navigation = useNavigate();
-      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude,rate}) => {
+      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude,rate,email,phone_number}) => {
         reactLocalStorage.set('lat-coordinates',latitude)
         reactLocalStorage.set('lng-coordinates',longitude)
           navigation('/restaurantPage',
@@ -41,6 +41,8 @@ const Search = (props) => {
                 latitude:latitude,
                 longitude:longitude,
                 rate:rate,
+                email:email,
+                phone_number:phone_number,
                 capacity:cap}
               })
       }
@@ -63,6 +65,8 @@ const Search = (props) => {
                     trend:e.trend,
                     latitude:e.latitude,
                     longitude:e.longitude,
+                    email:e.email,
+                    phone_number:e.phone_number,
                     rate:e.rate
                     }) } }  />
           </div>
@@ -82,6 +86,8 @@ const Search = (props) => {
                     trend:e.trend,
                     latitude:e.latitude,
                     longitude:e.longitude,
+                    email:e.email,
+                    phone_number:e.phone_number,
                     rate:e.rate
                     }) } }  />
         </div>

@@ -12,7 +12,7 @@ function TrendCarousel({first,second,third}) {
   };
 
   const navigation = useNavigate();
-  const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude}) => {
+  const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) => {
     reactLocalStorage.set('lat-coordinates',latitude)
     reactLocalStorage.set('lng-coordinates',longitude)
       navigation('/restaurantPage',
@@ -24,7 +24,10 @@ function TrendCarousel({first,second,third}) {
           capacity:capacity,
           cuisine:cuisine,
           trend:trend,
-          image:image}
+          image:image,
+          email:email,
+          phone_number:phone_number
+          }
           })
   }
 
@@ -46,7 +49,10 @@ function TrendCarousel({first,second,third}) {
             cuisine:first.cuisine,
             trend:first.trend,
             longitude:first.longitude,
-            latitude:first.latitude}) }}
+            latitude:first.latitude,
+            phone_number:first.phone_number,
+            email:first.email
+          }) }}
         />
         <Carousel.Caption>
           <h3>{first.name}</h3>
@@ -68,7 +74,10 @@ function TrendCarousel({first,second,third}) {
             cuisine:second.cuisine,
             trend:second.trend,
             longitude:second.longitude,
-            latitude:second.latitude}) }}
+            latitude:second.latitude,
+            phone_number:second.phone_number,
+            email:second.email
+          }) }}
         />
 
         <Carousel.Caption>
@@ -91,7 +100,10 @@ function TrendCarousel({first,second,third}) {
             cuisine:third.cuisine,
             trend:third.trend,
             longitude:third.longitude,
-            latitude:third.latitude}) }}
+            latitude:third.latitude,
+            phone_number:third.phone_number,
+            email:third.email
+          }) }}
         />
         <Carousel.Caption>
           <h3>{third.name}</h3>

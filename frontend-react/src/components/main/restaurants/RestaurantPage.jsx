@@ -10,6 +10,7 @@ import Map from './../Map'
 import ReservationCard from './reserve/ReservationCard'
 import { Footer } from '../footer/Footer'
 import { FaStar } from 'react-icons/fa'
+import { MdDoubleArrow } from 'react-icons/md'
 
 const RestaurantPage = () => {
 
@@ -53,7 +54,12 @@ console.log(rest_rate)
               <ReservationCard rest_id={location.state.id}/>
             </div>
         </div>
-        <h2>{location.state.name}</h2>
+        <div className='restaurant-details-section'>
+          <h2>{location.state.name}</h2>
+          <h3>Reach out :</h3>
+          <h4><MdDoubleArrow/>{location.state.email}</h4>
+          <h4><MdDoubleArrow/>{location.state.phone_number}</h4>
+        </div>
         <div className="section-two">
         <div className="review-title">
             <button

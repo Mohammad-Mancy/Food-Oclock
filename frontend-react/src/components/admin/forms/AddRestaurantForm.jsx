@@ -18,6 +18,8 @@ const AddRestaurantForm = () => {
   const [name,setName] = useState()
   const [capacity,setCapacity] = useState()
   const [collection,setCollection] = useState()
+  const [email,setEmail] = useState()
+  const [phone_number,setPhone_number] = useState()
   const [base64code,setBase64code] = useState('')
   
   const imageChoice = (e) => {
@@ -55,7 +57,9 @@ const AddRestaurantForm = () => {
           capacity:capacity,
           longitude:longitude,
           latitude:latitude,
-          collection_id:collection
+          collection_id:collection,
+          email:email,
+          phone_number:phone_number
         })
       })
       const data = await res.json();
@@ -128,6 +132,20 @@ const AddRestaurantForm = () => {
             <input type="text" 
             placeholder='capacity'
             onChange={ (e) => setCapacity(e.target.value)}
+            />
+        </label>
+        <label>
+            <p>Email</p>
+            <input type="text" 
+            placeholder='to receive reservation'
+            onChange={ (e) => setEmail(e.target.value)}
+            />
+        </label>
+        <label>
+            <p>Phone number</p>
+            <input type="text" 
+            placeholder='Phone Number'
+            onChange={ (e) => setPhone_number(e.target.value)}
             />
         </label>
         <div className='map-wrapper'>

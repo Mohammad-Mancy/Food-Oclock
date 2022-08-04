@@ -105,6 +105,13 @@ hr.login-divider{
   color: #34ace0;
 }
 
+a{
+  color: #000 !important;
+}
+a :hover{
+  text-shadow: 0 0 10px #000;
+}
+
 /* Signup Component */
 .signup-wrapper{
   background-color: whitesmoke;
@@ -185,6 +192,11 @@ hr.signup-divider{
 .bg-light,.navbar-brand,.dropdown-menu.show{
   font-size: 1.75rem !important;
 }
+
+.css-1hb7zxy-IndicatorsContainer{
+  display: none !important;
+}
+
 .search-input{
   border: 1px solid lightblue;
   font-size: 36px;
@@ -1078,7 +1090,6 @@ div.map-rest-page .leaflet-container{
 .section-title{
   width: 70vw;
   font-size: 3rem;
-  color: #227093;
   display: flex;
   margin-bottom: 15px;
   justify-content: space-between;
@@ -1149,6 +1160,7 @@ div.map-rest-page .leaflet-container{
   justify-content: center;
   align-items: center;
   width: 20vw;
+  margin-right: auto;
 }
 .search-main{
   height: 5.4rem;

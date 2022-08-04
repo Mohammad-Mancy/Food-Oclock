@@ -29,9 +29,6 @@ const AdminTopNavBar = (props) => {
 
   return (
     <div className="admin-topnavbar">
-        <div style={{width: '300px'}}>
-            <span className='welcome-admin'> Welcome {admin.name}</span>
-        </div>
         <div>
             <h1>Admin Panel</h1>
         </div>

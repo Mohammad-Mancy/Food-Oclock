@@ -3,7 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function BasicExample({byName,byDate,byCapacity,locate,byRate,byEmail}) {
   return (
     <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle id="dropdown-basic" className='orderby-btn'>
         Order By
       </Dropdown.Toggle>
 

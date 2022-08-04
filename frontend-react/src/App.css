@@ -185,6 +185,7 @@ hr.signup-divider{
   gap: 14px;
   font-size: 1.75rem;
   cursor: pointer;
+  place-items: baseline;
 }
 .bg-light,.navbar-brand,.dropdown-menu.show{
   font-size: 1.75rem !important;
@@ -246,12 +247,11 @@ hr.signup-divider{
   background-color: #fff;
 }
 .navbar__link {
-  padding: 1em;
-  font-size: 1.5em;
-  font-family: 'Roboto', sans-serif;
+  padding: 0.5em;
+  font-size: 1.3em;
   cursor: pointer;
   text-decoration: none;
-  color: #227093;
+  color: #000;
 }
 
 .navbar__link:hover {
@@ -560,11 +560,11 @@ hr.section-two-devider{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 60px;
+  width: 70vw;
+  margin: 1.2rem;
 }
 .admin-topnavbar>div>h1{
-  color: #227093;
-  font-size: 36px;
+  font-size: 2rem;
 }
 .back-link-form{
   text-decoration-line: none;
@@ -574,10 +574,11 @@ hr.section-two-devider{
 /* Middle Navbar */
 .admin-middlenavbar{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 4px;
   background-color: #fff;
+  width: 70vw;
 }
 .admin-middlenavbar>a.active{
   color: #227093;
@@ -611,7 +612,7 @@ hr.section-two-devider{
   flex-basis: 25%;
 }
 .user-card>span{
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 25%;
   overflow-wrap: anywhere;
@@ -656,7 +657,7 @@ hr.section-two-devider{
   width: 70vw;
 }
 .admin-restaurant-card>span{
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 25%;
   overflow-wrap: anywhere;
@@ -680,7 +681,13 @@ hr.section-two-devider{
 .admin-restaurant-card>span>.restaurant-delete-btn:hover,.admin-restaurant-card>span>.restaurant-edit-btn:hover{
   background-color: #fff;
 }
-
+.orderby-btn{
+  font-size: 1.3rem !important;
+  padding: 10px 40px !important;
+  border: none !important;
+  border-radius: 20px !important;
+  background-color: #227093 !important;
+}
 /* Manage Review */
 .manage-review-header{
   display: flex;
@@ -704,7 +711,7 @@ hr.section-two-devider{
 }
 .admin-review-card>span{
   color: black;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 25%;
   overflow-wrap: anywhere;
@@ -861,7 +868,7 @@ hr.section-two-devider{
   width: 70vw;
 }
 .collection-card-container>span{
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   flex-basis: 50%;
   overflow-wrap: anywhere;

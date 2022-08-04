@@ -70,10 +70,10 @@ function Restaurants() {
             />
               <Card.Body>
               <Card.Title className='flex-title'><span>{name}</span><span>Rate : {rate == 0 ?<span>No Rating</span>:rate}</span></Card.Title>
-              <Card.Text>
+              <Card.Text style={{margin:'0'}}>
                   Capacity : {capacity}
               </Card.Text>
-              <Card.Text>
+              <Card.Text style={{margin:'0'}}>
                   Phone : {phone_number}
               </Card.Text>
               </Card.Body>

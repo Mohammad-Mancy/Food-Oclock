@@ -105,9 +105,6 @@ hr.login-divider{
   color: #34ace0;
 }
 
-a{
-  color: #000 !important;
-}
 a :hover{
   text-shadow: 0 0 10px #000;
 }
@@ -199,10 +196,10 @@ hr.signup-divider{
 
 .search-input{
   border: 1px solid lightblue;
-  font-size: 36px;
+  font-size: 1.5rem;
   border-radius: 15px;
   padding: 10px;
-  width: 540px
+  margin-right: 2vw;
 }
 .top-navbar>a{
   text-decoration: none;
@@ -303,6 +300,7 @@ hr.signup-divider{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight:bold !important;
 }
 
 /* Main Content */
@@ -1132,8 +1130,6 @@ div.map-rest-page .leaflet-container{
   background-color: transparent;
   border: none;
   text-align: start;
-  color: #227093;
-  font-weight: 600;
 }
 .rest-card:hover{
  transform: scale(1);

@@ -107,12 +107,12 @@ useEffect(() => {
           <TrendCarousel first={first} second={second} third={third}/>
       <div className="section-title">
         <span>Cuisines</span>
-          <Link to='/Collections' style={{fontSize:'1.75rem',textDecoration:'none',alignItems:'center'}}><span>See All  </span><BiCategory style={{verticalAlign: 'text-top'}}/></Link>
+          <Link to='/Collections' style={{fontSize:'1.75rem',textDecoration:'none',alignItems:'center',color:'#000'}}><span>See All  </span><BiCategory style={{verticalAlign: 'text-top'}}/></Link>
       </div>
           <Categories />
       <div className="section-title">
         <span>Restaurants</span>
-        <Link to='/restaurantsList' style={{fontSize:'1.75rem',textDecoration:'none',alignItems:'center'}}><span>See All  </span><BiRestaurant style={{verticalAlign: 'text-top'}}/></Link>
+        <Link to='/restaurantsList' style={{fontSize:'1.75rem',textDecoration:'none',alignItems:'center',color:'#000'}}><span>See All  </span><BiRestaurant style={{verticalAlign: 'text-top'}}/></Link>
       </div>
           <Restaurants />
           <Footer />

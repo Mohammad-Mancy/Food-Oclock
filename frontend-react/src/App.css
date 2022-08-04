@@ -568,7 +568,7 @@ hr.section-two-devider{
 }
 .back-link-form{
   text-decoration-line: none;
-  color: #227093;
+  color: #000;
 }
 
 /* Middle Navbar */
@@ -930,12 +930,13 @@ hr.section-two-devider{
   box-shadow: 0px 0px 20px grey;
 }
 .add-col-title,.edit-col-title,.add-rest-title,.edit-rest-title{
-  color: #227093;
   background-color: #fff;
-  font-size: 36px;
+  font-size: 2rem;
   margin-bottom: 20px;
+  padding: 1vh;
+  width: 70vw;
 }
-.save-add-collection,.save-edit-collection{
+.save-add-collection,.save-edit-collection,.save-add-restaurant,.save-edit-restaurant{
   width: 200px;
   font-size: 30px;
   background-color: #218c74;
@@ -947,10 +948,10 @@ hr.section-two-devider{
   margin-left: auto;
   margin-top: 5vh;
 }
-.save-add-collection:hover,.save-edit-collection:hover{
+.save-add-collection:hover,.save-edit-collection:hover,.save-add-restaurant:hover,.save-edit-restaurant:hover{
   background-color: #61dafb;
 }
-.cancel-add-collection,.cancel-edit-collection{
+.cancel-add-collection,.cancel-edit-collection,.cancel-add-restaurant,.cancel-edit-restaurant{
   width: 200px;
   font-size: 30px;
   background-color: #b33939;
@@ -961,7 +962,7 @@ hr.section-two-devider{
   cursor: pointer;
   margin-right: 10px;
 }
-.cancel-add-collection:hover,.cancel-edit-collection:hover{
+.cancel-add-collection:hover,.cancel-edit-collection:hover,.cancel-add-restaurant:hover,.cancel-edit-restaurant:hover{
   background-color: #FF524E;
 }
 .input-file-image{
@@ -999,8 +1000,7 @@ hr.section-two-devider{
   font-size: 36px;
   margin: 15px 0px;
 }
-.add-restaurant-container,.edit-restaurant-container{
-  color: #227093;
+.add-restaurant-container,.edit-restaurant-container,.add-collection-container,.edit-collection-form{
   text-align: -webkit-center;
 }
 .restaurant-form>label>input{
@@ -1028,36 +1028,6 @@ hr.section-two-devider{
 }
 .add-restaurant-btn-div,.edit-restaurant-btn-div{
   width: 500px;
-}
-.cancel-add-restaurant,.cancel-edit-restaurant{
-  font-size: 26px;
-  padding: 10px;
-  background-color: #b33939;
-  color: #fff;
-  border: none;
-  border-radius: 15px;
-  margin-top: 20px;
-  width: 120px;
-  cursor: pointer;
-  margin-right: auto;
-}
-.cancel-add-restaurant:hover,.cancel-edit-restaurant:hover{
-  background-color: #FF524E;
-}
-.save-add-restaurant,.save-edit-restaurant{
-  font-size: 26px;
-  padding: 10px;
-  background-color: #218c74;
-  color: #fff;
-  border: none;
-  width: 120px;
-  border-radius: 15px;
-  margin-top: 20px;
-  cursor: pointer;
-  margin-left: 5%;
-}
-.save-add-restaurant:hover,.save-edit-restaurant:hover{
-  background-color: #61dafb;
 }
 .leaflet-container{
   width: 456px;

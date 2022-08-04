@@ -141,7 +141,7 @@ const ReservationCard = ({rest_id,rest_email}) => {
             </div>
 
             <div className='guest-range-slider'>
-                <span className='required'>How Many Guest's</span>
+                <span className='required'>How Many Guests</span>
                 <Form style={{width:'80%'}}>
                     <Form.Group as={Row}>
                         <Col xs="9">

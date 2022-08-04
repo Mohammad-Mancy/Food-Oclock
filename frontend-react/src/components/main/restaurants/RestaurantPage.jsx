@@ -10,7 +10,8 @@ import Map from './../Map'
 import ReservationCard from './reserve/ReservationCard'
 import { Footer } from '../footer/Footer'
 import { FaStar } from 'react-icons/fa'
-import { MdDoubleArrow } from 'react-icons/md'
+import { AiFillPhone } from 'react-icons/ai'
+import { HiOutlineMail } from 'react-icons/hi'
 
 const RestaurantPage = () => {
 
@@ -59,8 +60,8 @@ console.log(rest_rate)
         <div className='restaurant-details-section'>
           <h2>{location.state.name}</h2>
           <h3>Reach out :</h3>
-          <h4><MdDoubleArrow/>{location.state.email}</h4>
-          <h4><MdDoubleArrow/>{location.state.phone_number}</h4>
+          <h4><HiOutlineMail /> {location.state.email}</h4>
+          <h4><AiFillPhone/> {location.state.phone_number}</h4>
         </div>
         <div className="section-two">
         <div className="review-title">
@@ -76,9 +77,9 @@ console.log(rest_rate)
             Add Review
             </button>
             {rest_rate === 0?
-            <div className='rate-rest-page'><span>No Rating </span> <span><FaStar/></span></div>
+            <div className='rate-rest-page'><span style={{verticalAlign:'text-top'}}>No Rating </span> <span><FaStar style={{color:'gold'}}/></span></div>
             :
-            <div className='rate-rest-page'><span>{rest_rate} </span> <span><FaStar/></span></div>}
+            <div className='rate-rest-page'><span style={{verticalAlign:'text-top'}}>{rest_rate} </span> <span><FaStar style={{color:'gold'}}/></span></div>}
           </div>
           <hr className="section-two-devider" />
           {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}

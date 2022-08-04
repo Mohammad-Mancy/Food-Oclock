@@ -42,30 +42,6 @@ function TopNavBar(props) {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/restaurantsList">Restaurants</Nav.Link>
             <Nav.Link href="/collections">Cuisines</Nav.Link>
-            <NavDropdown title="Settings" id="basic-nav-dropdown">
-              {props.status === 'logout'?
-              <>
-                <NavDropdown.Item href='/editprofile'>Account</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}>
-                  Logout
-                </NavDropdown.Item>
-              </>
-                :
-                <>
-                <NavDropdown.Item href="/login">
-                  Login
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/signup">
-                  Signup
-                </NavDropdown.Item></>
-              }
-
-            </NavDropdown>
-            {props.locate === 'restByCol'?
-              <Nav.Link href="/collections">Back</Nav.Link>
-            :
-            <></>}
           </Nav>
           {props.locate === 'col' || props.locate === 'rest' || props.locate === 'restByCol'?
           <div className="search">
@@ -76,20 +52,33 @@ function TopNavBar(props) {
           :
           <></>
           }
-          {props.status === 'logout'?
           <div className="account-login">
-                <Link to='/editprofile'><img src={'http://127.0.0.1:8000/app/public/'+user_image} style={{width:'50px',height:'50px',borderRadius:'50%' }}/></Link>
-                <span 
-                style={{fontSize:'20px',color:'black'}}
-                > {user_name}</span>
+                  {token_key !== undefined?
+                    <>
+                      <img src={'http://127.0.0.1:8000/app/public/'+user_image} style={{width:'50px',height:'50px',borderRadius:'50%' }}/>
+                      <NavDropdown title={user_name} id="basic-nav-dropdown">
+
+                      <NavDropdown.Item href='/editprofile'>Account</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item onClick={handleLogout}>
+                        Logout
+                      </NavDropdown.Item>
+
+                      </NavDropdown>
+                    </>
+                    :
+                    <>
+                      <NavDropdown title='Register' id="basic-nav-dropdown">
+                      <NavDropdown.Item href="/login">
+                        Login
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/signup">
+                        Signup
+                      </NavDropdown.Item>
+                      </NavDropdown>
+                    </>
+              }
           </div>
-        :
-          <div className="account-login">
-            <Link to="/login" className='account-link'>
-                <span>Login</span>
-            </Link>
-          </div>
-        }
         </Navbar.Collapse>
       </Container>
     </Navbar>

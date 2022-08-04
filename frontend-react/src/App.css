@@ -177,10 +177,13 @@ hr.signup-divider{
   width: 300px;
 }
 .account-login{
-  color: #227093;
-  font-size: 36px;
-  width: 300px;
+  display: flex;
+  gap: 14px;
+  font-size: 1.75rem;
   cursor: pointer;
+}
+.bg-light,.navbar-brand,.dropdown-menu.show{
+  font-size: 1.75rem !important;
 }
 .search-input{
   border: 1px solid lightblue;

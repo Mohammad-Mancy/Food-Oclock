@@ -13,6 +13,7 @@ import { FaStar } from 'react-icons/fa'
 import { AiFillPhone } from 'react-icons/ai'
 import { HiOutlineMail } from 'react-icons/hi'
 import Badge from 'react-bootstrap/Badge'
+import Button from 'react-bootstrap/esm/Button'
 
 const RestaurantPage = () => {
 
@@ -59,18 +60,31 @@ console.log(rest_rate)
             </div>
         </div>
         <div className='restaurant-details-section'>
-
+          <div style={{display:'flex', gap:'10px'}}>
           <h2>{location.state.name}</h2>
           {location.state.trend === 1 ?
                 <Badge bg="warning" text="dark">Trending</Badge>
                 :
                 <></>
                 }
+          </div>
+          <div style={{fontSize:'1.75rem'}}>Capacity : <Badge bg="info"><span>{location.state.capacity}</span>  Person</Badge></div>
+          <div style={{fontSize:'1.75rem'}}>Cuisine : <Badge bg='dark'>{location.state.cuisine}</Badge></div>
           <hr />
           <h3>Reach out :</h3>
           <h4><HiOutlineMail /> {location.state.email}</h4>
           <h4><AiFillPhone/> {location.state.phone_number}</h4>
+          <hr />
         </div>
+
+        <div>
+            <div className="section-one-details">
+                <span className='overview-section'>
+                  <h3>About </h3>
+                  <h4>{location.state.description}</h4>
+                </span>
+            </div>
+          </div>
         <div className="section-two">
         <div className="review-title">
             <button
@@ -91,28 +105,8 @@ console.log(rest_rate)
           </div>
           <hr className="section-two-devider" />
           {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}
-        <Tabs
-          defaultActiveKey="Overview"
-          transition={false}
-          id="noanim-tab-example"
-          className="mb-3">
-          <Tab eventKey="Overview" title="Overview">
-            <div className="section-one-details">
-                <span className='overview-section'>
-                  <h2>About</h2>
-                  <h3>{location.state.description}</h3>
-                </span>
-                <span className='overview-section'>
-                  <h2>How many people can it fit ?</h2>
-                  <h3>{location.state.capacity} person</h3>
-                </span>
-                <span className='overview-section'>
-                  <h2>Under what cuisine is it classified ?</h2>
-                  <h3>{location.state.cuisine}</h3>
-                </span>
-            </div>
-          </Tab>
-          <Tab eventKey="Reviews" title="Reviews">
+          <div className='reviews-title'>Reviews</div>
+          <div className='reviews-section'>
               {reviews?
               reviews.map(({id,rate,description,user_name,user_image}) => (
                 <PersonReview
@@ -126,10 +120,12 @@ console.log(rest_rate)
               :
             <h1 className='loading'>Loading ....</h1>
             }
-          </Tab>
-        </Tabs>
         </div>
-        <div className='location-title'>Loaction</div>
+        </div>
+        <hr className='section-two-devider'/>
+        <div className='location-title'>
+          Loaction
+          </div>
         <div className='map-rest-page'>
           <Map latLngg={false} display={true}/>
         </div> 

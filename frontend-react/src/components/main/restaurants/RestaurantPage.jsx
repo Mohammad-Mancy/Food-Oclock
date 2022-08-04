@@ -12,6 +12,7 @@ import { Footer } from '../footer/Footer'
 import { FaStar } from 'react-icons/fa'
 import { AiFillPhone } from 'react-icons/ai'
 import { HiOutlineMail } from 'react-icons/hi'
+import Badge from 'react-bootstrap/Badge'
 
 const RestaurantPage = () => {
 
@@ -58,7 +59,14 @@ console.log(rest_rate)
             </div>
         </div>
         <div className='restaurant-details-section'>
+
           <h2>{location.state.name}</h2>
+          {location.state.trend === 1 ?
+                <Badge bg="warning" text="dark">Trending</Badge>
+                :
+                <></>
+                }
+          <hr />
           <h3>Reach out :</h3>
           <h4><HiOutlineMail /> {location.state.email}</h4>
           <h4><AiFillPhone/> {location.state.phone_number}</h4>
@@ -90,13 +98,6 @@ console.log(rest_rate)
           className="mb-3">
           <Tab eventKey="Overview" title="Overview">
             <div className="section-one-details">
-              {location.state.trend === 1 ?
-                <span className='overview-section'>
-                  <h2>This Restaurant is Trending</h2>
-                </span>
-              :
-              <></>
-              }
                 <span className='overview-section'>
                   <h2>About</h2>
                   <h3>{location.state.description}</h3>

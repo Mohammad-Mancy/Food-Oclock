@@ -25,7 +25,7 @@ const RestaurantPage = () => {
   const [rest_rate,setRest_rate] = useState(parseFloat(location.state.rate))
   const [loading,setLoading] = useState(false)
   const [currentPage,setCurrentPage] = useState(1)
-  const [reviewPerPage,setReviewPerPage] = useState(2)
+  const [reviewPerPage,setReviewPerPage] = useState(3)
 
 
 
@@ -52,6 +52,7 @@ const RestaurantPage = () => {
 
   useEffect( () => {
     handleReviews();
+    setCurrentPage(1)
   }, [location.state.id])
 
 // Get cireent review
@@ -129,9 +130,9 @@ const RestaurantPage = () => {
           {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}
           <div className='reviews-title'>Reviews</div>
           <div className='reviews-section'>
-            <PersonReview reviews={currentReview} loading={loading}/>
-          </div>
           <Pagination paginate={paginate} totalReviews={reviews.length} reviewPerPage={reviewPerPage}/>
+          <PersonReview reviews={currentReview} loading={loading}/>
+          </div>
           </div>
         <hr className='section-two-devider'/>
         <div className='location-title'>

@@ -461,16 +461,17 @@ hr.section-two-devider{
   font-size: 30px;
 }
 .description-review{
-  padding: 25px 100px;
-  font-size: 26px;
+  padding: 20px 80px;
+  font-size: 1.5rem;
   text-align: start;
+  color: gray;
+  font-family: 'Pattaya', sans-serif;
 }
 .loading{
   color: black;
 }
 /* Reviews section */
 .reviews-section{
-  max-height: 60vh;
   overflow: overlay;
   width: 70vw;
   background-color: #fff;

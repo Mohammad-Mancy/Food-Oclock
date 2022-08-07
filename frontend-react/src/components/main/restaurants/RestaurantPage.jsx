@@ -14,6 +14,7 @@ import { AiFillPhone } from 'react-icons/ai'
 import { HiOutlineMail } from 'react-icons/hi'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/esm/Button'
+import Pagination from './reviews/Pagination'
 
 const RestaurantPage = () => {
 
@@ -22,9 +23,17 @@ const RestaurantPage = () => {
   const [reviews, setReviews] = useState();
   const location = useLocation();
   const [rest_rate,setRest_rate] = useState(parseFloat(location.state.rate))
+  const [loading,setLoading] = useState(false)
+  const [currentPage,setCurrentPage] = useState(1)
+  const [reviewPerPage,setReviewPerPage] = useState(2)
+
+
+
   let handleReviews = async (e) => {
+
     setRest_rate(parseFloat(location.state.rate))
     try{
+      setLoading(true)
       let res = await fetch (`http://127.0.0.1:8000/api/v1/auth/restaurant/all-approved-reviews/${location.state.id}`,{
         method: 'GET',
         headers:{
@@ -32,6 +41,7 @@ const RestaurantPage = () => {
         }
       })
       const data = await res.json();
+      setLoading(false)
       if(res.status === 200) {
         setReviews(data.reviews)
       }
@@ -43,8 +53,21 @@ const RestaurantPage = () => {
   useEffect( () => {
     handleReviews();
   }, [location.state.id])
+
+// Get cireent review
+  const indexOfLastReview = currentPage * reviewPerPage
+  const indexOfFirstReview = indexOfLastReview - reviewPerPage
+  if (!reviews){}else{
+    var currentReview = reviews.slice(indexOfFirstReview, indexOfLastReview)
+  }
+
+  if(!reviews){
+    return <h2>Loading ...</h2>
+  }
+
+  // change page 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
   
-console.log(rest_rate)
   return (
     <div className="restaurant-page">
       {token_key !== undefined?
@@ -76,7 +99,6 @@ console.log(rest_rate)
           <h4><AiFillPhone/> {location.state.phone_number}</h4>
           <hr />
         </div>
-
         <div>
             <div className="section-one-details">
                 <span className='overview-section'>
@@ -107,21 +129,10 @@ console.log(rest_rate)
           {openAddReviewForm && <AddReviewForm restaurant={location.state.id}  closeForm={setOpenAddReviewForm} />}
           <div className='reviews-title'>Reviews</div>
           <div className='reviews-section'>
-              {reviews?
-              reviews.map(({id,rate,description,user_name,user_image}) => (
-                <PersonReview
-                key={id}
-                rate={rate}
-                description={description}
-                user_name={user_name}
-                user_image={user_image}
-                />
-              ))
-              :
-            <h1 className='loading'>Loading ....</h1>
-            }
-        </div>
-        </div>
+            <PersonReview reviews={currentReview} loading={loading}/>
+          </div>
+          <Pagination paginate={paginate} totalReviews={reviews.length} reviewPerPage={reviewPerPage}/>
+          </div>
         <hr className='section-two-devider'/>
         <div className='location-title'>
           Loaction

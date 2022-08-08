@@ -15,7 +15,6 @@ const PersonReview = ({reviews,loading}) => {
                           <img src={'http://127.0.0.1:8000/app/public/'+review.user_image}  className="profile-pic-review"/>
                           <h2>{review.user_name}</h2>
                       </div>
-                      {console.log(review)}
                       <span>
                         <ReactStars
                         count={5}

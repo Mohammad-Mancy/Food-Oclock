@@ -186,6 +186,7 @@ hr.signup-divider{
   font-size: 1.75rem;
   cursor: pointer;
   place-items: baseline;
+  align-items: center;
 }
 .bg-light,.navbar-brand,.dropdown-menu.show{
   font-size: 1.75rem !important;

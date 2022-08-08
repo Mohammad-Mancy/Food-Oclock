@@ -136,7 +136,7 @@ const RestaurantPage = () => {
           </div>
         <hr className='section-two-devider'/>
         <div className='location-title'>
-          Loaction
+          Loaction - <span>{location.state.location_name}</span>
           </div>
         <div className='map-rest-page'>
           <Map latLngg={false} display={true}/>

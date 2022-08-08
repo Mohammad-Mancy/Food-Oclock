@@ -57,7 +57,7 @@ const filterRestaurants = () => {
 // _________________________________________________
 
 const navigation = useNavigate();
-const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) => {
+const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number,location_name}) => {
   reactLocalStorage.set('lat-coordinates',latitude)
   reactLocalStorage.set('lng-coordinates',longitude)
     navigation('/restaurantPage',
@@ -71,6 +71,7 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend
         trend:trend,
         email:email,
         phone_number:phone_number,
+        location_name:location_name,
         image:image}
         })
 }
@@ -82,21 +83,24 @@ const hundleRestaurant = ({id,name,image,rate,capacity,description,cuisine,trend
       <TopNavBar locate={'rest'} myRef={filter_input} onInput={() =>{filterRestaurants()}} status={true}/>}
         <div className="collection-content-wrapper">
         <Row xs={1} md={2} className="g-4">
-            {filter.map(({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) => (
+            {filter.map(({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number,location_name}) => (
                 <Col key={id}>
                 <Card className='rest-card'>
                     <Card.Img variant="top" 
                     src={'http://127.0.0.1:8000/app/public/'+image} 
                     style={{width:'100%',height:'45vh',borderRadius:'10px'}} 
-                    onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number}) } } 
+                    onClick = { () => { hundleRestaurant({id,name,image,rate,capacity,description,cuisine,trend,longitude,latitude,email,phone_number,location_name}) } } 
                     />
                     <Card.Body>
                     <Card.Title className='flex-title'><span>{name}</span><span>Rate : {rate == 0 ?<span>No Rating</span>:rate}</span></Card.Title>
                     <Card.Text style={{margin:'0'}}>
                         Capacity : {capacity}
                     </Card.Text>
-                    <Card.Text style={{margin:'0'}}>
-                        Phone : {phone_number}
+                    <Card.Text style={{
+                      margin:'0',
+                      display:'flex',
+                      justifyContent:'space-between'}}>
+                        <span>Phone : {phone_number}</span><span style={{fontSize:'20px'}}>{location_name}</span>
                     </Card.Text>
                     </Card.Body>
                 </Card>

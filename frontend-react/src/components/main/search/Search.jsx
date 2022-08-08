@@ -13,8 +13,8 @@ const Search = (props) => {
           })
           const data = await res.json();
           if (res.status === 200 ){
-            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude,rate,email,phone_number})=>{
-              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude,'rate':rate, 'email':email,'phone_number':phone_number}])
+            data.restaurants.map(({id,name,description,image,capacity,cuisine,trend,latitude,longitude,rate,email,phone_number,location_name})=>{
+              setOptions((options) => [...options,{'value':id,'label':name,'description':description,'image':image,'capacity':capacity,'cuisine':cuisine,'trend':trend,'latitude':latitude,'longitude':longitude,'rate':rate, 'email':email,'phone_number':phone_number,'location_name':location_name}])
             })
           }
         }catch(error){
@@ -27,7 +27,7 @@ const Search = (props) => {
       }, [])
 
       const navigation = useNavigate();
-      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude,rate,email,phone_number}) => {
+      const hundleRestaurant = ({id,n,desc,img,cap,cuisine,trend,latitude,longitude,rate,email,phone_number,location_name}) => {
         reactLocalStorage.set('lat-coordinates',latitude)
         reactLocalStorage.set('lng-coordinates',longitude)
           navigation('/restaurantPage',
@@ -43,6 +43,7 @@ const Search = (props) => {
                 rate:rate,
                 email:email,
                 phone_number:phone_number,
+                location_name:location_name,
                 capacity:cap}
               })
       }
@@ -67,7 +68,8 @@ const Search = (props) => {
                     longitude:e.longitude,
                     email:e.email,
                     phone_number:e.phone_number,
-                    rate:e.rate
+                    rate:e.rate,
+                    location_name:e.location_name
                     }) } }  />
           </div>
       :
@@ -88,7 +90,8 @@ const Search = (props) => {
                     longitude:e.longitude,
                     email:e.email,
                     phone_number:e.phone_number,
-                    rate:e.rate
+                    rate:e.rate,
+                    location_name:e.location_name
                     }) } }  />
         </div>
     }

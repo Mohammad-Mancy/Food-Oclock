@@ -4,6 +4,8 @@ import ReactStars from "react-rating-stars-component";
 const PersonReview = ({reviews,loading}) => {
   if(loading){
     return <h2>Loading...</h2>
+  }else if(reviews.length === 0){
+    return <h3>No Review</h3>
   }
   return (
           <div className="section-person-review">

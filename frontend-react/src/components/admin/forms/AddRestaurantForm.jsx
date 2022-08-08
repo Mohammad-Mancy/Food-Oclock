@@ -20,6 +20,7 @@ const AddRestaurantForm = () => {
   const [collection,setCollection] = useState()
   const [email,setEmail] = useState()
   const [phone_number,setPhone_number] = useState()
+  const [location_name,setLocation_name] = useState()
   const [base64code,setBase64code] = useState('')
   
   const imageChoice = (e) => {
@@ -59,7 +60,8 @@ const AddRestaurantForm = () => {
           latitude:latitude,
           collection_id:collection,
           email:email,
-          phone_number:phone_number
+          phone_number:phone_number,
+          city:location_name
         })
       })
       const data = await res.json();
@@ -148,11 +150,19 @@ const AddRestaurantForm = () => {
             onChange={ (e) => setPhone_number(e.target.value)}
             />
         </label>
+        <label>
+            <p>City</p>
+            <input type="text" 
+            placeholder='City name'
+            onChange={ (e) => setLocation_name(e.target.value)}
+            />
+        </label>
         <div className='map-wrapper'>
           <span>Location</span>
           <Map latLngg={true}/>
         </div>
         <div style={{width:'500px',marginBottom:'20px',marginTop:'20px'}}>
+          <p style={{textAlign:'start'}}>Cuisine</p>
           <Select 
           options={options} 
           onChange={(e) => setCollection(e.value)}/>  

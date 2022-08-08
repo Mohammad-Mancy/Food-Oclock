@@ -21,6 +21,7 @@ const EditRestaurantForm = () => {
   const [email,setEmail] = useState()
   const [phone_number,setPhone_number] = useState()
   const [imageName,setImageName] = useState('')
+  const [location_name,setLocation_name] = useState()
   const [base64code,setBase64code] = useState('noChange')
 
   let handleCallCurrentRestaurant = async (e) => {
@@ -39,6 +40,7 @@ const EditRestaurantForm = () => {
         setTrend(data.restaurants.trend)
         setEmail(data.restaurants.email)
         setPhone_number(data.restaurants.phone_number)
+        setLocation_name(data.restaurants.location_name)
         reactLocalStorage.set('lat-coordinates',data.restaurants.latitude)
         reactLocalStorage.set('lng-coordinates',data.restaurants.longitude)
         reactLocalStorage.set('coordinateLat',data.restaurants.latitude)
@@ -109,6 +111,7 @@ const EditRestaurantForm = () => {
           trend:trend,
           email:email,
           phone_number:phone_number,
+          city:location_name,
           longitude:reactLocalStorage.get('coordinateLng'),
           latitude:reactLocalStorage.get('coordinateLat')
         })
@@ -177,11 +180,19 @@ const EditRestaurantForm = () => {
             onChange={ (e) => setPhone_number(e.target.value)}
             />
         </label>
+        <label>
+            <p>City</p>
+            <input type="text" 
+            placeholder={location_name}
+            onChange={ (e) => setLocation_name(e.target.value)}
+            />
+        </label>
         <div className='map-wrapper'>
           <span>Location</span>
           <Map latLngg={false}/>
         </div>
         <div style={{width:'500px',marginBottom:'20px',marginTop:'20px'}}>
+          <p style={{textAlign:'start'}}>Cuisine</p>
           <Select options={options} onChange={(e) => setCollection(e.value)}/>  
         </div>
         <Form.Check 

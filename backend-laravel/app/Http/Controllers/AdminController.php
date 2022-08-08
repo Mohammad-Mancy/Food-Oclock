@@ -24,6 +24,7 @@ class AdminController extends Controller
         if(auth()->user()){
             
             $location = new Location;
+            $location->city = $request->city;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
             $location->save();
@@ -191,7 +192,7 @@ class AdminController extends Controller
             $restaurant->trend = $request->trend;
             $restaurant->email = $request->email;
             $restaurant->phone_number = $request->phone_number;
-            $restaurant->location()->update($request->only('longitude','latitude'));
+            $restaurant->location()->update($request->only('longitude','latitude','city'));
             $restaurant->update($request->except('id', 'type','longitude','latitude','image'));    
 
 

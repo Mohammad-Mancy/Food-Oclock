@@ -74,6 +74,6 @@ ___
 ___
 
 ## References
-- [LinkedIn](#https://www.linkedin.com/in/mohammad-mancy-75b591227/)
-- [Twitter](#https://twitter.com/mancy_mohammad)
-- [Facebook](#https://www.facebook.com/mohammad.mancy.33)
+- [LinkedIn](https://www.linkedin.com/in/mohammad-mancy-75b591227/)
+- [Twitter](https://twitter.com/mancy_mohammad)
+- [Facebook](https://www.facebook.com/mohammad.mancy.33)

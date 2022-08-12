@@ -59,7 +59,6 @@ ___
     composer install
     php artisan migrate
 
-    # still no database seeder
     php artisan db:seed
     php artisan serve
      ```

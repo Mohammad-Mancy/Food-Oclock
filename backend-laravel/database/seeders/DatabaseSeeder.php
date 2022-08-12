@@ -18,14 +18,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $names =["Ali","Joe","Hassan","Goerge","Maria","Zeinab","Elianore","Fatima","Mohammad","Mahdi"];
-        foreach (range(1,10) as $index) {
+        foreach (range(0,9) as $index) {
             DB::table('users')->insert([
-                'name' => $names[rand(0,9)],
+                'name' => $names[$index],
                 'email' => Str::random(10).'@gmail.com',
                 'password' => Hash::make('password'),
                 'phone_number' => 71 . rand(100000,999999),
                 'type' => 0,
-                'image' => 'Image'.$index,
+                'image' => 'Image'.$index + 1 . '.jpg',
                 'Created_at' => date("Y-m-d h:i:s"),
                 'Updated_at' => date("Y-m-d h:i:s")
             ]);
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('mancy994'),
             'phone_number' => 76020632,
             'type' => 1,
-            'image' => 'mancy123',
+            'image' => 'img_avatar.png',
             'Created_at' => date("Y-m-d h:i:s"),
             'Updated_at' => date("Y-m-d h:i:s")
         ]);

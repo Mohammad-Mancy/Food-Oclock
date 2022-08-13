@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             So with JUNKIES, we can guarantee a touch of soul food, as well as a mouthwatering recipe to keep you craving for more!',
             'location_id' => 1,
             'capacity' => 100,
-            'rate' => 0,
+            'rate' => 3.2,
             'image' => 'junkiesfood.jpg',
             'Created_at' => date("Y-m-d h:i:s"),
             'Updated_at' => date("Y-m-d h:i:s"),
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
              smoked American Black Angus Brisket, Smoked Pork Ribs and many more.',
             'location_id' => 2,
             'capacity' => 130,
-            'rate' => 0,
+            'rate' => 4.3,
             'image' => 'MeateorBBQ.jpg',
             'Created_at' => date("Y-m-d h:i:s"),	
             'Updated_at' => date("Y-m-d h:i:s"),
@@ -895,5 +895,145 @@ class DatabaseSeeder extends Seeder
             'Updated_at' => date("Y-m-d h:i:s")
         ]);
         // 36
+
+        // Reviews 
+        DB::table('reviews')->insert([
+            'rate' => 2,
+            'description' => 'definitely not worth the hype. the food was so mediocre, the only taste in the burgers were the sauces they put in them. the fries were soggy and tiny, and their "junkies sauce" is mostly mayonnaise. never ordering again',
+            'status' => 1,
+            'user_id' => 1,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 2,
+            'description' => 'totally disappointed, used to be a good restaurant... quality have tremendously dropped',
+            'status' => 1,
+            'user_id' => 2,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 1,
+            'description' => 'i ordered portobello beef, they brought me chicken. i ordered wings, they came undercooked. the grilled chicken in the burger is undercooked. not recommended at ALL. risking ur customers health!',
+            'status' => 1,
+            'user_id' => 3,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")	
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'Wow! Super delicious burger’s, fries and sauces! Very nice packaging and professional staff. Will definitely order again!',
+            'status' => 1,
+            'user_id' => 4,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 4,
+            'description' => 'Dinner and service was super good and very delicious. also the waiter Hassan Haidar very helpful and the service super fast. very recommended',
+            'status' => 1,
+            'user_id' => 9,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 4,
+            'description' => 'We order mini combo, Bbq wings, cowboy burger and cuban burger all of them were awesome, very juicy and tasty. The waiter Hassan Haidar was very polite and helpful and super fast in service.',
+            'status' => 1,
+            'user_id' => 6,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 1,
+            'description' => 'we ordered 4 burgers and they were ALL filled with so much sauce we could not taste the chicken nor the bread! Also i asked them to remove the tomatoes from the kinger burger and they sent it with tomatoes ( mark that i have allergies from tomatoes). We also ordered melted fried and all we could taste was the barbecue sauce it was drowned in sauce to the point were i felt sick!!!! Very disappointing :( ',
+            'status' => 1,
+            'user_id' => 8,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'Excellent food and great service and atmosphere especially the waiter called Lynn she was super friendly :)',
+            'status' => 1,
+            'user_id' => 7,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")	
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'The food is great, service is better. We had a great time and were serviced by lyn. Good atmosphere. Recommended',
+            'status' => 1,
+            'user_id' => 5,
+            'restaurant_id' => 1,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")	
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'Been coming here since the opening and never disappointed. Good service combined with good food. Generous portions. The service was fast and not to miss the friendly owners ',
+            'status' => 1,
+            'user_id' => 10,
+            'restaurant_id' => 2,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'The menus options are an excellent value. The dining experience overall is very pleasant. I highly recommend this restaurant.',
+            'status' => 1,
+            'user_id' => 8,
+            'restaurant_id' => 22,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'First time in MeateorBBQ and YOU have to go! It’s the cutest little spot with amazing food. The pork burger with brisket so yummy. IT WAS FIRE!! The service we received was so amazing and we will definitely be back again. They made us feel welcomed and gave us an amazing experience.',
+            'status' => 1,
+            'user_id' => 6,
+            'restaurant_id' => 2,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 1,
+            'description' => 'Worst experience ever. We ordered buffalo ribs for 22$(fresh),they are full of fat and the sauce was very oily and not so delicious, we did not finish our plate Moreover, the owner is very rude and garrulous',
+            'status' => 1,
+            'user_id' => 4,
+            'restaurant_id' => 2,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'For a food truck, this place definitely exceeded my expectations! I tried the brisket sandwich and the pulled pork sandwich. Both were very tasty, the meat was very juicy and saucy, and of great quality. The portions are generous. Will be visiting again!',
+            'status' => 1,
+            'user_id' => 2,
+            'restaurant_id' => 2,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        DB::table('reviews')->insert([
+            'rate' => 5,
+            'description' => 'Its was a good experience .. thank you for this taste quatity and service .. and for the items you picked for us .. see you again and again ..',
+            'status' => 1,
+            'user_id' => 7,
+            'restaurant_id' => 2,
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s")
+        ]);
+        // 15
+        
     }
 }

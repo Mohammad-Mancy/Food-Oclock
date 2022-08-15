@@ -1,5 +1,5 @@
 import React, { useState,useEffect }  from 'react'
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation,Link,useNavigate } from 'react-router-dom';
 import AdminTopNavBar from '../../navbar/AdminTopNavBar';
 import { reactLocalStorage } from 'reactjs-localstorage';
 import imageIcon from '../../../assets/Images-icon.png'
@@ -23,6 +23,8 @@ const EditRestaurantForm = () => {
   const [imageName,setImageName] = useState('')
   const [location_name,setLocation_name] = useState()
   const [base64code,setBase64code] = useState('noChange')
+  const [editNotification,setEditNotification] = useState(false)
+  const navigation = useNavigate()
 
   let handleCallCurrentRestaurant = async (e) => {
     try{
@@ -117,7 +119,7 @@ const EditRestaurantForm = () => {
         })
       })
       if (res.status === 204 ){
-        alert('the restaurant updated successfully')
+        setEditNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -134,7 +136,13 @@ const EditRestaurantForm = () => {
       <div className="edit-rest-title">Edit Restaurant with ID: {location.state.id}</div>
       <form 
         className='restaurant-form'
-        onSubmit={handleSaveRestaurant}
+        onSubmit={(e) => {
+          handleSaveRestaurant(e)
+          setTimeout(() => {
+            setEditNotification(false)
+            navigation('/manageRestaurant')
+          }, 2000)
+        }}
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
@@ -203,7 +211,8 @@ const EditRestaurantForm = () => {
           defaultChecked={trend}
           onChange={ () => {trend === 1 ?setTrend(0):setTrend(1)}}
         />
-        {console.log(trend)}
+        {editNotification &&
+        <div><h5 style={{color:'green'}}>The Restaurant has been updated</h5></div>}
         <div className='edit-restaurant-btn-div'>
             <Link to="/manageRestaurant"><button type="submit" className='cancel-edit-restaurant'>Cancel</button></Link>
             <button type="submit" className='save-edit-restaurant'>Save</button>

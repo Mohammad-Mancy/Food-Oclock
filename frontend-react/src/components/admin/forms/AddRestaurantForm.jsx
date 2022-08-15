@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import AdminTopNavBar from '../../navbar/AdminTopNavBar'
 import imageIcon from '../../../assets/Images-icon.png'
 import Select from 'react-select'
@@ -22,6 +22,8 @@ const AddRestaurantForm = () => {
   const [phone_number,setPhone_number] = useState()
   const [location_name,setLocation_name] = useState()
   const [base64code,setBase64code] = useState('')
+  const [addNotification,setAddNotification] = useState(false)
+  const navigation = useNavigate()
   
   const imageChoice = (e) => {
     const files = e.target.files;
@@ -66,11 +68,7 @@ const AddRestaurantForm = () => {
       })
       const data = await res.json();
       if (res.status === 200) {
-
-          alert('the Restaurant added successfully')
-          setBase64code('')
-          setImageName('Choose Image')
-
+        setAddNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -104,7 +102,13 @@ const AddRestaurantForm = () => {
       <div className="add-rest-title">Add Restaurant</div>
       <form 
         className='restaurant-form'
-        onSubmit={handleSaveRestaurant}
+        onSubmit={(e) => {
+          handleSaveRestaurant(e)
+          setTimeout(() => {
+            setAddNotification(false)
+            navigation('/manageRestaurant')
+          }, 2000)
+        }}
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
@@ -167,6 +171,8 @@ const AddRestaurantForm = () => {
           options={options} 
           onChange={(e) => setCollection(e.value)}/>  
         </div>
+        {addNotification &&
+            <div><h5 style={{color:'green'}}>The Restaurant Added successfully</h5></div>}
         <div className='add-restaurant-btn-div'>
             <Link to="/manageRestaurant"><button type="submit" className='cancel-add-restaurant'>Cancel</button></Link>
             <button type="submit" className='save-add-restaurant'>Save</button>

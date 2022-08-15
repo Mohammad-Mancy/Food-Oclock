@@ -14,6 +14,7 @@ const ManageRestaurant = () => {
   const [_, forceUpdate] = useReducer((x) => x + 1, 0);
   const [filter, setFilter] = useState([]);
   const filter_input = useRef();
+  const [deleteNotification,setDeleteNotification] = useState(false)
 
   let handleRestaurants = async (e) => {
     try{
@@ -49,8 +50,7 @@ const ManageRestaurant = () => {
       })
       })
       if(res.status === 204) {
-        alert(`Restaurant with ID : ${id} was Deleted`)
-        window.location.reload();
+        setDeleteNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -117,6 +117,8 @@ const ManageRestaurant = () => {
         <OrderBy byName={OrderByName} byDate={OrderByDate} byCapacity={OrderByCapacity} locate={'rest'}/>
         </div>
       <hr className="manage-restaurant-devider" />
+      {deleteNotification &&
+        <div><h5 style={{color:'red'}}>Restaurant was deleted</h5></div>}
       
       {/* Manage Restaurants Header */}
       <div className="manage-restaurant-header">
@@ -134,7 +136,13 @@ const ManageRestaurant = () => {
         name={name}
         trend={trend}
         capacity={capacity}
-        onDelete={() => {deleteRestaurant(id)}}
+        onDelete={() => {
+          deleteRestaurant(id)
+          setTimeout(() => {
+            setDeleteNotification(false)
+            window.location.reload()
+          },2000)
+        }}
         onEdit= { () => {navigateEditRestaurant(id)}}
         />
         ))}

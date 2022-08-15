@@ -14,6 +14,7 @@ const ManageCollection = () => {
   const [_, forceUpdate] = useReducer((x) => x + 1, 0);
   const [filter, setFilter] = useState([]);
   const filter_input = useRef();
+  const [deleteNotification,setDeleteNotification] = useState(false)
 
   let handleCollections = async (e) => {
     try{
@@ -49,8 +50,7 @@ const ManageCollection = () => {
       })
       })
       if(res.status === 204) {
-        alert(`Collection with ID : ${id} was Deleted`)
-        window.location.reload();
+        setDeleteNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -111,6 +111,8 @@ const ManageCollection = () => {
         <OrderBy byName={OrderByName} byDate={OrderByDate}/>
       </div>
       <hr className="manage-collection-devider" />
+      {deleteNotification &&
+        <div><h5 style={{color:'red'}}>Cuisine was deleted</h5></div>}
       
       {/* Manage Collection Header */}
       <div className="manage-collection-header">
@@ -124,7 +126,13 @@ const ManageCollection = () => {
         <AdminCollectionCard 
         key={id}
         name={name}
-        onDelete={ () => {deleteCollection(id)}}
+        onDelete={ () => {
+          deleteCollection(id)
+          setTimeout(() => {
+            setDeleteNotification(false)
+            window.location.reload();
+          }, 2000)
+        }}
         onEdit= { () => {navigateEditCollection(id)}}
         />
         ))}

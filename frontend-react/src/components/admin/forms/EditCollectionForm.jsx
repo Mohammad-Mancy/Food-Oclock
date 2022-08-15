@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation,Link,useNavigate } from 'react-router-dom';
 import AdminTopNavBar from '../../navbar/AdminTopNavBar'
 import imageIcon from '../../../assets/Images-icon.png'
 import { reactLocalStorage } from 'reactjs-localstorage';
@@ -11,6 +11,8 @@ const EditCollectionForm = () => {
     const [name,setName] = useState()
     const [base64code,setBase64code] = useState('noChange')
     const [imageName,setImageName] = useState('')
+    const [editNotification,setEditNotification] = useState(false)
+    const navigation = useNavigate()
 
     let handleCallCurrentCollection = async (e) => {
       try{
@@ -70,7 +72,7 @@ const EditCollectionForm = () => {
           })
         })
         if (res.status === 204) {
-            alert('the collection updated successfully')
+          setEditNotification(true)
         }
       }catch(error){
         console.error(error)
@@ -88,7 +90,14 @@ const EditCollectionForm = () => {
         <div className="edit-col-title">Edit Collection {location.state.id}</div>
         <form 
         className='collection-form'
-        onSubmit={handleSaveEdit}
+        onSubmit={(e) =>{
+          handleSaveEdit(e)
+          setTimeout(() => {
+            setEditNotification(false)
+            navigation('/manageCollection')
+          }, 2000)
+        }
+        }
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
@@ -106,6 +115,8 @@ const EditCollectionForm = () => {
                 onChange={ (e) => setName(e.target.value)}
                 />
             </label>
+            {editNotification &&
+            <div><h5 style={{color:'green'}}>The Cuisine has been updated</h5></div>}
             <div className='edit-collection-btn-div'>
                 <Link to="/manageCollection"><button type="submit" className='cancel-edit-collection'>Cancel</button></Link>
                 <button type="submit" className='save-edit-collection'>Save</button>

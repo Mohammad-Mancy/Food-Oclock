@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import imageIcon from '../../../assets/Images-icon.png'
 import { useState } from 'react'
 import { reactLocalStorage } from 'reactjs-localstorage'
+import { useNavigate } from 'react-router-dom'
 
 const AddCollecionForm = () => {
 
@@ -12,6 +13,9 @@ const AddCollecionForm = () => {
   const [imageName,setImageName] = useState("Choose Image")
   const [name,setName] = useState()
   const [base64code,setBase64code] = useState('')
+  const [addNotification,setAddNotification] = useState(false)
+  const navigation = useNavigate()
+
   const imageChoice = (e) => {
     const files = e.target.files;
     const file = files[0];
@@ -51,11 +55,7 @@ const AddCollecionForm = () => {
       })
       const data = await res.json();
       if (res.status === 200) {
-
-          alert('the collection added successfully')
-          setBase64code('')
-          setImageName('Choose Image')
-
+          setAddNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -68,7 +68,13 @@ const AddCollecionForm = () => {
         <div className="add-col-title">Add Collection</div>
         <form 
         className='collection-form'
-        onSubmit={handleSaveCollection}
+        onSubmit={(e) => {
+          handleSaveCollection(e)
+          setTimeout(() => {
+            setAddNotification(false)
+            navigation('/manageCollection')
+          },2000)
+        }}
         >
         <input type="file" onChange={imageChoice} className="input-file-image" id='image-input'/>
         <label htmlFor="image-input" className='image-input-label'>
@@ -86,6 +92,8 @@ const AddCollecionForm = () => {
                 onChange={ (e) => setName(e.target.value)}
                 />
             </label>
+            {addNotification &&
+            <div><h5 style={{color:'green'}}>The Cuisine Added successfully</h5></div>}
             <div className='add-collection-btn-div'>
                 <Link to="/manageCollection"><button type="submit" className='cancel-add-collection'>Cancel</button></Link>
                 <button type="submit" className='save-add-collection'>Save</button>

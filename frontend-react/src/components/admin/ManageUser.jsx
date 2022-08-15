@@ -13,6 +13,7 @@ const ManageUser = () => {
   const [filter, setFilter] = useState([]);
   const [_, forceUpdate] = useReducer((x) => x + 1, 0);
   const filter_input = useRef();
+  const [ deleteAccountNotification , setDeleteAccountNotification] = useState(false)
 
   let handleUsers = async (e) => {
     try{
@@ -52,8 +53,7 @@ const ManageUser = () => {
       })
       })
       if(res.status === 204) {
-        alert(`User account with ID : ${id} was Deleted`)
-        window.location.reload();
+        setDeleteAccountNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -114,6 +114,8 @@ const ManageUser = () => {
         </div>
         
         {/* ____________________________________ */}
+        {deleteAccountNotification &&
+        <div><h5 style={{color:'red'}}>User Account Deleted</h5></div>}
 
         {/* users header */}
           <div className="user-card-header">
@@ -130,7 +132,13 @@ const ManageUser = () => {
         name={name}
         email={email}
         phone_number={phone_number}
-        onClick={ () => { deleteUser(id) }}
+        onClick={ () => { 
+          deleteUser(id)
+          setTimeout(() => {
+            setDeleteAccountNotification(false)
+            window.location.reload();
+          }, 1300)
+         }}
         />
         ))}
     </div>

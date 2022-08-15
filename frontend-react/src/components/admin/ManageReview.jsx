@@ -13,6 +13,8 @@ const ManageReview = () => {
   const [_, forceUpdate] = useReducer((x) => x + 1, 0);
   const filter_input = useRef();
   const [filter, setFilter] = useState([]);
+  const [approveNotification,setApproveNotification] = useState(false)
+  const [rejectNotification,setRejectNotification] = useState(false)
 
   let handleReviews = async (e) => {
     try{
@@ -53,9 +55,8 @@ const ManageReview = () => {
     })
     const data = await res.json();
     if(res.status === 200) {
-      alert(`Review with ID : ${id} was approved`)
-      window.location.reload();
-    }
+      setApproveNotification(true)
+    }          
     }catch(error){
       console.error(error)
     }
@@ -74,8 +75,7 @@ const ManageReview = () => {
       })
       })
       if(res.status === 204) {
-        alert(`Review with ID : ${id} was Rejected`)
-        window.location.reload();
+        setRejectNotification(true)
       }
     }catch(error){
       console.error(error)
@@ -132,7 +132,10 @@ const ManageReview = () => {
           </div> 
         <OrderBy byName={OrderByName} byDate={OrderByDate} byRate={OrderByRate} locate={'reviews'}/>
       </div>
-
+        {approveNotification &&
+        <div><h5 style={{color:'green'}}>Review Approved</h5></div>}
+        {rejectNotification &&
+        <div><h5 style={{color:'red'}}>Review Rejected</h5></div>}
         {/* Manage Review Header*/}
         <div className="manage-review-header">
           <span>Username</span>
@@ -151,8 +154,20 @@ const ManageReview = () => {
         restaurant_name={restaurant_name}
         rate={rate}
         description={description}
-        onClick={() => {approveReview(id)}}
-        onDelete={() => {deleteReview(id)}}
+        onClick={() => {
+          approveReview(id)
+          setTimeout(() => {
+            setApproveNotification(false)
+            window.location.reload();
+          }, 2000)
+        }}
+        onDelete={() => {
+          deleteReview(id)
+          setTimeout(() => {
+            setRejectNotification(false)
+            window.location.reload();
+          }, 2000)
+        }}
         />
         ))}
 

@@ -26,6 +26,7 @@ const RestaurantPage = () => {
   const [loading,setLoading] = useState(false)
   const [currentPage,setCurrentPage] = useState(1)
   const [reviewPerPage,setReviewPerPage] = useState(3)
+  const [loginNotification,setLoginNotification] = useState(false)
 
 
 
@@ -116,11 +117,15 @@ const RestaurantPage = () => {
               token_key !== undefined?
               setOpenAddReviewForm(true)
               :
-              alert('Sorry ! You need to login')
+              setLoginNotification(true)
+              setTimeout(() => {
+                setLoginNotification(false)
+              },2000)
             }}
             >
             Add Review
             </button>
+            {loginNotification && <h5 style={{color:'red'}}>you need to login</h5>}
             {rest_rate === 0?
             <div className='rate-rest-page'><span style={{verticalAlign:'text-top'}}>No Rating </span> <span><FaStar style={{color:'gold'}}/></span></div>
             :

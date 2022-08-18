@@ -13,7 +13,7 @@
 ___
 
 ## Overview
-Restaueants reservation and review web app that does the following :
+Restaurants reservation and review web app that does the following :
 <br>
 - Browse, search, and filter all available restaurants.
 - Submit restaurant reservations.
